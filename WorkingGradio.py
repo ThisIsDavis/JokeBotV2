@@ -1,9 +1,10 @@
 import gradio as gr
 import os
 from llama_index import SimpleDirectoryReader
-from llama_index.readers.file.docs_parser import PDFParser
+# from llama_index.readers.file.docs_parser import PDFParser
+from llama_index.readers.file.docs_reader import PDFReader
 from llama_index.readers.schema.base import Document
-from llama_index import GPTSimpleVectorIndex, LLMPredictor, PromptHelper, ServiceContext
+from llama_index import GPTVectorStoreIndex, LLMPredictor, PromptHelper, ServiceContext
 from langchain import OpenAI
 
 class GPTProcessing(object):
@@ -170,8 +171,8 @@ class GPTProcessing(object):
         file_extension = os.path.splitext(file)
         if len(file_extension) == 2 and file_extension[1] in ['.pdf', '.txt']:
             if file_extension[1] == '.pdf':
-                parser = PDFParser()
-                extracted_pdf = parser.parse_file(file)
+                parser = PDFReader()
+                extracted_pdf = parser.load_data(file)
                 data_list.append(extracted_pdf)
                 source_data = [Document(d) for d in data_list]
             elif file_extension[1] == '.txt':
@@ -185,7 +186,7 @@ class GPTProcessing(object):
         source_documents = self.load_source_data(file.name)
         status_message = "Error: Unable to create to source document index"
         if len(source_documents) > 0:
-            source_index = GPTSimpleVectorIndex.from_documents(source_documents)  #get the index from gpt api
+            source_index = GPTVectorStoreIndex.from_documents(source_documents)  #get the index from gpt api
             saved_file = self.save_index_document(source_index, file.name) #save the source index
             if saved_file is not None:
                 status_message = "Success: The index is ready as [" + saved_file + "]" #this will be shown in the label row
@@ -217,7 +218,7 @@ class GPTProcessing(object):
         if index_name is not None and len(index_name) > 0 and self.api_key is not None:
             index_path = os.path.join(os.getcwd(), self.index_folder, index_name)
             if os.path.exists(index_path):
-                self.selected_index = GPTSimpleVectorIndex.load_from_disk(index_path)
+                self.selected_index = GPTVectorStoreIndex.load_from_disk(index_path)
                 self.index_status = "Success: Index is set.."
             else:
                 self.index_status = "Error: Index path is bad"
@@ -256,7 +257,7 @@ class GPTProcessing(object):
         service_context = ServiceContext.from_defaults(llm_predictor=llmPredictor,prompt_helper=promptHelper)
 
         #create vector index
-        vectorIndex = GPTSimpleVectorIndex.from_documents(documents=docs,service_context=service_context)
+        vectorIndex = GPTVectorStoreIndex.from_documents(documents=docs,service_context=service_context)
         final_out_file = "vectorIndex.json"
         final_out_file_path = os.path.join(os.getcwd(), self.index_folder, final_out_file)
         vectorIndex.save_to_disk(final_out_file_path)
