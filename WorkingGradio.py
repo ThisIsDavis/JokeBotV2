@@ -1,11 +1,12 @@
 import gradio as gr
 import os
 from llama_index import SimpleDirectoryReader
-from llama_index.readers.file.docs_parser import PDFParser
+# from llama_index.readers.file.docs_parser import PDFParser
 from llama_index.readers.file.docs_reader import PDFReader
 from llama_index.readers.schema.base import Document
 from llama_index import GPTVectorStoreIndex, LLMPredictor, PromptHelper, ServiceContext
 from langchain import OpenAI
+from transformers import pipeline
 
 class GPTProcessing(object):
     
@@ -20,7 +21,9 @@ class GPTProcessing(object):
         self.selected_index = None
         self.index_status = "Error: Index is not selected"
         self.index_setup_result = ".... no action..."
-
+        # Pre-trained voice recognition model.
+        self.voice_recognition_model = pipeline("automatic-speech-recognition")
+    
     def create_ui(self):
         with self.ui_obj:
             gr.Markdown("Generating User Tailored Jokes From A Keyword")
@@ -74,6 +77,12 @@ class GPTProcessing(object):
                         query_question = gr.Textbox(label="Enter your keyword", lines=5)
                         #button to get answer
                         query_data_action = gr.Button("Get Joke")
+                    # Voice Recognition
+                    with gr.Row():
+                        # Record audio
+                        voice_recog = gr.Audio(source = "microphone", type="filepath")
+                        # Button to start voice recognition
+                        voice_recog_action = gr.Button("Keyword Voice Recognition")    
                     with gr.Row():
                         #to show response
                         query_result_text = gr.Textbox(label="Query Result:", lines=10)
@@ -147,6 +156,17 @@ class GPTProcessing(object):
                 ],
                 [
                     query_result_text
+                ]
+            )
+            
+            # Button to start recording voice and outputting it to the text box.
+            voice_recog_action.click(
+                self.transcribe_audio,
+                [
+                    voice_recog
+                ], 
+                [
+                    query_question
                 ]
             )
 
@@ -267,12 +287,26 @@ class GPTProcessing(object):
                 status_message = "Success: The index is ready as [" + final_out_file_path + "]" #this will be shown in the label row
         return status_message
 
+    # Voice recognition
+    def transcribe_audio(self, audio):
+        # Recognise audio input
+        text = self.voice_recognition_model(audio)["text"]
+        
+        # If no audio received, give error.
+        if len(text) == 0:
+            text = "Error: Unable to recognise audio"
+        # Else split the text and returned only the first word
+        else:
+            text = text.split()[0]
+            
+        return text
     
 
 if __name__ == '__main__':
     my_app = gr.Blocks()
     #this will call our program with gr.Block from gradio
     gradio_ui = GPTProcessing(my_app)
+    # Create UI
     gradio_ui.create_ui()
     #to launch the ui
     gradio_ui.launch_ui()
