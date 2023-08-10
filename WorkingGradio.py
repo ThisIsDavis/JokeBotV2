@@ -1,7 +1,7 @@
 import gradio as gr
 import os
 from llama_index import SimpleDirectoryReader
-# from llama_index.readers.file.docs_parser import PDFParser
+from llama_index.readers.file.docs_parser import PDFParser
 from llama_index.readers.file.docs_reader import PDFReader
 from llama_index.readers.schema.base import Document
 from llama_index import GPTVectorStoreIndex, LLMPredictor, PromptHelper, ServiceContext
