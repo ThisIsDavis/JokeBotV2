@@ -26,111 +26,177 @@ class GPTProcessing(object):
         self.OPENAI_API_KEY = "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"
         # Pre-trained voice recognition model.
         self.voice_recognition_model = pipeline("automatic-speech-recognition")
-    
+
     def create_ui(self):
         with self.ui_obj:
-            gr.Markdown("Generating User Tailored Jokes From A Keyword")
-            #now we set up the tabs in ui
-            with gr.Tabs():
-                #second tab item
-                with gr.TabItem("Training/Fine-tuning with Custom Data: For testing purposes"):
-                    with gr.Row():
-                        source_data = gr.File(
-                            label="PDF or Text files only",
-                            file_count="single",
-                            file_types=["file"])
-                        index_setup_action = gr.Button("Create Index")
-                    with gr.Row():
-                        folder_name = gr.Textbox(label="Enter folder name:")
-                        folder_submit = gr.Button("Submit")
-                        folder_submit.click(self.set_folder_name, folder_name)
-                        index_submit = gr.Button("Create Index for Folder")
-                    with gr.Row():
-                        index_setup_result_label = gr.Label(self.index_setup_result)
-                #third tab : get user joke preference by allowing users to choose from a few joke categories.
-                with gr.TabItem("User Joke Preference Learning"):
-                    with gr.Row():
-                        gr.Textbox(label="Here are a list of jokes, please let us know which jokes speak to you the most! Put the joke numbers", placeholder= "1. List of jokes", interactive=False)
-                    with gr.Row():
-                        gr.Textbox(label="Enter your joke preferences here:")
-                        gr.Button("Submit")
-                #third tab item
-                with gr.TabItem("Query Custom Data: For testing purposes"):
-                    with gr.Row():
-                        #this part accepts queries
-                        query_question = gr.Textbox(label="Enter your keyword", lines=5)
-                        #button to get answer
-                        query_data_action = gr.Button("Get Joke")
-                    # Voice Recognition
-                    with gr.Row():
-                        # Record audio
-                        voice_recog = gr.Audio(source = "microphone", type="filepath")
-                        # Button to start voice recognition
-                        voice_recog_action = gr.Button("Keyword Voice Recognition")   
-                    with gr.Row():
-                        #to show response
-                        query_result_text = gr.Textbox(label="Query Result:", lines=10)
-                #fourth tab item for generating malaysian jokes
-                with gr.TabItem("Malaysian Jokes 4 U"):
-                    with gr.Row():
-                        #this part accepts queries
-                        gr.Textbox(label="Enter your keyword prompt:", lines=5)
-                        #button to get answer
-                        gr.Button("Get Joke Lai")
-                    with gr.Row():
-                        #to show response
-                        gr.Textbox(label="Joke Generated Liao", lines=10)
-               
-               
-           
-            #setup second click button
-            index_submit.click(
-                self.create_index,
-                [
-                
-                ],
-                [
-                    index_setup_result_label  #output
-                ]
-            )
+            gr.Markdown('# MCS01 Joke Bot Application')
+            with gr.Tab("Enter Folder Name"):
+                text_input = gr.Textbox()
+                text_output = gr.Textbox()
+                text_button = gr.Button("Create Index!!!")
+                text_button.click(self.build_the_bot, text_input, text_output)
+            with gr.Tab("JokeBot"):
+                chatbot = gr.Chatbot()
+                message = gr.Textbox ("What is this document about?")
+                message.submit(self.chat, [chatbot, message], chatbot)
+                # Voice Recognition
+                with gr.Row():
+                    # Record audio
+                    voice_recog = gr.Audio(source = "microphone", type="filepath")
+                    # Button to start voice recognition
+                    voice_recog_action = gr.Button("Keyword Voice Recognition")
+            with gr.TabItem("User Joke Preference Learning"):
+                with gr.Row():
+                    gr.Textbox(label="Here are a list of jokes, please let us know which jokes speak to you the most! Put the joke numbers", placeholder= "1. List of jokes", interactive=False)
+                with gr.Row():
+                    gr.Textbox(label="Enter your joke preferences here:")
+                    gr.Button("Submit")
 
-            #setup second click button
-            index_setup_action.click(
-                self.index_setup_process,
-                [
-                    source_data    #input
-                ],
-                [
-                    index_setup_result_label  #output
-                ]
-            )
-
-
-            query_data_action.click(
-                self.get_answer_from_index,
-                [
-                    query_question
-                ],
-                [
-                    query_result_text
-                ]
-            )
-            
-            # Button to start recording voice and outputting it to the text box.
+    # Button to start recording voice and outputting it to the text box.
             voice_recog_action.click(
                 self.transcribe_audio,
                 [
                     voice_recog
                 ], 
                 [
-                    query_question
+                    message
                 ]
             )
+    
+    # def create_ui(self):
+    #     with self.ui_obj:
+    #         gr.Markdown("Generating User Tailored Jokes From A Keyword")
+    #         #now we set up the tabs in ui
+    #         with gr.Tabs():
+    #             #second tab item
+    #             with gr.TabItem("Training/Fine-tuning with Custom Data: For testing purposes"):
+    #                 with gr.Row():
+    #                     source_data = gr.File(
+    #                         label="PDF or Text files only",
+    #                         file_count="single",
+    #                         file_types=["file"])
+    #                     index_setup_action = gr.Button("Create Index")
+    #                 with gr.Row():
+    #                     folder_name = gr.Textbox(label="Enter folder name:")
+    #                     folder_submit = gr.Button("Submit")
+    #                     folder_submit.click(self.set_folder_name, folder_name)
+    #                     index_submit = gr.Button("Create Index for Folder")
+    #                 with gr.Row():
+    #                     index_setup_result_label = gr.Label(self.index_setup_result)
+    #             #third tab : get user joke preference by allowing users to choose from a few joke categories.
+    #             with gr.TabItem("User Joke Preference Learning"):
+    #                 with gr.Row():
+    #                     gr.Textbox(label="Here are a list of jokes, please let us know which jokes speak to you the most! Put the joke numbers", placeholder= "1. List of jokes", interactive=False)
+    #                 with gr.Row():
+    #                     gr.Textbox(label="Enter your joke preferences here:")
+    #                     gr.Button("Submit")
+    #             #third tab item
+    #             with gr.TabItem("Query Custom Data: For testing purposes"):
+    #                 with gr.Row():
+    #                     #this part accepts queries
+    #                     query_question = gr.Textbox(label="Enter your keyword", lines=5)
+    #                     #button to get answer
+    #                     query_data_action = gr.Button("Get Joke")
+    #                 # Voice Recognition
+    #                 with gr.Row():
+    #                     # Record audio
+    #                     voice_recog = gr.Audio(source = "microphone", type="filepath")
+    #                     # Button to start voice recognition
+    #                     voice_recog_action = gr.Button("Keyword Voice Recognition")   
+    #                 with gr.Row():
+    #                     #to show response
+    #                     query_result_text = gr.Textbox(label="Query Result:", lines=10)
+    #             #fourth tab item for generating malaysian jokes
+    #             with gr.TabItem("Malaysian Jokes 4 U"):
+    #                 with gr.Row():
+    #                     #this part accepts queries
+    #                     gr.Textbox(label="Enter your keyword prompt:", lines=5)
+    #                     #button to get answer
+    #                     gr.Button("Get Joke Lai")
+    #                 with gr.Row():
+    #                     #to show response
+    #                     gr.Textbox(label="Joke Generated Liao", lines=10)
+               
+               
+           
+            # #setup second click button
+            # index_submit.click(
+            #     self.create_index,
+            #     [
+                
+            #     ],
+            #     [
+            #         index_setup_result_label  #output
+            #     ]
+            # )
+
+            # #setup second click button
+            # index_setup_action.click(
+            #     self.index_setup_process,
+            #     [
+            #         source_data    #input
+            #     ],
+            #     [
+            #         index_setup_result_label  #output
+            #     ]
+            # )
+
+
+            # query_data_action.click(
+            #     self.get_answer_from_index,
+            #     [
+            #         query_question
+            #     ],
+            #     [
+            #         query_result_text
+            #     ]
+            # )
+            
+            # # Button to start recording voice and outputting it to the text box.
+            # voice_recog_action.click(
+            #     self.transcribe_audio,
+            #     [
+            #         voice_recog
+            #     ], 
+            #     [
+            #         query_question
+            #     ]
+            # )
             
 
     ############################## Helper Functions#################################################################
     def launch_ui(self):
         self.ui_obj.launch(share=True)
+
+    #temporart
+    def build_the_bot(self, input_text):
+        max_input = 4096
+        tokens = 200
+        chunk_size = 600 #for LLM, we need to define chunk size
+        max_chunk_overlap = 20
+        promptHelper = PromptHelper(max_input,tokens,max_chunk_overlap,chunk_size_limit=chunk_size)
+
+
+        path = self.compile_folder
+        text_list = [input_text]
+        documents = [Document(t) for t in text_list]
+        global index  #need to change this to file path later
+        llmPredictor = LLMPredictor(llm=OpenAI(temperature=0.5, openai_api_key=self.OPENAI_API_KEY , model_name="gpt-3.5-turbo",max_tokens=tokens))
+
+        service_context = ServiceContext.from_defaults(llm_predictor=llmPredictor,prompt_helper=promptHelper)
+        index = None
+        return('Index saved successfull!!!')
+     
+
+
+    def chat(chat_history, user_input):
+    
+        bot_response = index.query(user_input)
+        #print(bot_response)
+        response = ""
+        for letter in ''.join(bot_response.response): #[bot_response[i:i+1] for i in range(0, len(bot_response), 1)]:
+            response += letter + ""
+            yield chat_history + [(user_input, response)]
 
     #to update api key
     def update_api_status(self, api_key):
