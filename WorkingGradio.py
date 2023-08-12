@@ -8,6 +8,7 @@ from llama_index import GPTVectorStoreIndex, LLMPredictor, PromptHelper, Service
 from langchain import ConversationChain, OpenAI
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
 from transformers import pipeline
+from textblob import TextBlob
 
 class GPTProcessing(object):
     
@@ -65,7 +66,7 @@ class GPTProcessing(object):
                         # Record audio
                         voice_recog = gr.Audio(source = "microphone", type="filepath")
                         # Button to start voice recognition
-                        voice_recog_action = gr.Button("Keyword Voice Recognition")    
+                        voice_recog_action = gr.Button("Keyword Voice Recognition")   
                     with gr.Row():
                         #to show response
                         query_result_text = gr.Textbox(label="Query Result:", lines=10)
@@ -125,11 +126,11 @@ class GPTProcessing(object):
                     query_question
                 ]
             )
+            
 
     ############################## Helper Functions#################################################################
     def launch_ui(self):
         self.ui_obj.launch(share=True)
-
 
     #to update api key
     def update_api_status(self, api_key):
@@ -249,20 +250,22 @@ class GPTProcessing(object):
                 status_message = "Success: The index is ready as [" + final_out_file_path + "]" #this will be shown in the label row
         return status_message
 
-
-    # Voice recognition
+    # Voice recognition.
     def transcribe_audio(self, audio):
-        # Recognise audio input
+        # Recognise audio input.
         text = self.voice_recognition_model(audio)["text"]
         
         # If no audio received, give error.
-        if len(text) == 0:
-            text = "Error: Unable to recognise audio"
-        # Else split the text and returned only the first word
+        if len(text) == 0 or text.isspace():
+            result = "Error: Unable to recognise audio"
+        # Else split the text and returned only the first word.
         else:
-            text = text.split()[0]
+            text = str(text.split()[0])
+            # Autocorrect any spelling mistakes.
+            result = TextBlob(text)
+            result = result.correct()
             
-        return text
+        return result
     
 
 if __name__ == '__main__':
