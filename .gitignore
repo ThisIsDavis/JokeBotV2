@@ -1,1 +1,4 @@
 .env
+env/bin/ffmpeg.exe
+env/bin/ffplay.exe
+env/bin/ffprobe.exe
