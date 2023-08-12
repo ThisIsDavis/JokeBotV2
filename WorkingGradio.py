@@ -5,7 +5,8 @@ from llama_index import SimpleDirectoryReader
 from llama_index.readers.file.docs_reader import PDFReader
 from llama_index.readers.schema.base import Document
 from llama_index import GPTVectorStoreIndex, LLMPredictor, PromptHelper, ServiceContext
-from langchain import OpenAI
+from langchain import ConversationChain, OpenAI
+from langchain.chains.conversation.memory import ConversationBufferWindowMemory
 from transformers import pipeline
 
 class GPTProcessing(object):
@@ -21,6 +22,7 @@ class GPTProcessing(object):
         self.selected_index = None
         self.index_status = "Error: Index is not selected"
         self.index_setup_result = ".... no action..."
+        self.OPENAI_API_KEY = "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"
         # Pre-trained voice recognition model.
         self.voice_recognition_model = pipeline("automatic-speech-recognition")
     
@@ -29,17 +31,6 @@ class GPTProcessing(object):
             gr.Markdown("Generating User Tailored Jokes From A Keyword")
             #now we set up the tabs in ui
             with gr.Tabs():
-                #first tab item
-                with gr.TabItem("Setup OpenAI Configuration: For testing purposes"):
-                    with gr.Row():   #top row
-                        openai_api_key = gr.Textbox(label="OpenAI API Key",
-                                                    placeholder="OpenAI API key here..",
-                                                    type='password')
-                        #like a button click listener
-                        set_api_action = gr.Button("Setup API Key")
-                    with gr.Row():   #second row
-                        #to show openAi status 
-                        openai_api_stats = gr.Label(self.api_key_status)
                 #second tab item
                 with gr.TabItem("Training/Fine-tuning with Custom Data: For testing purposes"):
                     with gr.Row():
@@ -65,14 +56,6 @@ class GPTProcessing(object):
                 #third tab item
                 with gr.TabItem("Query Custom Data: For testing purposes"):
                     with gr.Row():
-                        index_listing_action = gr.Button("List all Indexes")
-                        index_list_output = gr.Textbox(label="Listed Indexes")
-                    with gr.Row():
-                        index_file_name = gr.Textbox(label="Select Index")
-                        index_selection_action = gr.Button("Load Index")
-                    with gr.Row():
-                        index_status_label = gr.Label(self.index_status)
-                    with gr.Row():
                         #this part accepts queries
                         query_question = gr.Textbox(label="Enter your keyword", lines=5)
                         #button to get answer
@@ -96,17 +79,9 @@ class GPTProcessing(object):
                     with gr.Row():
                         #to show response
                         gr.Textbox(label="Joke Generated Liao", lines=10)
-            
-            #setup first click button
-            set_api_action.click(
-                self.update_api_status,
-                [
-                    openai_api_key
-                ],
-                [
-                    openai_api_stats
-                ]
-            )
+               
+               
+           
             #setup second click button
             index_submit.click(
                 self.create_index,
@@ -129,25 +104,6 @@ class GPTProcessing(object):
                 ]
             )
 
-            index_listing_action.click(
-                self.index_listing,
-                [
-
-                ],
-                [
-                    index_list_output
-                ]
-            )
-
-            index_selection_action.click(
-                self.setup_index_from_collection,
-                [
-                    index_file_name
-                ],
-                [
-                    index_status_label
-                ]
-            )
 
             query_data_action.click(
                 self.get_answer_from_index,
@@ -235,7 +191,7 @@ class GPTProcessing(object):
             return all_files
         
     def setup_index_from_collection(self, index_name):
-        if index_name is not None and len(index_name) > 0 and self.api_key is not None:
+        if index_name is not None and len(index_name) > 0 and self.OPENAI_API_KEY is not None:
             index_path = os.path.join(os.getcwd(), self.index_folder, index_name)
             if os.path.exists(index_path):
                 self.selected_index = GPTVectorStoreIndex.load_from_disk(index_path)
@@ -250,6 +206,7 @@ class GPTProcessing(object):
             if self.selected_index:
                 query_result = self.selected_index.query(query_question)
         return query_result
+    
     
     def set_folder_name(self, folder_name):
         if folder_name and os.path.isdir(folder_name):
@@ -269,14 +226,19 @@ class GPTProcessing(object):
         promptHelper = PromptHelper(max_input,tokens,max_chunk_overlap,chunk_size_limit=chunk_size)
         
         #define LLM — there could be many models we can use, but in this example, let’s go with OpenAI model
-        llmPredictor = LLMPredictor(llm=OpenAI(temperature=0.5, model_name="gpt-3.5-turbo",max_tokens=tokens))
+        llmPredictor = LLMPredictor(llm=OpenAI(temperature=0.5, openai_api_key=self.OPENAI_API_KEY , model_name="gpt-3.5-turbo",max_tokens=tokens))
+
+        #initialise conversation chain (memory)
+        conversation = ConversationChain(llm=llmPredictor, memory= ConversationBufferWindowMemory(k=10))
         
         #load data — it will take all the .txtx files, if there are more than 1
         docs = SimpleDirectoryReader(path).load_data()
 
         service_context = ServiceContext.from_defaults(llm_predictor=llmPredictor,prompt_helper=promptHelper)
+        
 
         #create vector index
+       
         vectorIndex = GPTVectorStoreIndex.from_documents(documents=docs,service_context=service_context)
         final_out_file = "vectorIndex.json"
         final_out_file_path = os.path.join(os.getcwd(), self.index_folder, final_out_file)
@@ -286,6 +248,7 @@ class GPTProcessing(object):
         if final_out_file_path is not None:
                 status_message = "Success: The index is ready as [" + final_out_file_path + "]" #this will be shown in the label row
         return status_message
+
 
     # Voice recognition
     def transcribe_audio(self, audio):

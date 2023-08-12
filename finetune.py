@@ -3,7 +3,8 @@ import os
 
 
 #Open AI Key
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "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"
+
 
 #read files in directory
 loaded_content = SimpleDirectoryReader('sourceData').load_data()
