@@ -1,11 +1,11 @@
 import gradio as gr
 import os
+import openai
 import speech_recognition as sr
 from llama_index import SimpleDirectoryReader
-# from llama_index.readers.file.docs_parser import PDFParser
-from llama_index.readers.file.docs_reader import PDFReader
-from llama_index.readers.schema.base import Document
-from llama_index import GPTVectorStoreIndex, LLMPredictor, PromptHelper, ServiceContext
+# from llama_index.readers.file.docs_reader import PDFReader
+# from llama_index.readers.schema.base import Document
+from llama_index import GPTVectorStoreIndex, LLMPredictor, PromptHelper, ServiceContext, load_index_from_storage, StorageContext
 from langchain import ConversationChain, OpenAI
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
 
@@ -23,7 +23,9 @@ class GPTProcessing(object):
         self.selected_index = None
         self.index_status = "Error: Index is not selected"
         self.index_setup_result = ".... no action..."
-        self.OPENAI_API_KEY = "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"
+        self.OPENAI_API_KEY = "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"
+        os.environ["OPENAI_API_KEY"] = self.OPENAI_API_KEY
+        openai.api_key = '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'
 
     def create_ui(self):
         with self.ui_obj:
@@ -63,33 +65,43 @@ class GPTProcessing(object):
 
     ############################## Helper Functions#################################################################
     def launch_ui(self):
-        self.ui_obj.launch(share=True)
+        self.ui_obj.queue().launch(share=True)
 
     #temporart
     def build_the_bot(self, input_text):
+        if os.path.exists(input_text):
+            print("Passed")
+
         max_input = 4096
         tokens = 200
         chunk_size = 600 #for LLM, we need to define chunk size
-        max_chunk_overlap = 20
+        max_chunk_overlap = 1
         promptHelper = PromptHelper(max_input,tokens,max_chunk_overlap,chunk_size_limit=chunk_size)
 
 
         path = self.compile_folder
-        text_list = [input_text]
-        documents = [Document(t) for t in text_list]
-        global index  #need to change this to file path later
-        llmPredictor = LLMPredictor(llm=OpenAI(temperature=0.5, openai_api_key=self.OPENAI_API_KEY , model_name="gpt-3.5-turbo",max_tokens=tokens))
+        docs = SimpleDirectoryReader(input_dir=path).load_data()
+        llmPredictor = LLMPredictor(llm=OpenAI(temperature=0.5, openai_api_key=self.OPENAI_API_KEY , model_name="gpt-3.5-turbo", max_tokens=tokens))
 
-        service_context = ServiceContext.from_defaults(llm_predictor=llmPredictor,prompt_helper=promptHelper)
-        index = None
+        service_context = ServiceContext.from_defaults(llm_predictor=llmPredictor, prompt_helper=promptHelper)
+
+        vectorIndex = GPTVectorStoreIndex.from_documents(documents=docs, service_context=service_context)
+        final_out_file = "vectorIndex.json"
+        self.saved_path = os.path.join(os.getcwd(), self.index_folder, final_out_file)
+        vectorIndex.storage_context.persist(persist_dir=self.saved_path)
+        
         return('Index saved successfull!!!')
 
-    def chat(chat_history, user_input):
-    
-        bot_response = index.query(user_input)
-        #print(bot_response)
+    def chat(self, chat_history, user_input):
+        self.saved_path = os.path.join(os.getcwd(), self.index_folder, "vectorIndex.json")
+        storage_context = StorageContext.from_defaults(persist_dir=self.saved_path)
+        self.selected_index = load_index_from_storage(storage_context)
+
+        chat_engine = self.selected_index.as_chat_engine(verbose=True)
+        bot_response = chat_engine.stream_chat(user_input)
+
         response = ""
-        for letter in ''.join(bot_response.response): #[bot_response[i:i+1] for i in range(0, len(bot_response), 1)]:
+        for letter in ''.join(bot_response.response_gen): #[bot_response[i:i+1] for i in range(0, len(bot_response), 1)]:
             response += letter + ""
             yield chat_history + [(user_input, response)]
 
