@@ -25,7 +25,7 @@ class GPTProcessing(object):
         self.index_setup_result = ".... no action..."
         self.OPENAI_API_KEY = "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"
         os.environ["OPENAI_API_KEY"] = self.OPENAI_API_KEY
-        openai.api_key = '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'
+        # openai.api_key = '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'
 
     def create_ui(self):
         with self.ui_obj:
