@@ -26,6 +26,10 @@ class GPTProcessing(object):
         self.OPENAI_API_KEY = "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"
         os.environ["OPENAI_API_KEY"] = self.OPENAI_API_KEY
         # openai.api_key = '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'
+        
+        # Saved joke preferences by the user.
+        self.user_joke_preferences = []
+        self.count = 1
 
     def create_ui(self):
         with self.ui_obj:
@@ -47,12 +51,13 @@ class GPTProcessing(object):
                     voice_recog_action = gr.Button("Keyword Voice Recognition")
             with gr.TabItem("User Joke Preference Learning"):
                 with gr.Row():
-                    gr.Textbox(label="Here are a list of jokes, please let us know which jokes speak to you the most! Put the joke numbers", placeholder= "1. List of jokes", interactive=False)
+                    # gr.Textbox(label="Here are a list of jokes, please let us know which jokes speak to you the most! Put the joke numbers", placeholder= "1. List of jokes", interactive=False)
+                    joke_preferences = gr.CheckboxGroup(["Test1", "Test2", "Test3"], label = "List of Jokes", info = "Please select which jokes speaks to you the most!")
+                    joke_preferences_action = gr.Button("Submit")
                 with gr.Row():
-                    gr.Textbox(label="Enter your joke preferences here:")
-                    gr.Button("Submit")
+                    selected_joke_preferences = gr.Textbox(label = "Selected Joke Preferences:", info = "List of jokes that you find funny!",placeholder = "No selected joke preferences yet!", interactive = False)
 
-    # Button to start recording voice and outputting it to the message text box.
+            # Button to start recording voice and outputting it to the message text box.
             voice_recog_action.click(
                 self.transcribe_audio,
                 [
@@ -60,6 +65,17 @@ class GPTProcessing(object):
                 ], 
                 [
                     message
+                ]
+            )
+            
+            # Button to save all selected joke preferences and display them back to the user.
+            joke_preferences_action.click(
+                self.save_joke_preference,
+                [
+                    joke_preferences, selected_joke_preferences
+                ], 
+                [
+                    selected_joke_preferences
                 ]
             )
 
@@ -134,6 +150,34 @@ class GPTProcessing(object):
                 text = "Error: Unable to recognise audio"
                 return text
     
+    def save_joke_preference(self, jokes, selected_jokes) -> str:
+        """
+        Takes in a list of strings of jokes which the user has selected, saving it.
+        :Input:
+            jokes: The list of jokes the user has selected/preferred.
+            selected_jokes: A string of selected jokes based on the textbox displayed. Initially empty.
+        :Output:
+            joke_str: A string containing all the jokes the user selected/preferred.
+        """
+        # Append the list of selected jokes to self.user_joke_preferences to save it.
+        self.user_joke_preferences.append(jokes)
+        # Set the joke_str variable to the string of selected joke preferences.
+        joke_str = selected_jokes
+        
+        # Loop through all the selected joke preferences and concatenate it to the joke_str to be displayed back to the user.
+        for joke in jokes:
+            # If the textbox is not empty, add a newline before adding the joke.
+            if len(joke_str) != 0:
+                joke_str += "\n{0}. {1}".format(self.count, joke)
+            # Else if the textbox is initally empty, do not add a new line on the top.
+            else:
+                joke_str += "{0}. {1}".format(self.count, joke)
+            
+            # Increment count by one.
+            self.count += 1
+        
+        return joke_str     # Return the string of selected jokes.
+
 
 if __name__ == '__main__':
     my_app = gr.Blocks()
