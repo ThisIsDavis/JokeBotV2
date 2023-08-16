@@ -56,6 +56,7 @@ class GPTProcessing(object):
                     joke_preferences_action = gr.Button("Submit")
                 with gr.Row():
                     selected_joke_preferences = gr.Textbox(label = "Selected Joke Preferences:", info = "List of jokes that you find funny!",placeholder = "No selected joke preferences yet!", interactive = False)
+                    selected_joke_preferences_action = gr.Button("Clear Preferences", scale = 0.5)
 
             # Button to start recording voice and outputting it to the message text box.
             voice_recog_action.click(
@@ -74,6 +75,14 @@ class GPTProcessing(object):
                 [
                     joke_preferences, selected_joke_preferences
                 ], 
+                [
+                    selected_joke_preferences
+                ]
+            )
+            
+            selected_joke_preferences_action.click(
+                self.clear_joke_preference,
+                [],
                 [
                     selected_joke_preferences
                 ]
@@ -177,6 +186,19 @@ class GPTProcessing(object):
             self.count += 1
         
         return joke_str     # Return the string of selected jokes.
+    
+    def clear_joke_preference(self) -> str:
+        """
+        Clear saved user joke preferences by resetting the instance variables and clearing the TextBox.
+        :Input:
+            None
+        :Output:
+            selected_jokes: An empty string to represent the TextBox being cleared.
+        """
+        self.user_joke_preferences = []     # Clear the saved user joke preferences.
+        self.count = 1                      # Reset the count to one.
+        
+        return ""   # Return an empty string.
 
 
 if __name__ == '__main__':
