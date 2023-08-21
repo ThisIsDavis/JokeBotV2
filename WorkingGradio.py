@@ -9,6 +9,8 @@ from llama_index import GPTVectorStoreIndex, LLMPredictor, PromptHelper, Service
 from langchain import ConversationChain, OpenAI
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
 
+from utils import *
+
 
 class GPTProcessing(object):
     
@@ -23,9 +25,9 @@ class GPTProcessing(object):
         self.selected_index = None
         self.index_status = "Error: Index is not selected"
         self.index_setup_result = ".... no action..."
-        self.OPENAI_API_KEY = "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"
+        self.OPENAI_API_KEY = "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"
         os.environ["OPENAI_API_KEY"] = self.OPENAI_API_KEY
-        # openai.api_key = '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'
+        openai.api_key = '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'
         
         # Saved joke preferences by the user.
         self.user_joke_preferences = []
@@ -34,15 +36,18 @@ class GPTProcessing(object):
     def create_ui(self):
         with self.ui_obj:
             gr.Markdown('# MCS01 Joke Bot Application')
-            with gr.Tab("Enter Folder Name"):
-                text_input = gr.Textbox()
-                text_output = gr.Textbox()
-                text_button = gr.Button("Create Index!!!")
-                text_button.click(self.build_the_bot, text_input, text_output)
+            # with gr.Tab("Enter Folder Name"):
+            #     text_input = gr.Textbox()
+            #     text_output = gr.Textbox()
+            #     text_button = gr.Button("Create Index!!!")
+            #     text_button.click(self.build_the_bot, text_input, text_output)
             with gr.Tab("JokeBot"):
-                chatbot = gr.Chatbot()
-                message = gr.Textbox ("What is this document about?")
-                message.submit(self.chat, [chatbot, message], chatbot)
+                chatbot = gr.components.Chatbot(label='Finetuned Joke Machine', height = 600)
+                message = gr.components.Textbox (label = 'User Keyword')
+                # clear = gr.components.ClearButton
+                message.submit(set_user_response, [message, chatbot], [message, chatbot], queue= False).then(
+                    generate_response, chatbot, chatbot)
+                # clear.click(lambda:None, None, chatbot, queue=False)
                 # Voice Recognition
                 with gr.Row():
                     # Record audio and output the audio filepath.
@@ -92,43 +97,50 @@ class GPTProcessing(object):
     def launch_ui(self):
         self.ui_obj.queue().launch(share=True)
 
-    #temporart
-    def build_the_bot(self, input_text):
-        if os.path.exists(input_text):
-            print("Passed")
+    # temporart (Build the bot no longer need #Davis)
+    # def build_the_bot(self, input_text):
+    #     if os.path.exists(input_text):
+    #         print("Passed")
 
-        max_input = 4096
-        tokens = 200
-        chunk_size = 600 #for LLM, we need to define chunk size
-        max_chunk_overlap = 1
-        promptHelper = PromptHelper(max_input,tokens,max_chunk_overlap,chunk_size_limit=chunk_size)
+    #     max_input = 4096
+    #     tokens = 200
+    #     chunk_size = 600 #for LLM, we need to define chunk size
+    #     max_chunk_overlap = 1
+    #     promptHelper = PromptHelper(max_input,tokens,max_chunk_overlap,chunk_size_limit=chunk_size)
+    #     path = self.compile_folder
+    #     docs = SimpleDirectoryReader(input_dir=path).load_data()
+    #     llmPredictor = LLMPredictor(llm=OpenAI(temperature=0.5, openai_api_key=self.OPENAI_API_KEY , model_name="gpt-3.5-turbo", max_tokens=tokens))
 
+    #     service_context = ServiceContext.from_defaults(llm_predictor=llmPredictor, prompt_helper=promptHelper)
 
-        path = self.compile_folder
-        docs = SimpleDirectoryReader(input_dir=path).load_data()
-        llmPredictor = LLMPredictor(llm=OpenAI(temperature=0.5, openai_api_key=self.OPENAI_API_KEY , model_name="gpt-3.5-turbo", max_tokens=tokens))
-
-        service_context = ServiceContext.from_defaults(llm_predictor=llmPredictor, prompt_helper=promptHelper)
-
-        vectorIndex = GPTVectorStoreIndex.from_documents(documents=docs, service_context=service_context)
-        final_out_file = "vectorIndex.json"
-        self.saved_path = os.path.join(os.getcwd(), self.index_folder, final_out_file)
-        vectorIndex.storage_context.persist(persist_dir=self.saved_path)
+    #     vectorIndex = GPTVectorStoreIndex.from_documents(documents=docs, service_context=service_context)
+    #     final_out_file = "vectorIndex.json"
+    #     self.saved_path = os.path.join(os.getcwd(), self.index_folder, final_out_file)
+    #     vectorIndex.storage_context.persist(persist_dir=self.saved_path)
         
-        return('Index saved successfull!!!')
+    #     return('Index saved successfull!!!')
 
-    def chat(self, chat_history, user_input):
-        self.saved_path = os.path.join(os.getcwd(), self.index_folder, "vectorIndex.json")
-        storage_context = StorageContext.from_defaults(persist_dir=self.saved_path)
-        self.selected_index = load_index_from_storage(storage_context)
+    # def chat(self, chat_history, user_input):
+    #     # self.saved_path = os.path.join(os.getcwd(), self.index_folder, "vectorIndex.json")
+    #     # storage_context = StorageContext.from_defaults(persist_dir=self.saved_path)
+    #     # self.selected_index = load_index_from_storage(storage_context)
 
-        chat_engine = self.selected_index.as_chat_engine(verbose=True)
-        bot_response = chat_engine.stream_chat(user_input)
+    #     # chat_engine = self.selected_index.as_chat_engine(verbose=True)
+    #     # bot_response = chat_engine.stream_chat(user_input)
 
-        response = ""
-        for letter in ''.join(bot_response.response_gen): #[bot_response[i:i+1] for i in range(0, len(bot_response), 1)]:
-            response += letter + ""
-            yield chat_history + [(user_input, response)]
+    #     #we no longer use Vector Index, now we use our openAI fine tuned model 
+    #     # openai.api_key = os.getenv("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")
+    #     bot_response = openai.Completion.create(
+    #         model="davinci:ft-monash-university-malaysia-2023-08-16-12-29-02",
+    #         prompt=user_input,
+    #         max_tokens=50,
+    #         temperature=0.7,
+    #         stream=True)
+
+    #     response = ""
+    #     for letter in ''.join(bot_response): #[bot_response[i:i+1] for i in range(0, len(bot_response), 1)]:
+    #         response += letter + ""
+    #         yield chat_history + [(user_input, response)]
 
     # Voice recognition.
     def transcribe_audio(self, audio_path: str) -> str:
