@@ -25,7 +25,7 @@ class GPTProcessing(object):
         self.selected_index = None
         self.index_status = "Error: Index is not selected"
         self.index_setup_result = ".... no action..."
-        self.OPENAI_API_KEY = "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"
+        self.OPENAI_API_KEY = ""
         os.environ["OPENAI_API_KEY"] = self.OPENAI_API_KEY
         openai.api_key = self.OPENAI_API_KEY
         
