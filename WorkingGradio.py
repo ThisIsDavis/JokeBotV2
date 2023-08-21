@@ -25,9 +25,9 @@ class GPTProcessing(object):
         self.selected_index = None
         self.index_status = "Error: Index is not selected"
         self.index_setup_result = ".... no action..."
-        self.OPENAI_API_KEY = "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"
+        self.OPENAI_API_KEY = "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"
         os.environ["OPENAI_API_KEY"] = self.OPENAI_API_KEY
-        openai.api_key = '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'
+        openai.api_key = self.OPENAI_API_KEY
         
         # Saved joke preferences by the user.
         self.user_joke_preferences = []
@@ -44,9 +44,9 @@ class GPTProcessing(object):
             with gr.Tab("JokeBot"):
                 chatbot = gr.components.Chatbot(label='Finetuned Joke Machine', height = 600)
                 message = gr.components.Textbox (label = 'User Keyword')
+                state = gr.State()
                 # clear = gr.components.ClearButton
-                message.submit(set_user_response, [message, chatbot], [message, chatbot], queue= False).then(
-                    generate_response, chatbot, chatbot)
+                message.submit(self.message_and_history, inputs=[message, state],  outputs=[chatbot, state])
                 # clear.click(lambda:None, None, chatbot, queue=False)
                 # Voice Recognition
                 with gr.Row():
@@ -96,6 +96,25 @@ class GPTProcessing(object):
     ############################## Helper Functions#################################################################
     def launch_ui(self):
         self.ui_obj.queue().launch(share=True)
+
+    def api_calling(self, prompt):
+        completions = openai.Completion.create(
+            engine="davinci:ft-monash-university-malaysia-2023-08-16-12-29-02",
+            prompt=prompt,
+            max_tokens=50,
+            temperature=0.7,
+        )
+        message = completions.choices[0].text
+        return message
+
+    def message_and_history(self, input, history):
+        history = history or []
+        s = list(sum(history, ()))
+        s.append(input)
+        inp = ' '.join(s)
+        output = self.api_calling(inp)
+        history.append((input, output))
+        return history, history
 
     # temporart (Build the bot no longer need #Davis)
     # def build_the_bot(self, input_text):
