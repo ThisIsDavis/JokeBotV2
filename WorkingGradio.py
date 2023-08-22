@@ -2,13 +2,9 @@ import gradio as gr
 import os
 import openai
 import speech_recognition as sr
-from llama_index import SimpleDirectoryReader
-# from llama_index.readers.file.docs_reader import PDFReader
-# from llama_index.readers.schema.base import Document
-from llama_index import GPTVectorStoreIndex, LLMPredictor, PromptHelper, ServiceContext, load_index_from_storage, StorageContext
+from llama_index import GPTVectorStoreIndex, LLMPredictor, PromptHelper, ServiceContext, load_index_from_storage, StorageContext, SimpleDirectoryReader
 from langchain import ConversationChain, OpenAI
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
-
 from utils import *
 
 
@@ -36,24 +32,24 @@ class GPTProcessing(object):
     def create_ui(self):
         with self.ui_obj:
             gr.Markdown('# MCS01 Joke Bot Application')
-            # with gr.Tab("Enter Folder Name"):
-            #     text_input = gr.Textbox()
-            #     text_output = gr.Textbox()
-            #     text_button = gr.Button("Create Index!!!")
-            #     text_button.click(self.build_the_bot, text_input, text_output)
             with gr.Tab("JokeBot"):
                 chatbot = gr.components.Chatbot(label='Finetuned Joke Machine', height = 600)
                 message = gr.components.Textbox (label = 'User Keyword')
                 state = gr.State()
-                # clear = gr.components.ClearButton
                 message.submit(self.message_and_history, inputs=[message, state],  outputs=[chatbot, state])
-                # clear.click(lambda:None, None, chatbot, queue=False)
                 # Voice Recognition
                 with gr.Row():
                     # Record audio and output the audio filepath.
                     voice_recog = gr.Audio(source = "microphone", type = "filepath")
                     # Button to start voice recognition
                     voice_recog_action = gr.Button("Keyword Voice Recognition")
+                with gr.Row():
+                    upvote_btn = gr.Button(value="👍  Upvote", interactive=False)
+                    downvote_btn = gr.Button(value="👎  Downvote", interactive=False)
+                    regenerate_btn = gr.Button(value="🔄  Regenerate", interactive=False)
+                    clear_btn = gr.Button(value="🗑️  Clear prompt")
+
+                    clear_btn.click(lambda: message.update(""), inputs=[], outputs=[message])
             with gr.TabItem("User Joke Preference Learning"):
                 with gr.Row():
                     # gr.Textbox(label="Here are a list of jokes, please let us know which jokes speak to you the most! Put the joke numbers", placeholder= "1. List of jokes", interactive=False)
