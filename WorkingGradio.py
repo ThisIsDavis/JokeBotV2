@@ -43,6 +43,7 @@ class GPTProcessing(object):
                     voice_recog = gr.Audio(source = "microphone", type = "filepath")
                     # Button to start voice recognition
                     voice_recog_action = gr.Button("Keyword Voice Recognition")
+                # Buttons Galore
                 with gr.Row():
                     upvote_btn = gr.Button(value="👍  Upvote", interactive=False)
                     downvote_btn = gr.Button(value="👎  Downvote", interactive=False)
@@ -50,6 +51,20 @@ class GPTProcessing(object):
                     clear_btn = gr.Button(value="🗑️  Clear prompt")
 
                     clear_btn.click(lambda: message.update(""), inputs=[], outputs=[message])
+
+                    # Make the buttons interactive only after a prompt and answer is provided
+                    if state.value is not None and len(state.value) > 0:
+                        upvote_btn.interactive = True
+                        downvote_btn.interactive = True
+                        regenerate_btn.interactive = True
+                # Who to recommend?
+                with gr.Row():
+                    recommend_textbox = gr.components.Textbox(label='Who would you recommend the current joke to?')
+                    send_button = gr.Button(value='Enter', interactive=False)
+
+                    # Make the new button interactive only after a prompt and answer is provided
+                    if state.value is not None and len(state.value) > 0:
+                        send_button.interactive = True
             with gr.TabItem("User Joke Preference Learning"):
                 with gr.Row():
                     # gr.Textbox(label="Here are a list of jokes, please let us know which jokes speak to you the most! Put the joke numbers", placeholder= "1. List of jokes", interactive=False)
