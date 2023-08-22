@@ -11,16 +11,8 @@ from utils import *
 class GPTProcessing(object):
     
     def __init__(self, ui_obj):
-        self.name = "Custom Data Processing with ChatGPT"
-        self.description = "Add Custom PDF/txt Data Processing with ChatGPT"
-        self.api_key = None
-        self.index_folder = "indexData" #remember to put output index folder name
-        self.compile_folder = "folder"
         self.ui_obj = ui_obj
-        self.api_key_status = "Error: OpenAI API is not set"
-        self.selected_index = None
-        self.index_status = "Error: Index is not selected"
-        self.index_setup_result = ".... no action..."
+        self.tag_memory = []
         self.OPENAI_API_KEY = ""
         os.environ["OPENAI_API_KEY"] = self.OPENAI_API_KEY
         openai.api_key = self.OPENAI_API_KEY
@@ -45,26 +37,22 @@ class GPTProcessing(object):
                     voice_recog_action = gr.Button("Keyword Voice Recognition")
                 # Buttons Galore
                 with gr.Row():
-                    upvote_btn = gr.Button(value="👍  Upvote", interactive=False)
-                    downvote_btn = gr.Button(value="👎  Downvote", interactive=False)
+                    upvote_btn = gr.Button(value="👍  Upvote")
+                    downvote_btn = gr.Button(value="👎  Downvote")
                     regenerate_btn = gr.Button(value="🔄  Regenerate", interactive=False)
                     clear_btn = gr.Button(value="🗑️  Clear prompt")
-
+                    
+                    upvote_btn.click(lambda: self.tag_response(1, None), inputs=[], outputs=[])
+                    downvote_btn.click(lambda: self.tag_response(0, None), inputs=[], outputs=[])
                     clear_btn.click(lambda: message.update(""), inputs=[], outputs=[message])
-
-                    # Make the buttons interactive only after a prompt and answer is provided
-                    if state.value is not None and len(state.value) > 0:
-                        upvote_btn.interactive = True
-                        downvote_btn.interactive = True
-                        regenerate_btn.interactive = True
                 # Who to recommend?
                 with gr.Row():
-                    recommend_textbox = gr.components.Textbox(label='Who would you recommend the current joke to?')
-                    send_button = gr.Button(value='Enter', interactive=False)
+                    def on_send_btn_click(input):
+                        self.tag_response(None, input)
 
-                    # Make the new button interactive only after a prompt and answer is provided
-                    if state.value is not None and len(state.value) > 0:
-                        send_button.interactive = True
+                    recommend_textbox = gr.components.Textbox(label='Who would you recommend the current joke to?')
+                    send_btn = gr.Button(value='Enter')
+                    send_btn.click(on_send_btn_click, inputs=[recommend_textbox], outputs=[])
             with gr.TabItem("User Joke Preference Learning"):
                 with gr.Row():
                     # gr.Textbox(label="Here are a list of jokes, please let us know which jokes speak to you the most! Put the joke numbers", placeholder= "1. List of jokes", interactive=False)
@@ -112,7 +100,7 @@ class GPTProcessing(object):
         completions = openai.Completion.create(
             engine="davinci:ft-monash-university-malaysia-2023-08-16-12-29-02",
             prompt=prompt,
-            max_tokens=50,
+            max_tokens=5,
             temperature=0.7,
         )
         message = completions.choices[0].text
@@ -125,7 +113,27 @@ class GPTProcessing(object):
         inp = ' '.join(s)
         output = self.api_calling(inp)
         history.append((input, output))
+        self.tag_memory.append([None, [], None])
+        print(self.tag_memory)
         return history, history
+
+    def tag_response(self, vote, recommendation):
+        # Ensure there is a response before properly voting and recommending
+        if len(self.tag_memory) > 0:
+            # Get the current response
+            last_response = self.tag_memory[-1]
+            # If there is a recommendation
+            if recommendation is not None and len(recommendation) > 0:
+                last_response[2] = recommendation
+            # If there is a downvote
+            elif vote == 0:
+                last_response[0] = vote
+            # If there is an upvote
+            elif vote == 1:
+                last_response[0] = vote
+            print(self.tag_memory)
+        else:
+            pass
 
     # temporart (Build the bot no longer need #Davis)
     # def build_the_bot(self, input_text):
