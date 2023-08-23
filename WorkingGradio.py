@@ -19,13 +19,17 @@ class GPTProcessing(object):
         openai.api_key = self.OPENAI_API_KEY
 
         # Get the number of categories of jokes in the jokes folder.
-        self.num_of_categories = len([name for name in os.listdir(os.path.join(os.getcwd(), "jokes"))])
+        self.scraped_jokes = [name for name in os.listdir(os.path.join(os.getcwd(), "jokes"))]
+        self.num_of_categories = len(self.scraped_jokes)
+        
         # Saved joke preferences by the user.
         self.user_joke_preferences = []
-        self.random_jokes = []
         self.count = 1
 
     def create_ui(self):
+        # Call the get_random_jokes method to get a list of randomly selected jokes.
+        self.preference_jokes = self.get_random_jokes()
+        
         with self.ui_obj:
             gr.Markdown('# MCS01 Joke Bot Application')
             with gr.Tab("JokeBot"):
@@ -60,7 +64,7 @@ class GPTProcessing(object):
             with gr.TabItem("User Joke Preference Learning"):
                 with gr.Row():
                     # gr.Textbox(label="Here are a list of jokes, please let us know which jokes speak to you the most! Put the joke numbers", placeholder= "1. List of jokes", interactive=False)
-                    joke_preferences = gr.CheckboxGroup(["Test1", "Test2", "Test3"], label = "List of Jokes", info = "Please select which jokes speaks to you the most!")
+                    joke_preferences = gr.CheckboxGroup(self.preference_jokes, label = "List of Jokes", info = "Please select which jokes speaks to you the most!")
                     joke_preferences_action = gr.Button("Submit")
                 with gr.Row():
                     selected_joke_preferences = gr.Textbox(label = "Selected Joke Preferences:", info = "List of jokes that you find funny!",placeholder = "No selected joke preferences yet!", interactive = False)
@@ -215,7 +219,12 @@ class GPTProcessing(object):
     
     def get_random_jokes(self):
         """
-        
+        A method which randomly selects a joke category from the webscraped jokes within the jokes folder, then randomly select one
+        joke inside said category. Will then append it all into a list and return it.
+        :Input:
+            None
+        :Output:
+            jokes: A list of jokes randomly taken from the webscraped jokes.
         """
         categories = []     # Empty list which will hold the indexes of the joke text files.
         jokes = []          # Empty list which will contain the random jokes.
@@ -232,8 +241,18 @@ class GPTProcessing(object):
         
         # Loop through the category list and grab a random joke from that joke category text file.
         for category in categories:
-            pass
+            # Open up the random joke text file and select a random joke.
+            with open(os.path.join("jokes/", self.scraped_jokes[category]), 'r', encoding = "utf-8") as f:
+                file = f.readlines()        # Read the joke file contents.  
+                
+                # Get the joke string based on a randomly selected number from 3 to the number of jokes + 1. 
+                # As each joke is separated by a new line, only index odd numbers with step 1.
+                random_number = random.randrange(3, int(file[-1]) + 1, 2) - 1
+                random_joke = file[random_number]
             
+                jokes.append(random_joke)        # Append the selected joke into the jokes list.
+                
+        return jokes
     
     def save_joke_preference(self, jokes, selected_jokes) -> str:
         """
