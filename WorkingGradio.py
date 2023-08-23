@@ -1,7 +1,8 @@
 import gradio as gr
-import os
+import os, os.path
 import openai
 import speech_recognition as sr
+import random
 from llama_index import GPTVectorStoreIndex, LLMPredictor, PromptHelper, ServiceContext, load_index_from_storage, StorageContext, SimpleDirectoryReader
 from langchain import ConversationChain, OpenAI
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
@@ -16,9 +17,12 @@ class GPTProcessing(object):
         self.OPENAI_API_KEY = ""
         os.environ["OPENAI_API_KEY"] = self.OPENAI_API_KEY
         openai.api_key = self.OPENAI_API_KEY
-        
+
+        # Get the number of categories of jokes in the jokes folder.
+        self.num_of_categories = len([name for name in os.listdir(os.path.join(os.getcwd(), "jokes"))])
         # Saved joke preferences by the user.
         self.user_joke_preferences = []
+        self.random_jokes = []
         self.count = 1
 
     def create_ui(self):
@@ -208,6 +212,28 @@ class GPTProcessing(object):
             except:
                 text = "Error: Unable to recognise audio"
                 return text
+    
+    def get_random_jokes(self):
+        """
+        
+        """
+        categories = []     # Empty list which will hold the indexes of the joke text files.
+        jokes = []          # Empty list which will contain the random jokes.
+        
+        # Randomly select a joke category and append it to the categories list 5 times.
+        i = 0
+        while i < 5:
+            # Generate a random number from 0 to the maximum number of categories available
+            random_number = random.randint(0, self.num_of_categories)
+            # If the random number has not been generated before/not in the categories list, append it in and increment i by one.
+            if random_number not in categories:
+                categories.append(random_number)
+                i += 1
+        
+        # Loop through the category list and grab a random joke from that joke category text file.
+        for category in categories:
+            pass
+            
     
     def save_joke_preference(self, jokes, selected_jokes) -> str:
         """
