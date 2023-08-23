@@ -14,6 +14,10 @@ class GPTProcessing(object):
     def __init__(self, ui_obj):
         self.ui_obj = ui_obj
         self.tag_memory = []
+        self.upvote_prompts = []
+        self.downvote_prompts = []
+        self.input = None
+        self.output = None
         self.OPENAI_API_KEY = ""
         os.environ["OPENAI_API_KEY"] = self.OPENAI_API_KEY
         openai.api_key = self.OPENAI_API_KEY
@@ -47,11 +51,12 @@ class GPTProcessing(object):
                 with gr.Row():
                     upvote_btn = gr.Button(value="👍  Upvote")
                     downvote_btn = gr.Button(value="👎  Downvote")
-                    regenerate_btn = gr.Button(value="🔄  Regenerate", interactive=False)
+                    regenerate_btn = gr.Button(value="🔄  Regenerate")
                     clear_btn = gr.Button(value="🗑️  Clear prompt")
                     
                     upvote_btn.click(lambda: self.tag_response(1, None), inputs=[], outputs=[])
                     downvote_btn.click(lambda: self.tag_response(0, None), inputs=[], outputs=[])
+                    regenerate_btn.click(self.regenerate, inputs=[state],  outputs=[chatbot, state])
                     clear_btn.click(lambda: message.update(""), inputs=[], outputs=[message])
                 # Who to recommend?
                 with gr.Row():
@@ -105,25 +110,49 @@ class GPTProcessing(object):
         self.ui_obj.queue().launch(share=True)
 
     def api_calling(self, prompt):
+        big_prompt = "Give me a joke about " + prompt
+        print(prompt)
+
+        # If there is upvoted responses and downvoted responses
+        if len(self.upvote_prompts) > 0 and len(self.downvote_prompts) > 0:
+            up_pr = ", ".join(self.upvote_prompts)
+            do_pr = ", ".join(self.downvote_prompts)
+            big_prompt += " with similar jokes to " + up_pr + " and not similar to" + do_pr
+        # If there is only 1 downvoted response
+        elif len(self.downvote_prompts) > 0:
+            do_pr = ", ".join(self.downvote_prompts)
+            big_prompt += " that are not similar to " + do_pr
+        # If there is only 1 upvoted response
+        elif len(self.upvote_prompts) > 0:
+            up_pr = ", ".join(self.upvote_prompts)
+            big_prompt += " with similar jokes to " + up_pr
+
         completions = openai.Completion.create(
             engine="davinci:ft-monash-university-malaysia-2023-08-16-12-29-02",
-            prompt=prompt,
+            prompt=big_prompt,
             max_tokens=5,
             temperature=0.7,
         )
+        print(big_prompt)
         message = completions.choices[0].text
         return message
 
     def message_and_history(self, input, history):
+        self.input = input
         history = history or []
-        s = list(sum(history, ()))
-        s.append(input)
-        inp = ' '.join(s)
-        output = self.api_calling(inp)
-        history.append((input, output))
-        self.tag_memory.append([None, [], None])
-        print(self.tag_memory)
+        # s = list(sum(history, ()))
+        # s.append(input)
+        # inp = ' '.join(s)
+        self.output = self.api_calling(input)
+        history.append((input, self.output))
+        self.tag_memory.append([None, None])
         return history, history
+    
+    def regenerate(self, history):
+        if self.input is not None:
+            return self.message_and_history(self.input, history)
+        else:
+            pass
 
     def tag_response(self, vote, recommendation):
         # Ensure there is a response before properly voting and recommending
@@ -136,9 +165,11 @@ class GPTProcessing(object):
             # If there is a downvote
             elif vote == 0:
                 last_response[0] = vote
+                self.downvote_prompts.append(self.output)
             # If there is an upvote
             elif vote == 1:
                 last_response[0] = vote
+                self.upvote_prompts.append(self.output)
             print(self.tag_memory)
         else:
             pass
