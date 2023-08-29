@@ -1,0 +1,15 @@
+Prompt: bro
+Joke: How did the hipster burn his tongue? He drank his coffee before it was cool.
+Vote: 0
+Recommend: My mom
+
+Prompt: cat
+Joke: A study in 2016 showed that the average cat sleeps for 12-16 hours a day.  That means they’re awake for only 4-8 hours a day!
+Vote: 1
+Recommend: My dad
+
+Prompt: house
+Joke: Q: Why did the scarecrow win an award?  A: Because he was outstanding in his field.
+Vote: None
+Recommend: None
+

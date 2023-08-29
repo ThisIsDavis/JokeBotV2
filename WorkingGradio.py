@@ -45,28 +45,35 @@ class GPTProcessing(object):
                 with gr.Row():
                     selected_joke_preferences = gr.Textbox(label = "Selected Joke Preferences:", info = "List of jokes that you find funny!",placeholder = "No selected joke preferences yet!", interactive = False)
                     selected_joke_preferences_action = gr.Button("Clear Preferences", scale = 0.5)
+                    
             with gr.Tab("JokeBot"):
-                chatbot = gr.components.Chatbot(label='Finetuned Joke Machine', height = 600)
+                chatbot = gr.components.Chatbot(label='Finetuned Joke Machine', height = 600)  
                 message = gr.components.Textbox (label = 'User Keyword')
                 state = gr.State()
+
+                # Sends the user input keyword to generate a joke
                 message.submit(self.message_and_history, inputs=[message, state],  outputs=[chatbot, state])
+
                 # Voice Recognition
                 with gr.Row():
                     # Record audio and output the audio filepath.
                     voice_recog = gr.Audio(source = "microphone", type = "filepath")
                     # Button to start voice recognition
                     voice_recog_action = gr.Button("Keyword Voice Recognition")
+
                 # Buttons Galore
                 with gr.Row():
-                    upvote_btn = gr.Button(value="👍  Upvote")
-                    downvote_btn = gr.Button(value="👎  Downvote")
-                    regenerate_btn = gr.Button(value="🔄  Regenerate")
-                    clear_btn = gr.Button(value="🗑️  Clear prompt")
+                    upvote_btn = gr.Button(value="👍  Upvote")  # Upvote Button
+                    downvote_btn = gr.Button(value="👎  Downvote")  # Downvote Button
+                    regenerate_btn = gr.Button(value="🔄  Regenerate")  # Regenerate Button
+                    clear_btn = gr.Button(value="🗑️  Clear prompt")  # Clear Prompt Button
                     
-                    upvote_btn.click(lambda: self.tag_response(1, None), inputs=[], outputs=[])
+                    # Logic when one of the buttons is clicked
+                    upvote_btn.click(lambda: self.tag_response(1, None), inputs=[], outputs=[])  
                     downvote_btn.click(lambda: self.tag_response(0, None), inputs=[], outputs=[])
                     regenerate_btn.click(self.regenerate, inputs=[state],  outputs=[chatbot, state])
                     clear_btn.click(lambda: message.update(""), inputs=[], outputs=[message])
+
                 # Who to recommend?
                 with gr.Row():
                     def on_send_btn_click(input):
@@ -75,6 +82,36 @@ class GPTProcessing(object):
                     recommend_textbox = gr.components.Textbox(label='Who would you recommend the current joke to?')
                     send_btn = gr.Button(value='Enter')
                     send_btn.click(on_send_btn_click, inputs=[recommend_textbox], outputs=[])
+            # with gr.Tab("Malaysian JokeBot 🇲🇾"):
+            #     chatbot = gr.components.Chatbot(label='Finetuned Malaysian Joke Machine', height = 600)
+            #     message = gr.components.Textbox (label = 'User Keyword')
+            #     state = gr.State()
+            #     message.submit(self.message_and_history, inputs=[message, state],  outputs=[chatbot, state])
+            #     # Voice Recognition
+            #     with gr.Row():
+            #         # Record audio and output the audio filepath.
+            #         voice_recog = gr.Audio(source = "microphone", type = "filepath")
+            #         # Button to start voice recognition
+            #         voice_recog_action = gr.Button("Keyword Voice Recognition")
+            #     # Buttons Galore
+            #     with gr.Row():
+            #         upvote_btn = gr.Button(value="👍  SHIOK")
+            #         downvote_btn = gr.Button(value="👎  Potong Stim")
+            #         regenerate_btn = gr.Button(value="🔄  Regenerate")
+            #         clear_btn = gr.Button(value="🗑️  Clear prompt")
+                    
+            #         upvote_btn.click(lambda: self.tag_response(1, None), inputs=[], outputs=[])
+            #         downvote_btn.click(lambda: self.tag_response(0, None), inputs=[], outputs=[])
+            #         regenerate_btn.click(self.regenerate, inputs=[state],  outputs=[chatbot, state])
+            #         clear_btn.click(lambda: message.update(""), inputs=[], outputs=[message])
+            #     # Who to recommend?
+            #     with gr.Row():
+            #         def on_send_btn_click(input):
+            #             self.tag_response(None, input)
+
+            #         recommend_textbox = gr.components.Textbox(label='Who you nak recommend joke ini to?')
+            #         send_btn = gr.Button(value='Enter')
+            #         send_btn.click(on_send_btn_click, inputs=[recommend_textbox], outputs=[])
 
             # Button to start recording voice and outputting it to the message text box.
             voice_recog_action.click(
@@ -107,10 +144,22 @@ class GPTProcessing(object):
             )
 
     ############################## Helper Functions#################################################################
-    def launch_ui(self):
+    def launch_ui(self):        
+        """
+        A method that launches the Gradio UI website
+        """
         self.ui_obj.queue().launch(share=True)
 
-    def api_calling(self, prompt):
+    def api_calling(self, prompt: str) -> str:
+        """
+        Creates the prompt based on the user input keyword, previously upvoted and downvoted jokes. Then generates a joke using the
+        prompt created. 
+        :Input:
+            prompt: The user input keyword
+        :Output:
+            message: The joke generated from the user input keyword
+        """
+        # Prompt engineering the prompt
         big_prompt = "Give me a joke that must include the keyword " + "\'" + prompt + "\'"
         
         # If there is upvoted responses and downvoted responses
@@ -137,45 +186,97 @@ class GPTProcessing(object):
             temperature=0.7,
         )
 
-        message = completions.choices[0].message.content
+        message = completions.choices[0].message.content  # Get the joke
         # print(message)
         return message
 
-    def message_and_history(self, input, history):
+    def message_and_history(self, input: str, history):
+        """
+        Create a chat history if it doesn't exist and generates a joke based on the user input keyword. Then display the chat on the
+        chatbot
+        :Input:
+            input: The user input keyword
+            history: The state of the chat history as an array of chats 
+        :Output:
+            history, history: The state of the chat history after generating a joke
+        """
         self.input = input
-        history = history or []
-        # s = list(sum(history, ()))
-        # s.append(input)
-        # inp = ' '.join(s)
-        self.output = self.api_calling(input)
-        history.append((input, self.output))
-        self.tag_memory.append([None, None])
+        history = history or []  # Create chat history list if doesn't exist or use existing chat history
+        self.create_feedback(history, self.tag_memory)  # Append the previous chat and its feedback to a file
+        self.output = self.api_calling(input)  # Generate the joke
+        history.append((input, self.output))  # Append the prompt and joke to the chatbot display
+        self.tag_memory.append([None, None])  # Create a tag memory for the new joke
         return history, history
     
     def regenerate(self, history):
+        """
+        Regenerate a joke from the existing user input keyword
+        :Input:
+            history: The state of the chat history as an array of chats 
+        :Output:
+            history, history: The state of the chat history after regenerating a joke
+        """
+        # Checks if there is an existing keyword input
         if self.input is not None:
+            # If yes, go generate another joke
             return self.message_and_history(self.input, history)
         else:
             pass
 
-    def tag_response(self, vote, recommendation):
+    def tag_response(self, vote: int, recommendation: str) -> None:
+        """
+        Tags the current existing prompt and joke with a vote and recommendation
+        :Input:
+            vote: An integer representing the vote (0 -> downvote, 1 -> upvote)
+            recommendation: A string of who the user would recommend the joke to 
+        """
         # Ensure there is a response before properly voting and recommending
         if len(self.tag_memory) > 0:
             # Get the current response
             last_response = self.tag_memory[-1]
-            # If there is a recommendation
+            # If there is a recommendation, set the recommedation
             if recommendation is not None and len(recommendation) > 0:
-                last_response[2] = recommendation
-            # If there is a downvote
+                last_response[1] = recommendation
+            # If there is a downvote, set the vote to 0 and append the output to downvote prompts
             elif vote == 0:
                 last_response[0] = vote
                 self.downvote_prompts.append(self.output)
-            # If there is an upvote
+            # If there is an upvote, set the vote to 1 and append the output to upvote prompts
             elif vote == 1:
                 last_response[0] = vote
                 self.upvote_prompts.append(self.output)
-                
         else:
+            pass
+
+    def create_feedback(self, chat_lst, tag_list) -> None:
+        """
+        Appends the previous chat and tagged information into a file for data collection
+        :Input:
+            chat_lst: The chat history as an array
+            tag_list: The tagged information of the chat history as an array 
+        """
+        # Checks if there is an existing joke
+        if len(chat_lst) and len(tag_list):
+
+            # If yes, get the last joke's details
+            last_message = chat_lst[-1]
+            last_feedback = tag_list[-1]
+
+            # Write and append to feedback.txt file
+            with open('feedback.txt', 'a') as f:
+                f.write(f'Prompt: {last_message[0]}\n')  # Write prompt
+                f.write(f'Joke: {last_message[1]}\n')   # Write joke
+
+                # Checks what is the vote
+                if last_feedback[0] == 0:
+                    f.write('Vote: Downvote\n')  # Write vote as downvote
+                else:
+                    f.write('Vote: Upvote\n')  # Write vote as upvote
+
+                f.write(f'Recommend: {last_feedback[1]}\n\n')  # Write recommendation
+            # print("it works")
+        else:
+            # print("skipped worked")
             pass
 
     # temporart (Build the bot no longer need #Davis)
