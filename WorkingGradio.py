@@ -111,7 +111,6 @@ class GPTProcessing(object):
 
     def api_calling(self, prompt):
         big_prompt = "Give me a joke about " + prompt
-        print(prompt)
 
         # If there is upvoted responses and downvoted responses
         if len(self.upvote_prompts) > 0 and len(self.downvote_prompts) > 0:
@@ -133,7 +132,7 @@ class GPTProcessing(object):
             max_tokens=5,
             temperature=0.7,
         )
-        print(big_prompt)
+
         message = completions.choices[0].text
         return message
 
@@ -170,7 +169,7 @@ class GPTProcessing(object):
             elif vote == 1:
                 last_response[0] = vote
                 self.upvote_prompts.append(self.output)
-            print(self.tag_memory)
+                
         else:
             pass
 
@@ -264,7 +263,7 @@ class GPTProcessing(object):
         i = 0
         while i < 5:
             # Generate a random number from 0 to the maximum number of categories available
-            random_number = random.randint(0, self.num_of_categories)
+            random_number = random.randint(0, self.num_of_categories - 1)
             # If the random number has not been generated before/not in the categories list, append it in and increment i by one.
             if random_number not in categories:
                 categories.append(random_number)
@@ -295,9 +294,10 @@ class GPTProcessing(object):
             joke_str: A string containing all the jokes the user selected/preferred.
         """
         # Append the list of selected jokes to self.user_joke_preferences to save it.
-        self.user_joke_preferences.append(jokes)
+        self.user_joke_preferences += jokes
         # Append it to upvote prompts to produce jokes similar to this.
-        self.upvote_prompts.append(jokes)
+        self.upvote_prompts += jokes
+
         # Set the joke_str variable to the string of selected joke preferences.
         joke_str = selected_jokes
         
@@ -323,9 +323,11 @@ class GPTProcessing(object):
         :Output:
             selected_jokes: An empty string to represent the TextBox being cleared.
         """
+        # Remove all common jokes in the upvote prompt and user joke preferences list.
+        self.upvote_prompts = list(set(self.user_joke_preferences)^set(self.upvote_prompts))
         self.user_joke_preferences = []     # Clear the saved user joke preferences.
         self.count = 1                      # Reset the count to one.
-        
+
         return ""   # Return an empty string.
 
 
