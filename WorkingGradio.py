@@ -296,6 +296,8 @@ class GPTProcessing(object):
         """
         # Append the list of selected jokes to self.user_joke_preferences to save it.
         self.user_joke_preferences.append(jokes)
+        # Append it to upvote prompts to produce jokes similar to this.
+        self.upvote_prompts.append(jokes)
         # Set the joke_str variable to the string of selected joke preferences.
         joke_str = selected_jokes
         
