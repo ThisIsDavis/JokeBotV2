@@ -36,6 +36,15 @@ class GPTProcessing(object):
         
         with self.ui_obj:
             gr.Markdown('# MCS01 Joke Bot Application')
+            with gr.TabItem("User Joke Preference Learning"):
+                with gr.Row():
+                    # gr.Textbox(label="Here are a list of jokes, please let us know which jokes speak to you the most! Put the joke numbers", placeholder= "1. List of jokes", interactive=False)
+                    joke_preferences = gr.CheckboxGroup(self.preference_jokes, label = "List of Jokes", info = "Please select which jokes speaks to you the most!")
+                with gr.Row():
+                    joke_preferences_action = gr.Button("Submit")
+                with gr.Row():
+                    selected_joke_preferences = gr.Textbox(label = "Selected Joke Preferences:", info = "List of jokes that you find funny!",placeholder = "No selected joke preferences yet!", interactive = False)
+                    selected_joke_preferences_action = gr.Button("Clear Preferences", scale = 0.5)
             with gr.Tab("JokeBot"):
                 chatbot = gr.components.Chatbot(label='Finetuned Joke Machine', height = 600)
                 message = gr.components.Textbox (label = 'User Keyword')
@@ -66,14 +75,6 @@ class GPTProcessing(object):
                     recommend_textbox = gr.components.Textbox(label='Who would you recommend the current joke to?')
                     send_btn = gr.Button(value='Enter')
                     send_btn.click(on_send_btn_click, inputs=[recommend_textbox], outputs=[])
-            with gr.TabItem("User Joke Preference Learning"):
-                with gr.Row():
-                    # gr.Textbox(label="Here are a list of jokes, please let us know which jokes speak to you the most! Put the joke numbers", placeholder= "1. List of jokes", interactive=False)
-                    joke_preferences = gr.CheckboxGroup(self.preference_jokes, label = "List of Jokes", info = "Please select which jokes speaks to you the most!")
-                    joke_preferences_action = gr.Button("Submit")
-                with gr.Row():
-                    selected_joke_preferences = gr.Textbox(label = "Selected Joke Preferences:", info = "List of jokes that you find funny!",placeholder = "No selected joke preferences yet!", interactive = False)
-                    selected_joke_preferences_action = gr.Button("Clear Preferences", scale = 0.5)
 
             # Button to start recording voice and outputting it to the message text box.
             voice_recog_action.click(
@@ -110,30 +111,34 @@ class GPTProcessing(object):
         self.ui_obj.queue().launch(share=True)
 
     def api_calling(self, prompt):
-        big_prompt = "Give me a joke about " + prompt
-
+        big_prompt = "Give me a joke that must include the keyword " + "\'" + prompt + "\'"
+        
         # If there is upvoted responses and downvoted responses
         if len(self.upvote_prompts) > 0 and len(self.downvote_prompts) > 0:
             up_pr = ", ".join(self.upvote_prompts)
             do_pr = ", ".join(self.downvote_prompts)
-            big_prompt += " with similar jokes to " + up_pr + " and not similar to" + do_pr
+            big_prompt += " with similar jokes to " + "\'" + up_pr +  "\'" + " and not similar to" + "\'" + do_pr +  "\'"
         # If there is only 1 downvoted response
         elif len(self.downvote_prompts) > 0:
             do_pr = ", ".join(self.downvote_prompts)
-            big_prompt += " that are not similar to " + do_pr
+            big_prompt += " that are not similar to " + "\'" + do_pr +  "\'"
         # If there is only 1 upvoted response
         elif len(self.upvote_prompts) > 0:
             up_pr = ", ".join(self.upvote_prompts)
-            big_prompt += " with similar jokes to " + up_pr
-
-        completions = openai.Completion.create(
-            engine="davinci:ft-monash-university-malaysia-2023-08-16-12-29-02",
-            prompt=big_prompt,
-            max_tokens=5,
+            big_prompt += " with similar jokes to " + "\'" + up_pr +  "\'"
+        # print(big_prompt)
+        completions = openai.ChatCompletion.create(
+            model="ft:gpt-3.5-turbo-0613:monash-university-malaysia::7rREegcc",
+            messages=[
+                {"role": "system", "content": "JokeBot is a chatbot that tells funny jokes from given keywords"},
+                {"role": "user", "content": big_prompt}
+            ],
+            max_tokens=50,
             temperature=0.7,
         )
 
-        message = completions.choices[0].text
+        message = completions.choices[0].message.content
+        # print(message)
         return message
 
     def message_and_history(self, input, history):
@@ -261,7 +266,7 @@ class GPTProcessing(object):
         
         # Randomly select a joke category and append it to the categories list 5 times.
         i = 0
-        while i < 5:
+        while i < 10:
             # Generate a random number from 0 to the maximum number of categories available
             random_number = random.randint(0, self.num_of_categories - 1)
             # If the random number has not been generated before/not in the categories list, append it in and increment i by one.
@@ -297,7 +302,7 @@ class GPTProcessing(object):
         self.user_joke_preferences += jokes
         # Append it to upvote prompts to produce jokes similar to this.
         self.upvote_prompts += jokes
-
+        
         # Set the joke_str variable to the string of selected joke preferences.
         joke_str = selected_jokes
         
