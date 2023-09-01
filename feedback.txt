@@ -13,3 +13,18 @@ Joke: Q: Why did the scarecrow win an award?  A: Because he was outstanding in h
 Vote: None
 Recommend: None
 
+Prompt: animal
+Joke: Q: How do you count cows?  A: With a cowculator.
+Vote: Downvote
+Recommend: None
+
+Prompt: animal
+Joke: Q: How do you count cows?  A: With a cowculator.
+Vote: Upvote
+Recommend: None
+
+Prompt: elephant
+Joke: Q: What did the elephant say to the naked man?  A: "How do you breathe through something so small?"
+Vote: Upvote
+Recommend: None
+

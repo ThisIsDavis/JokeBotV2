@@ -45,7 +45,7 @@ class GPTProcessing(object):
                 with gr.Row():
                     selected_joke_preferences = gr.Textbox(label = "Selected Joke Preferences:", info = "List of jokes that you find funny!",placeholder = "No selected joke preferences yet!", interactive = False)
                     selected_joke_preferences_action = gr.Button("Clear Preferences", scale = 0.5)
-                    
+
             with gr.Tab("JokeBot"):
                 chatbot = gr.components.Chatbot(label='Finetuned Joke Machine', height = 600)  
                 message = gr.components.Textbox (label = 'User Keyword')
@@ -82,11 +82,13 @@ class GPTProcessing(object):
                     recommend_textbox = gr.components.Textbox(label='Who would you recommend the current joke to?')
                     send_btn = gr.Button(value='Enter')
                     send_btn.click(on_send_btn_click, inputs=[recommend_textbox], outputs=[])
+
+            # Malaysian Jokes Section
             # with gr.Tab("Malaysian JokeBot 🇲🇾"):
-            #     chatbot = gr.components.Chatbot(label='Finetuned Malaysian Joke Machine', height = 600)
+            #     chatbot_my = gr.components.Chatbot(label='Finetuned Malaysian Joke Machine', height = 600)
             #     message = gr.components.Textbox (label = 'User Keyword')
-            #     state = gr.State()
-            #     message.submit(self.message_and_history, inputs=[message, state],  outputs=[chatbot, state])
+            #     state_my = gr.State()
+            #     message.submit(self.message_and_history, inputs=[message, state_my],  outputs=[chatbot_my, state_my])
             #     # Voice Recognition
             #     with gr.Row():
             #         # Record audio and output the audio filepath.
@@ -95,23 +97,24 @@ class GPTProcessing(object):
             #         voice_recog_action = gr.Button("Keyword Voice Recognition")
             #     # Buttons Galore
             #     with gr.Row():
-            #         upvote_btn = gr.Button(value="👍  SHIOK")
-            #         downvote_btn = gr.Button(value="👎  Potong Stim")
-            #         regenerate_btn = gr.Button(value="🔄  Regenerate")
-            #         clear_btn = gr.Button(value="🗑️  Clear prompt")
+            #         upvote_btn_my = gr.Button(value="👍  SHIOK")
+            #         downvote_btn_my = gr.Button(value="👎  Potong Stim")
+            #         regenerate_btn_my = gr.Button(value="🔄  Regenerate")
+            #         clear_btn_my = gr.Button(value="🗑️  Clear prompt")
                     
-            #         upvote_btn.click(lambda: self.tag_response(1, None), inputs=[], outputs=[])
-            #         downvote_btn.click(lambda: self.tag_response(0, None), inputs=[], outputs=[])
-            #         regenerate_btn.click(self.regenerate, inputs=[state],  outputs=[chatbot, state])
-            #         clear_btn.click(lambda: message.update(""), inputs=[], outputs=[message])
+            #         upvote_btn_my.click(lambda: self.tag_response(1, None), inputs=[], outputs=[])
+            #         downvote_btn_my.click(lambda: self.tag_response(0, None), inputs=[], outputs=[])
+            #         regenerate_btn_my.click(self.regenerate, inputs=[state_my],  outputs=[chatbot_my, state_my])
+            #         clear_btn_my.click(lambda: message.update(""), inputs=[], outputs=[message])
+
             #     # Who to recommend?
             #     with gr.Row():
             #         def on_send_btn_click(input):
             #             self.tag_response(None, input)
 
-            #         recommend_textbox = gr.components.Textbox(label='Who you nak recommend joke ini to?')
-            #         send_btn = gr.Button(value='Enter')
-            #         send_btn.click(on_send_btn_click, inputs=[recommend_textbox], outputs=[])
+            #         recommend_textbox_my = gr.components.Textbox(label='Who you nak recommend joke ini to?')
+            #         send_btn_my = gr.Button(value='Enter')
+            #         send_btn_my.click(on_send_btn_click, inputs=[recommend_textbox_my], outputs=[])
 
             # Button to start recording voice and outputting it to the message text box.
             voice_recog_action.click(
