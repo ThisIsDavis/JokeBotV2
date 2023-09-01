@@ -27,7 +27,7 @@ class GPTProcessing(object):
         self.input_my = None
         self.output_my = None
 
-        self.OPENAI_API_KEY = ""
+        self.OPENAI_API_KEY = "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"
         os.environ["OPENAI_API_KEY"] = self.OPENAI_API_KEY
         openai.api_key = self.OPENAI_API_KEY
 
@@ -101,9 +101,9 @@ class GPTProcessing(object):
                 # Voice Recognition
                 with gr.Row():
                     # Record audio and output the audio filepath.
-                    voice_recog = gr.Audio(source = "microphone", type = "filepath")
+                    voice_recog_my = gr.Audio(source = "microphone", type = "filepath")
                     # Button to start voice recognition
-                    voice_recog_action = gr.Button("Keyword Voice Recognition")
+                    voice_recog_action_my = gr.Button("Keyword Voice Recognition")
                 # Buttons Galore
                 with gr.Row():
                     upvote_btn_my = gr.Button(value="👍  SHIOK")
@@ -152,6 +152,18 @@ class GPTProcessing(object):
                 [],
                 [
                     selected_joke_preferences
+                ]
+            )
+
+            # Malaysian Jokes
+            # Button to start recording voice and outputting it to the message text box.
+            voice_recog_action_my.click(
+                self.transcribe_audio,
+                [
+                    voice_recog_my
+                ], 
+                [
+                    message_my
                 ]
             )
 
@@ -257,6 +269,7 @@ class GPTProcessing(object):
             elif vote == 1:
                 last_response[0] = vote
                 self.upvote_prompts.append(self.output)
+            print(self.tag_memory)
         else:
             pass
 
@@ -504,6 +517,7 @@ class GPTProcessing(object):
             elif vote_my == 1:
                 last_response_my[0] = vote_my
                 self.upvote_prompts_my.append(self.output_my)
+            print(self.tag_memory_my)
         else:
             pass
     
@@ -538,6 +552,36 @@ class GPTProcessing(object):
         else:
             # print("skipped worked")
             pass
+    
+    # Voice recognition.
+    def transcribe_audio_my(self, audio_path: str) -> str:
+        """
+        FOR MALAYSIAN JOKES
+        Takes in the filepath where the audio is stored and use an Automatic Speech Recognition Model to transcribe the audio into text.
+        Will take the first word of the whole transcribed sentence.
+        :Input:
+            audio_path: The filepath where the audio is stored.
+        :Output:
+            text: The transcribed text based on the input audio.
+        """
+        # Initalise a Recognizer instance.
+        recogniser = sr.Recognizer()
+        
+        # Open the audio file based on inputted filepath an initalise it to source variable.
+        with sr.AudioFile(audio_path) as source:
+            # Extract audio data from the source file.
+            audio = recogniser.record(source)
+            
+            # If there's audio, recognise the speech using Google Speech Recognition and return the first keyword transcribed.
+            try:
+                text = recogniser.recognize_google(audio)   # Transcribe the audio into text.
+                text = str(text.split()[0]).lower()         # Extract the first word of the text and then turn it to lowercase.
+                return text
+            
+            # Speech is unintelligible or other errors, return error text.
+            except:
+                text = "Error: Unable to recognise audio"
+                return text
 
 
 if __name__ == '__main__':
