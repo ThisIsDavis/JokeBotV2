@@ -12,12 +12,21 @@ from utils import *
 class GPTProcessing(object):
     
     def __init__(self, ui_obj):
+        # For normal jokes
         self.ui_obj = ui_obj
         self.tag_memory = []
         self.upvote_prompts = []
         self.downvote_prompts = []
         self.input = None
         self.output = None
+
+        # For Malaysian jokes
+        self.tag_memory_my = []
+        self.upvote_prompts_my = []
+        self.downvote_prompts_my = []
+        self.input_my = None
+        self.output_my = None
+
         self.OPENAI_API_KEY = ""
         os.environ["OPENAI_API_KEY"] = self.OPENAI_API_KEY
         openai.api_key = self.OPENAI_API_KEY
@@ -84,37 +93,37 @@ class GPTProcessing(object):
                     send_btn.click(on_send_btn_click, inputs=[recommend_textbox], outputs=[])
 
             # Malaysian Jokes Section
-            # with gr.Tab("Malaysian JokeBot 🇲🇾"):
-            #     chatbot_my = gr.components.Chatbot(label='Finetuned Malaysian Joke Machine', height = 600)
-            #     message = gr.components.Textbox (label = 'User Keyword')
-            #     state_my = gr.State()
-            #     message.submit(self.message_and_history, inputs=[message, state_my],  outputs=[chatbot_my, state_my])
-            #     # Voice Recognition
-            #     with gr.Row():
-            #         # Record audio and output the audio filepath.
-            #         voice_recog = gr.Audio(source = "microphone", type = "filepath")
-            #         # Button to start voice recognition
-            #         voice_recog_action = gr.Button("Keyword Voice Recognition")
-            #     # Buttons Galore
-            #     with gr.Row():
-            #         upvote_btn_my = gr.Button(value="👍  SHIOK")
-            #         downvote_btn_my = gr.Button(value="👎  Potong Stim")
-            #         regenerate_btn_my = gr.Button(value="🔄  Regenerate")
-            #         clear_btn_my = gr.Button(value="🗑️  Clear prompt")
+            with gr.Tab("Malaysian JokeBot 🇲🇾"):
+                chatbot_my = gr.components.Chatbot(label='Finetuned Malaysian Joke Machine', height = 600)
+                message_my = gr.components.Textbox (label = 'User Keyword')
+                state_my = gr.State()
+                message_my.submit(self.message_and_history_my, inputs=[message_my, state_my],  outputs=[chatbot_my, state_my])
+                # Voice Recognition
+                with gr.Row():
+                    # Record audio and output the audio filepath.
+                    voice_recog = gr.Audio(source = "microphone", type = "filepath")
+                    # Button to start voice recognition
+                    voice_recog_action = gr.Button("Keyword Voice Recognition")
+                # Buttons Galore
+                with gr.Row():
+                    upvote_btn_my = gr.Button(value="👍  SHIOK")
+                    downvote_btn_my = gr.Button(value="👎  Potong Stim")
+                    regenerate_btn_my = gr.Button(value="🔄  Regenerate")
+                    clear_btn_my = gr.Button(value="🗑️  Clear prompt")
                     
-            #         upvote_btn_my.click(lambda: self.tag_response(1, None), inputs=[], outputs=[])
-            #         downvote_btn_my.click(lambda: self.tag_response(0, None), inputs=[], outputs=[])
-            #         regenerate_btn_my.click(self.regenerate, inputs=[state_my],  outputs=[chatbot_my, state_my])
-            #         clear_btn_my.click(lambda: message.update(""), inputs=[], outputs=[message])
+                    upvote_btn_my.click(lambda: self.tag_response_my(1, None), inputs=[], outputs=[])
+                    downvote_btn_my.click(lambda: self.tag_response_my(0, None), inputs=[], outputs=[])
+                    regenerate_btn_my.click(self.regenerate_my, inputs=[state_my],  outputs=[chatbot_my, state_my])
+                    clear_btn_my.click(lambda: message_my.update(""), inputs=[], outputs=[message_my])
 
-            #     # Who to recommend?
-            #     with gr.Row():
-            #         def on_send_btn_click(input):
-            #             self.tag_response(None, input)
+                # Who to recommend?
+                with gr.Row():
+                    def on_send_btn_click_my(input):
+                        self.tag_response_my(None, input)
 
-            #         recommend_textbox_my = gr.components.Textbox(label='Who you nak recommend joke ini to?')
-            #         send_btn_my = gr.Button(value='Enter')
-            #         send_btn_my.click(on_send_btn_click, inputs=[recommend_textbox_my], outputs=[])
+                    recommend_textbox_my = gr.components.Textbox(label='Who you nak recommend joke ini to?')
+                    send_btn_my = gr.Button(value='Enter')
+                    send_btn_my.click(on_send_btn_click_my, inputs=[recommend_textbox_my], outputs=[])
 
             # Button to start recording voice and outputting it to the message text box.
             voice_recog_action.click(
@@ -282,51 +291,6 @@ class GPTProcessing(object):
             # print("skipped worked")
             pass
 
-    # temporart (Build the bot no longer need #Davis)
-    # def build_the_bot(self, input_text):
-    #     if os.path.exists(input_text):
-    #         print("Passed")
-
-    #     max_input = 4096
-    #     tokens = 200
-    #     chunk_size = 600 #for LLM, we need to define chunk size
-    #     max_chunk_overlap = 1
-    #     promptHelper = PromptHelper(max_input,tokens,max_chunk_overlap,chunk_size_limit=chunk_size)
-    #     path = self.compile_folder
-    #     docs = SimpleDirectoryReader(input_dir=path).load_data()
-    #     llmPredictor = LLMPredictor(llm=OpenAI(temperature=0.5, openai_api_key=self.OPENAI_API_KEY , model_name="gpt-3.5-turbo", max_tokens=tokens))
-
-    #     service_context = ServiceContext.from_defaults(llm_predictor=llmPredictor, prompt_helper=promptHelper)
-
-    #     vectorIndex = GPTVectorStoreIndex.from_documents(documents=docs, service_context=service_context)
-    #     final_out_file = "vectorIndex.json"
-    #     self.saved_path = os.path.join(os.getcwd(), self.index_folder, final_out_file)
-    #     vectorIndex.storage_context.persist(persist_dir=self.saved_path)
-        
-    #     return('Index saved successfull!!!')
-
-    # def chat(self, chat_history, user_input):
-    #     # self.saved_path = os.path.join(os.getcwd(), self.index_folder, "vectorIndex.json")
-    #     # storage_context = StorageContext.from_defaults(persist_dir=self.saved_path)
-    #     # self.selected_index = load_index_from_storage(storage_context)
-
-    #     # chat_engine = self.selected_index.as_chat_engine(verbose=True)
-    #     # bot_response = chat_engine.stream_chat(user_input)
-
-    #     #we no longer use Vector Index, now we use our openAI fine tuned model 
-    #     # openai.api_key = os.getenv("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")
-    #     bot_response = openai.Completion.create(
-    #         model="davinci:ft-monash-university-malaysia-2023-08-16-12-29-02",
-    #         prompt=user_input,
-    #         max_tokens=50,
-    #         temperature=0.7,
-    #         stream=True)
-
-    #     response = ""
-    #     for letter in ''.join(bot_response): #[bot_response[i:i+1] for i in range(0, len(bot_response), 1)]:
-    #         response += letter + ""
-    #         yield chat_history + [(user_input, response)]
-
     # Voice recognition.
     def transcribe_audio(self, audio_path: str) -> str:
         """
@@ -438,6 +402,142 @@ class GPTProcessing(object):
         self.count = 1                      # Reset the count to one.
 
         return ""   # Return an empty string.
+    
+    ############################## Malaysian Jokes Helper Functions #################################################################
+
+    def api_calling_my(self, prompt_my: str) -> str:
+        """
+        FOR MALAYSIAN JOKES
+        Creates the prompt based on the user input keyword, previously upvoted and downvoted jokes. Then generates a joke using the
+        prompt created. 
+        :Input:
+            prompt_my: The user input keyword
+        :Output:
+            message_my: The joke generated from the user input keyword
+        """
+        # Prompt engineering the prompt
+        big_prompt_my = "In Malaysian mannerisms, give me a joke that must include the keyword " + "\'" + prompt_my + "\'"
+        
+        # If there is upvoted responses and downvoted responses
+        if len(self.upvote_prompts_my) > 0 and len(self.downvote_prompts_my) > 0:
+            up_pr_my = ", ".join(self.upvote_prompts_my)
+            do_pr_my = ", ".join(self.downvote_prompts_my)
+            big_prompt_my += " with similar jokes to " + "\'" + up_pr_my +  "\'" + " and not similar to" + "\'" + do_pr_my +  "\'"
+        # If there is only 1 downvoted response
+        elif len(self.downvote_prompts) > 0:
+            do_pr_my = ", ".join(self.downvote_prompts_my)
+            big_prompt_my += " that are not similar to " + "\'" + do_pr_my +  "\'"
+        # If there is only 1 upvoted response
+        elif len(self.upvote_prompts_my) > 0:
+            up_pr_my = ", ".join(self.upvote_prompts_my)
+            big_prompt_my += " with similar jokes to " + "\'" + up_pr_my +  "\'"
+        # print(big_prompt_my)
+        completions = openai.ChatCompletion.create(
+            model="ft:gpt-3.5-turbo-0613:monash-university-malaysia::7rREegcc",
+            messages=[
+                {"role": "system", "content": "JokeBot is a chatbot that tells funny jokes from given keywords"},
+                {"role": "user", "content": big_prompt_my}
+            ],
+            max_tokens=50,
+            temperature=0.7,
+        )
+
+        message_my = completions.choices[0].message.content  # Get the joke
+        # print(message_my)
+        return message_my
+
+    def message_and_history_my(self, input: str, history_my):
+        """
+        FOR MALAYSIAN JOKES
+        Create a chat history if it doesn't exist and generates a joke based on the user input keyword. Then display the chat on the
+        chatbot
+        :Input:
+            input: The user input keyword
+            history_my: The state of the chat history as an array of chats 
+        :Output:
+            history_my, history_my: The state of the chat history after generating a joke
+        """
+        self.input_my = input
+        history_my = history_my or []  # Create chat history list if doesn't exist or use existing chat history
+        self.create_feedback_my(history_my, self.tag_memory_my)  # Append the previous chat and its feedback to a file
+        self.output_my = self.api_calling_my(input)  # Generate the joke
+        history_my.append((input, self.output_my))  # Append the prompt and joke to the chatbot display
+        self.tag_memory_my.append([None, None])  # Create a tag memory for the new joke
+        return history_my, history_my
+    
+    def regenerate_my(self, history_my):
+        """
+        FOR MALAYSIAN JOKES
+        Regenerate a joke from the existing user input keyword
+        :Input:
+            history_my: The state of the chat history as an array of chats 
+        :Output:
+            history_my, history: The state of the chat history after regenerating a joke
+        """
+        # Checks if there is an existing keyword input
+        if self.input_my is not None:
+            # If yes, go generate another joke
+            return self.message_and_history_my(self.input_my, history_my)
+        else:
+            pass
+
+    def tag_response_my(self, vote_my: int, recommendation_my: str) -> None:
+        """
+        FOR MALAYSIAN JOKES
+        Tags the current existing prompt and joke with a vote and recommendation
+        :Input:
+            vote_my: An integer representing the vote (0 -> downvote, 1 -> upvote)
+            recommendation_my: A string of who the user would recommend the joke to 
+        """
+        # Ensure there is a response before properly voting and recommending
+        if len(self.tag_memory_my) > 0:
+            # Get the current response
+            last_response_my = self.tag_memory_my[-1]
+            # If there is a recommendation, set the recommedation
+            if recommendation_my is not None and len(recommendation_my) > 0:
+                last_response_my[1] = recommendation_my
+            # If there is a downvote, set the vote to 0 and append the output to downvote prompts
+            elif vote_my == 0:
+                last_response_my[0] = vote_my
+                self.downvote_prompts_my.append(self.output_my)
+            # If there is an upvote, set the vote to 1 and append the output to upvote prompts
+            elif vote_my == 1:
+                last_response_my[0] = vote_my
+                self.upvote_prompts_my.append(self.output_my)
+        else:
+            pass
+    
+    def create_feedback_my(self, chat_lst_my, tag_list_my) -> None:
+        """
+        FOR MALAYSIAN JOKES
+        Appends the previous chat and tagged information into a file for data collection
+        :Input:
+            chat_lst_my: The chat history as an array
+            tag_list_my: The tagged information of the chat history as an array 
+        """
+        # Checks if there is an existing joke
+        if len(chat_lst_my) and len(tag_list_my):
+
+            # If yes, get the last joke's details
+            last_message_my = chat_lst_my[-1]
+            last_feedback_my = tag_list_my[-1]
+
+            # Write and append to feedback.txt file
+            with open('feedback_my.txt', 'a') as f:
+                f.write(f'Prompt: {last_message_my[0]}\n')  # Write prompt
+                f.write(f'Joke: {last_message_my[1]}\n')   # Write joke
+
+                # Checks what is the vote
+                if last_feedback_my[0] == 0:
+                    f.write('Vote: Downvote\n')  # Write vote as downvote
+                else:
+                    f.write('Vote: Upvote\n')  # Write vote as upvote
+
+                f.write(f'Recommend: {last_feedback_my[1]}\n\n')  # Write recommendation
+            # print("it works")
+        else:
+            # print("skipped worked")
+            pass
 
 
 if __name__ == '__main__':
