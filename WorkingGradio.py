@@ -585,7 +585,8 @@ class GPTProcessing(object):
 
 
 if __name__ == '__main__':
-    my_app = gr.Blocks()
+    # css_code='div{background-image:url("https://drive.google.com/uc?export=view&id=12345678900");}'
+    my_app = gr.Blocks(theme=gr.themes.Soft(primary_hue="indigo", secondary_hue="pink"))
     #this will call our program with gr.Block from gradio
     gradio_ui = GPTProcessing(my_app)
     # Create UI
