@@ -184,7 +184,8 @@ class GPTProcessing(object):
             message: The joke generated from the user input keyword
         """
         # Prompt engineering the prompt
-        big_prompt = "Give me a joke that must include the keyword " + "\'" + prompt + "\'"
+        # big_prompt = "Give me a joke that must include the keyword " + "\'" + prompt + "\'"
+        big_prompt = "Using the keyword" + "\'" + prompt + "\'" + ", give me a joke about it."
         
         # If there is upvoted responses and downvoted responses
         if len(self.upvote_prompts) > 0 and len(self.downvote_prompts) > 0:
@@ -199,14 +200,14 @@ class GPTProcessing(object):
         elif len(self.upvote_prompts) > 0:
             up_pr = ", ".join(self.upvote_prompts)
             big_prompt += " with similar jokes to " + "\'" + up_pr +  "\'"
-        # print(big_prompt)
+        print(big_prompt)
         completions = openai.ChatCompletion.create(
             model="ft:gpt-3.5-turbo-0613:monash-university-malaysia::7rREegcc",
             messages=[
                 {"role": "system", "content": "JokeBot is a chatbot that tells funny jokes from given keywords"},
                 {"role": "user", "content": big_prompt}
             ],
-            max_tokens=50,
+            max_tokens=250,
             temperature=0.7,
         )
 
@@ -429,7 +430,8 @@ class GPTProcessing(object):
             message_my: The joke generated from the user input keyword
         """
         # Prompt engineering the prompt
-        big_prompt_my = "In Malaysian mannerisms, give me a joke that must include the keyword " + "\'" + prompt_my + "\'"
+        # big_prompt_my = "In Malaysian slang and context, give me a joke about the keyword " + "\'" + prompt_my + "\'"
+        big_prompt_my = "Using the keyword" + "\'" + prompt_my + "\'" + ", give me a joke about it with a Malaysian/Singaporian slang and context."
         
         # If there is upvoted responses and downvoted responses
         if len(self.upvote_prompts_my) > 0 and len(self.downvote_prompts_my) > 0:
@@ -451,7 +453,7 @@ class GPTProcessing(object):
                 {"role": "system", "content": "JokeBot is a chatbot that tells funny jokes from given keywords"},
                 {"role": "user", "content": big_prompt_my}
             ],
-            max_tokens=50,
+            max_tokens=250,
             temperature=0.7,
         )
 
