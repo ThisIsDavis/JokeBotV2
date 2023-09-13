@@ -3,6 +3,7 @@ import os, os.path
 import openai
 import speech_recognition as sr
 import random
+import time
 from llama_index import GPTVectorStoreIndex, LLMPredictor, PromptHelper, ServiceContext, load_index_from_storage, StorageContext, SimpleDirectoryReader
 from langchain import ConversationChain, OpenAI
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
@@ -74,14 +75,14 @@ class GPTProcessing(object):
                 with gr.Row():
                     upvote_btn = gr.Button(value="👍  Upvote")  # Upvote Button
                     downvote_btn = gr.Button(value="👎  Downvote")  # Downvote Button
-                    regenerate_btn = gr.Button(value="🔄  Regenerate")  # Regenerate Button
                     clear_btn = gr.Button(value="🗑️  Clear prompt")  # Clear Prompt Button
+                    refresh_btn = gr.Button(value="🔄  Refresh")  # Regenerate Button
                     
                     # Logic when one of the buttons is clicked
                     upvote_btn.click(lambda: self.tag_response(1, None), inputs=[], outputs=[])  
                     downvote_btn.click(lambda: self.tag_response(0, None), inputs=[], outputs=[])
-                    regenerate_btn.click(self.regenerate, inputs=[state],  outputs=[chatbot, state])
                     clear_btn.click(lambda: message.update(""), inputs=[], outputs=[message])
+                    refresh_btn.click(self.refresh, inputs=[],  outputs=[])
 
                 # Who to recommend?
                 with gr.Row():
@@ -108,13 +109,13 @@ class GPTProcessing(object):
                 with gr.Row():
                     upvote_btn_my = gr.Button(value="👍  SHIOK")
                     downvote_btn_my = gr.Button(value="👎  Potong Stim")
-                    regenerate_btn_my = gr.Button(value="🔄  Regenerate")
                     clear_btn_my = gr.Button(value="🗑️  Clear prompt")
+                    refresh_btn_my = gr.Button(value="🔄  Refresh")
                     
                     upvote_btn_my.click(lambda: self.tag_response_my(1, None), inputs=[], outputs=[])
                     downvote_btn_my.click(lambda: self.tag_response_my(0, None), inputs=[], outputs=[])
-                    regenerate_btn_my.click(self.regenerate_my, inputs=[state_my],  outputs=[chatbot_my, state_my])
                     clear_btn_my.click(lambda: message_my.update(""), inputs=[], outputs=[message_my])
+                    refresh_btn_my.click(self.refresh, inputs=[],  outputs=[])
 
                 # Who to recommend?
                 with gr.Row():
@@ -184,18 +185,18 @@ class GPTProcessing(object):
             message: The joke generated from the user input keyword
         """
         # Prompt engineering the prompt
-        # big_prompt = "Give me a joke that must include the keyword " + "\'" + prompt + "\'"
-        big_prompt = "Using the keyword" + "\'" + prompt + "\'" + ", give me a joke about it."
+        big_prompt = f"Create a joke using the keyword '{prompt}'."
         
         # If there is upvoted responses and downvoted responses
         if len(self.upvote_prompts) > 0 and len(self.downvote_prompts) > 0:
             up_pr = ", ".join(self.upvote_prompts)
-            do_pr = ", ".join(self.downvote_prompts)
-            big_prompt += " with similar jokes to " + "\'" + up_pr +  "\'" + " and not similar to" + "\'" + do_pr +  "\'"
+            # do_pr = ", ".join(self.downvote_prompts)
+            big_prompt = f" Create another type of joke using the keyword '{prompt}'."
+            big_prompt += f" The joke should be similar to these upvoted jokes: {up_pr}."
         # If there is only 1 downvoted response
         elif len(self.downvote_prompts) > 0:
-            do_pr = ", ".join(self.downvote_prompts)
-            big_prompt += " that are not similar to " + "\'" + do_pr +  "\'"
+            # do_pr = ", ".join(self.downvote_prompts)
+            big_prompt = f" Create another type of joke using the keyword '{prompt}'."
         # If there is only 1 upvoted response
         elif len(self.upvote_prompts) > 0:
             up_pr = ", ".join(self.upvote_prompts)
@@ -208,7 +209,7 @@ class GPTProcessing(object):
                 {"role": "user", "content": big_prompt}
             ],
             max_tokens=250,
-            temperature=0.7,
+            temperature=0.65,
         )
 
         message = completions.choices[0].message.content  # Get the joke
@@ -225,28 +226,32 @@ class GPTProcessing(object):
         :Output:
             history, history: The state of the chat history after generating a joke
         """
-        self.input = input
+        self.input = input.split(' ')[0]  # Get the first word of the input
         history = history or []  # Create chat history list if doesn't exist or use existing chat history
         self.create_feedback(history, self.tag_memory)  # Append the previous chat and its feedback to a file
-        self.output = self.api_calling(input)  # Generate the joke
-        history.append((input, self.output))  # Append the prompt and joke to the chatbot display
+        self.output = self.api_calling(self.input)  # Generate the joke
+        history.append((self.input, self.output))  # Append the prompt and joke to the chatbot display
         self.tag_memory.append([None, None])  # Create a tag memory for the new joke
         return history, history
     
-    def regenerate(self, history):
+    def refresh(self):
         """
-        Regenerate a joke from the existing user input keyword
-        :Input:
-            history: The state of the chat history as an array of chats 
-        :Output:
-            history, history: The state of the chat history after regenerating a joke
+        Refresh the entire preference by deleting them
         """
-        # Checks if there is an existing keyword input
-        if self.input is not None:
-            # If yes, go generate another joke
-            return self.message_and_history(self.input, history)
-        else:
-            pass
+        # For normal jokes
+        self.tag_memory.clear()
+        self.upvote_prompts.clear()
+        self.downvote_prompts.clear()
+        self.input = None
+        self.output = None
+
+        # For Malaysian jokes
+        self.tag_memory_my.clear()
+        self.upvote_prompts_my.clear()
+        self.downvote_prompts_my.clear()
+        self.input_my = None
+        self.output_my = None
+    
 
     def tag_response(self, vote: int, recommendation: str) -> None:
         """
@@ -430,23 +435,24 @@ class GPTProcessing(object):
             message_my: The joke generated from the user input keyword
         """
         # Prompt engineering the prompt
-        # big_prompt_my = "In Malaysian slang and context, give me a joke about the keyword " + "\'" + prompt_my + "\'"
-        big_prompt_my = "Using the keyword" + "\'" + prompt_my + "\'" + ", give me a joke about it with a Malaysian/Singaporian slang and context."
-        
+        big_prompt_my = f"Create a joke using the keyword '{prompt_my}' in Malaysian slang and Malaysian context."
+                
         # If there is upvoted responses and downvoted responses
         if len(self.upvote_prompts_my) > 0 and len(self.downvote_prompts_my) > 0:
             up_pr_my = ", ".join(self.upvote_prompts_my)
-            do_pr_my = ", ".join(self.downvote_prompts_my)
-            big_prompt_my += " with similar jokes to " + "\'" + up_pr_my +  "\'" + " and not similar to" + "\'" + do_pr_my +  "\'"
+            # do_pr_my = ", ".join(self.downvote_prompts_my)
+            big_prompt_my = f" Create another type of joke using the keyword '{prompt_my}' in Malaysian slang and Malaysian context."
+            big_prompt_my += f" The joke should be similar to these upvoted jokes: {up_pr_my}."
+            # big_prompt_my += f" The joke should be similar to these upvoted jokes: {up_pr_my}, but not these downvoted jokes: {do_pr_my}."
         # If there is only 1 downvoted response
-        elif len(self.downvote_prompts) > 0:
-            do_pr_my = ", ".join(self.downvote_prompts_my)
-            big_prompt_my += " that are not similar to " + "\'" + do_pr_my +  "\'"
+        elif len(self.downvote_prompts_my) > 0:
+            # do_pr_my = ", ".join(self.downvote_prompts_my)
+            big_prompt_my = f" Create another type of joke using the keyword '{prompt_my}' in Malaysian slang and Malaysian context."
         # If there is only 1 upvoted response
         elif len(self.upvote_prompts_my) > 0:
             up_pr_my = ", ".join(self.upvote_prompts_my)
-            big_prompt_my += " with similar jokes to " + "\'" + up_pr_my +  "\'"
-        # print(big_prompt_my)
+            big_prompt_my += f" The joke should be similar to these upvoted jokes: {up_pr_my}."
+        print(big_prompt_my)
         completions = openai.ChatCompletion.create(
             model="ft:gpt-3.5-turbo-0613:monash-university-malaysia::7yCzUcJq",
             messages=[
@@ -454,7 +460,7 @@ class GPTProcessing(object):
                 {"role": "user", "content": big_prompt_my}
             ],
             max_tokens=250,
-            temperature=0.7,
+            temperature=0.75,
         )
 
         message_my = completions.choices[0].message.content  # Get the joke
@@ -472,29 +478,13 @@ class GPTProcessing(object):
         :Output:
             history_my, history_my: The state of the chat history after generating a joke
         """
-        self.input_my = input
+        self.input_my = input.split(' ')[0]  # Get the first word of the input
         history_my = history_my or []  # Create chat history list if doesn't exist or use existing chat history
         self.create_feedback_my(history_my, self.tag_memory_my)  # Append the previous chat and its feedback to a file
-        self.output_my = self.api_calling_my(input)  # Generate the joke
-        history_my.append((input, self.output_my))  # Append the prompt and joke to the chatbot display
+        self.output_my = self.api_calling_my(self.input_my)  # Generate the joke
+        history_my.append((self.input_my, self.output_my))  # Append the prompt and joke to the chatbot display
         self.tag_memory_my.append([None, None])  # Create a tag memory for the new joke
         return history_my, history_my
-    
-    def regenerate_my(self, history_my):
-        """
-        FOR MALAYSIAN JOKES
-        Regenerate a joke from the existing user input keyword
-        :Input:
-            history_my: The state of the chat history as an array of chats 
-        :Output:
-            history_my, history: The state of the chat history after regenerating a joke
-        """
-        # Checks if there is an existing keyword input
-        if self.input_my is not None:
-            # If yes, go generate another joke
-            return self.message_and_history_my(self.input_my, history_my)
-        else:
-            pass
 
     def tag_response_my(self, vote_my: int, recommendation_my: str) -> None:
         """
