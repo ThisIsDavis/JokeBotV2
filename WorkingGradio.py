@@ -448,7 +448,7 @@ class GPTProcessing(object):
             big_prompt_my += " with similar jokes to " + "\'" + up_pr_my +  "\'"
         # print(big_prompt_my)
         completions = openai.ChatCompletion.create(
-            model="ft:gpt-3.5-turbo-0613:monash-university-malaysia::7rREegcc",
+            model="ft:gpt-3.5-turbo-0613:monash-university-malaysia::7yCzUcJq",
             messages=[
                 {"role": "system", "content": "JokeBot is a chatbot that tells funny jokes from given keywords"},
                 {"role": "user", "content": big_prompt_my}
