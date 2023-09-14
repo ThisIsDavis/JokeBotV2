@@ -389,6 +389,7 @@ class GPTProcessing(object):
         self.user_joke_preferences += jokes
         # Append it to upvote prompts to produce jokes similar to this.
         self.upvote_prompts += jokes
+        self.upvote_prompts_my += jokes
         
         # Set the joke_str variable to the string of selected joke preferences.
         joke_str = selected_jokes
@@ -417,6 +418,7 @@ class GPTProcessing(object):
         """
         # Remove all common jokes in the upvote prompt and user joke preferences list.
         self.upvote_prompts = list(set(self.user_joke_preferences)^set(self.upvote_prompts))
+        self.upvote_prompts_my = list(set(self.user_joke_preferences)^set(self.upvote_prompts_my))
         self.user_joke_preferences = []     # Clear the saved user joke preferences.
         self.count = 1                      # Reset the count to one.
 

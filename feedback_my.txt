@@ -93,3 +93,23 @@ Joke: Q: How to tell if a kopitiam is open? A: The chairs are up on the tables.
 Vote: Upvote
 Recommend: None
 
+Prompt: fish
+Joke: What do you call a fish that has just finished watching a movie and is leaving the cinema? Ikan balik home.
+Vote: Upvote
+Recommend: None
+
+Prompt: animal
+Joke: Q: Why did the animal go into the carpet shop? A: To beli rug.
+Vote: Upvote
+Recommend: None
+
+Prompt: fish
+Joke: Why didn't the fish want to cross the road? Because it thinks paling kuah
+Vote: Upvote
+Recommend: None
+
+Prompt: elephant
+Joke: Why did the lempeng throw a baby out the window? Cause the baby was crying.
+Vote: Upvote
+Recommend: None
+
