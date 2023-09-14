@@ -192,7 +192,7 @@ class GPTProcessing(object):
             up_pr = ", ".join(self.upvote_prompts)
             # do_pr = ", ".join(self.downvote_prompts)
             big_prompt = f" Create another type of joke using the keyword '{prompt}'."
-            big_prompt += f" The joke should be similar to these upvoted jokes: {up_pr}."
+            # big_prompt += f" The joke should be similar to these upvoted jokes: {up_pr}."
         # If there is only 1 downvoted response
         elif len(self.downvote_prompts) > 0:
             # do_pr = ", ".join(self.downvote_prompts)
@@ -437,14 +437,15 @@ class GPTProcessing(object):
             message_my: The joke generated from the user input keyword
         """
         # Prompt engineering the prompt
-        big_prompt_my = f"Create a joke using the keyword '{prompt_my}' in Malaysian slang and Malaysian context."
+        big_prompt_my = f"Create a joke using the keyword '{prompt_my}' in Malaysian slang."
+        # big_prompt_my = f"You are an AI language model trained by OpenAI. You have been programmed to understand and generate text in various languages and dialects, including Malaysian slang. Your task is to create funny jokes that are relevant to the Malaysian context. The keyword for these jokes is '{prompt_my}'.Please generate a series of humorous jokes using that keyword. The jokes should be easy to understand and sensible, catering to a wide audience."
                 
         # If there is upvoted responses and downvoted responses
         if len(self.upvote_prompts_my) > 0 and len(self.downvote_prompts_my) > 0:
             up_pr_my = ", ".join(self.upvote_prompts_my)
             # do_pr_my = ", ".join(self.downvote_prompts_my)
             big_prompt_my = f" Create another type of joke using the keyword '{prompt_my}' in Malaysian slang and Malaysian context."
-            big_prompt_my += f" The joke should be similar to these upvoted jokes: {up_pr_my}."
+            # big_prompt_my += f" The joke should be similar to these upvoted jokes: {up_pr_my}."
             # big_prompt_my += f" The joke should be similar to these upvoted jokes: {up_pr_my}, but not these downvoted jokes: {do_pr_my}."
         # If there is only 1 downvoted response
         elif len(self.downvote_prompts_my) > 0:
@@ -461,8 +462,8 @@ class GPTProcessing(object):
                 {"role": "system", "content": "JokeBot is a chatbot that tells funny jokes from given keywords"},
                 {"role": "user", "content": big_prompt_my}
             ],
-            max_tokens=250,
-            temperature=0.75,
+            max_tokens=400,
+            temperature=0.65,
         )
 
         message_my = completions.choices[0].message.content  # Get the joke

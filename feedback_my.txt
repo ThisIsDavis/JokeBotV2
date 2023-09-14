@@ -113,3 +113,233 @@ Joke: Why did the lempeng throw a baby out the window? Cause the baby was crying
 Vote: Upvote
 Recommend: None
 
+Prompt: fish
+Joke: Guy: Do you like fish? Girl: No, I don't like. Guy: *leaves* Girl: But I like you.
+Vote: Upvote
+Recommend: None
+
+Prompt: cow
+Joke: Guy: You like cow? Girl: No, I don't like. Guy: *leaves* Girl: But I like moooo
+Vote: Downvote
+Recommend: None
+
+Prompt: fish
+Joke: Why did the fish cry? Because it was MASih hidup
+Vote: Downvote
+Recommend: None
+
+Prompt: fishing
+Joke: How to catch fish with toothpaste? Squeeze the tube and said PEK CHIO!
+Vote: Downvote
+Recommend: None
+
+Prompt: team
+Joke: A guy got separated from his tour group and ended up in a team building camp instead. It's his first day and he got introduced to his teammates. A guy with a keen eye for fruits. A guy who loves to procrastinate. A guy who is always busy. A guy who is good at counting. The fruit guy introduced himself 'Name is Tay, Teem Tay'. The procrastinating guy introduced himself 'Name is Lei, Le Lei'. The busy guy introduced himself 'Name is Da, Da Tay'. The guy who is good at counting introduced himself 'Name is Zhi, Zhi Tay'. The instructor was like, 'I'm so sorry for the confusion, all their names sound like fruits but they are not, this team is Tay Lei Da Zhi Tay' (天雷地 异数)
+Vote: Upvote
+Recommend: None
+
+Prompt: tell
+Joke: Customer: tell me a joke. Waiter: your food is coming.
+Vote: Upvote
+Recommend: None
+
+Prompt: animal
+Joke: Hey, are you a chicken? Cause I'm ayam for you
+Vote: Upvote
+Recommend: None
+
+Prompt: animal
+Joke: Why was the chicken hiding in the closet? Sebab dia takut kena ‘closet’.
+Vote: Upvote
+Recommend: None
+
+Prompt: fun
+Joke: What is the most fun thing to do while you are in prison? Fun-don!
+Vote: Upvote
+Recommend: None
+
+Prompt: study
+Joke: If you use your hand to cover your mouth, what is that? Study.
+Vote: Upvote
+Recommend: None
+
+Prompt: animal
+Joke: animal apa yang suka jumpa orang? tapir (tapi) rindu
+Vote: Upvote
+Recommend: None
+
+Prompt: club
+Joke: Do you club? Cause i clubmatic when i see you
+Vote: Upvote
+Recommend: None
+
+Prompt: fun
+Joke: What is the funniest thing to do during a water cut? Fill the empty bottles back with water.
+Vote: Upvote
+Recommend: None
+
+Prompt: car
+Joke: What do you call a car that is parked at a wrong spot? Kereta salah parking.
+Vote: Upvote
+Recommend: None
+
+Prompt: lecture
+Joke: Why did the lecture ask everyone to ‘close your eyes’? Because he had so many typos
+Vote: Upvote
+Recommend: None
+
+Prompt: cinema
+Joke: Why the cinema can't open during the Covid-19 pandemic? Because all the seats are not socia(distanced)
+Vote: Upvote
+Recommend: None
+
+Prompt: muslim
+Joke: What's a Muslim's favorite way to eat chicken? Ayam sorry
+Vote: Upvote
+Recommend: None
+
+Prompt: pork
+Joke: What do you call a pig in a casino? Pork-er
+Vote: Upvote
+Recommend: None
+
+Prompt: university
+Joke: What do you call a university student who is not in love? A KDU student.
+Vote: Upvote
+Recommend: None
+
+Prompt: monash
+Joke: What's the most common question asked by Monash students? "Where are you from?"
+Vote: Upvote
+Recommend: None
+
+Prompt: exams
+Joke: What did one exam paper say to the other? Got questions or not?
+Vote: Upvote
+Recommend: None
+
+Prompt: teacher
+Joke: Why did the teacher go to the club? Because she heard all the kids were dancing to the latest tiktok songs.
+Vote: Upvote
+Recommend: None
+
+Prompt: KFC
+Joke: What does KFC stands for? Katak Fikir Cepat
+Vote: Upvote
+Recommend: None
+
+Prompt: mcd
+Joke: Boy: Want to eat McD? Girl: McD what? Boy: Mc-date
+Vote: Upvote
+Recommend: None
+
+Prompt: pubg
+Joke: Hey girl, are you a playerunknown's battlegrounds? Cause you always make my heart go pubg
+Vote: Upvote
+Recommend: None
+
+Prompt: bottle
+Joke: A boy went to his dad and said, "Pa, I'm bottle." His dad replied, "Ya bottle, plastic bottle, glass bottle or bottle cap?"
+Vote: Upvote
+Recommend: None
+
+Prompt: asians
+Joke: Why do asians like to eat rice? Because they want to eat asians much as possible.
+Vote: Upvote
+Recommend: None
+
+Prompt: animal
+Joke: What animal is often found in a casino? The COW! (Kau)
+Vote: Upvote
+Recommend: None
+
+Prompt: crow
+Joke: What's black and always lost? A crow in Kajang.
+Vote: Upvote
+Recommend: None
+
+Prompt: genting
+Joke: Why don't we ever go to Genting? Because we are Genting-less.
+Vote: Upvote
+Recommend: None
+
+Prompt: crow
+Joke: What does a crow say when it is happy? Cor-crow.
+Vote: Upvote
+Recommend: None
+
+Prompt: laptop
+Joke: Why did the laptop go to the salon? Because it needed a new mouse.
+Vote: Upvote
+Recommend: None
+
+Prompt: nasilemak
+Joke: What is the most expensive food in the world? Nasilemak, because you take the rice, you take the chicken, you take the egg, you take the nuts. What left? Air. You have to pay for air.
+Vote: Upvote
+Recommend: None
+
+Prompt: facebook
+Joke: Guy: Eh, you use what app one? Girl: Facebook Guy: Wah piang, I Facebook you, can or not?
+Vote: Downvote
+Recommend: None
+
+Prompt: drama
+Joke: A man was watching a drama on TV. Suddenly, he burst into tears. His wife asked, “Why are you crying?” He answered, “Our son’s name is Ah Beng.”
+Vote: Upvote
+Recommend: None
+
+Prompt: football
+Joke: Boy: Football ade orang tak? Girl: Aduh! Masuk tv pun tak tahu.
+Vote: Upvote
+Recommend: None
+
+Prompt: idol
+Joke: What did the chicken say to its favourite idol? Ayam your biggest fan!
+Vote: Upvote
+Recommend: None
+
+Prompt: kpop
+Joke: What is the name of a kpop band that only sang 'tak boleh pakai'? TAKBPA
+Vote: Upvote
+Recommend: None
+
+Prompt: najib
+Joke: What would you call a person who’s rich, but not rich enough to be considered najib? Minority
+Vote: Upvote
+Recommend: None
+
+Prompt: monash
+Joke: "Hey, why are there so many international students in Monash? Because it’s a ‘mo’ nash university!"
+Vote: Upvote
+Recommend: None
+
+Prompt: game
+Joke: Wanna hear a game joke? Good. Game over.
+Vote: Upvote
+Recommend: None
+
+Prompt: ps5
+Joke: Why is the PS5 so good at playing badminton? Cuz it always practice lob.
+Vote: Upvote
+Recommend: None
+
+Prompt: alcohol
+Joke: Why are there so few Chinese alcoholics? Because they can’t say Alcoholics Anonymous
+Vote: Upvote
+Recommend: None
+
+Prompt: indian
+Joke: Hey girl, are you an Indian? Cuz I wanna Naan stop talking to you
+Vote: Upvote
+Recommend: None
+
+Prompt: MH370
+Joke: What do you call a plane that goes missing near Kota Kinabalu? MH370
+Vote: Upvote
+Recommend: None
+
+Prompt: newyear
+Joke: What do you call a motorbike with a new number plate on new year? Newwew nyo.
+Vote: Upvote
+Recommend: None
+

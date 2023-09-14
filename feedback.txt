@@ -348,3 +348,63 @@ Joke: Q: What do you call a sleepwalking nun?  A: A roamin' Catholic.
 Vote: Upvote
 Recommend: None
 
+Prompt: animal
+Joke: Why did the scarecrow win an award? Because he was outstanding in his field!
+Vote: Upvote
+Recommend: None
+
+Prompt: cow
+Joke: Why did the cow cross the road? To get to the udder side.
+Vote: Upvote
+Recommend: None
+
+Prompt: crow
+Joke: Two crows are sitting on a fence and one crow says to the other, "If we don't find any roadkill in the next ten minutes, I'm gonna have to fly down to the McDonalds on 6th."
+Vote: Upvote
+Recommend: None
+
+Prompt: monash
+Joke: Q. What is the best thing about Monash? A. The view of Melbourne as you leave.
+Vote: Upvote
+Recommend: None
+
+Prompt: animal
+Joke: Why don't scientists trust atoms? Because they make up everything.
+Vote: Upvote
+Recommend: None
+
+Prompt: animal
+Joke: Q: What did the duck say when he bought lipstick? A: "Put it on my bill."
+Vote: Upvote
+Recommend: None
+
+Prompt: cow
+Joke: Q: What do you call a cow that eats your grass?  A: A lawn moo-er.
+Vote: Upvote
+Recommend: None
+
+Prompt: body
+Joke: Q: What do you call a cow that eats your grass?  A: A lawn moo-er.
+Vote: Downvote
+Recommend: None
+
+Prompt: animal
+Joke: Two guys are walking through a game park & they come across a lion that has not eaten for days. The lion starts chasing the two men. They run as fast as they can and the one guy starts getting tired and decides to say a prayer, "Please turn this lion into a Christian, Lord." He looks to see if the lion is still chasing and he sees the lion on its knees. Happy to see his prayer answered, he turns around and heads towards the lion. As he comes closer to the lion, he hears the it saying a prayer: "Thank you Lord for the food I am about to receive."
+Vote: Upvote
+Recommend: None
+
+Prompt: radiation
+Joke: Why did the scarecrow win an award? Because he was outstanding in his field!
+Vote: Upvote
+Recommend: None
+
+Prompt: radiation
+Joke: A nuclear power plant hires a new engineer. The first day the engineer comes home and his wife asks, “How was your first day?” The engineer admits that he got fired. His wife asks, “Why? What happened?” The engineer explains that he made a pass at the secretary and she filed a sexual harassment complaint against him. His wife says, “I’ll take care of this.” She goes to the nuclear power plant the next day, dressed in a low-cut blouse and a short skirt. The engineer’s former secretary answers the door. The wife says, “I’ve come to talk to you about my husband’s complaint.”
+Vote: Downvote
+Recommend: None
+
+Prompt: train
+Joke: Q: What do you call a train that's gone off the tracks?  A: A trainwreck.
+Vote: Upvote
+Recommend: None
+
