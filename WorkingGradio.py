@@ -3,10 +3,6 @@ import os, os.path
 import openai
 import speech_recognition as sr
 import random
-import time
-from llama_index import GPTVectorStoreIndex, LLMPredictor, PromptHelper, ServiceContext, load_index_from_storage, StorageContext, SimpleDirectoryReader
-from langchain import ConversationChain, OpenAI
-from langchain.chains.conversation.memory import ConversationBufferWindowMemory
 from utils import *
 
 
@@ -185,22 +181,21 @@ class GPTProcessing(object):
             message: The joke generated from the user input keyword
         """
         # Prompt engineering the prompt
-        big_prompt = f"Create a joke using the keyword '{prompt}'."
+        big_prompt = f"Generate a funny joke about the word '{prompt}'. Give a joke pun only when it only makes sense."
         
-        # If there is upvoted responses and downvoted responses
-        if len(self.upvote_prompts) > 0 and len(self.downvote_prompts) > 0:
-            up_pr = ", ".join(self.upvote_prompts)
-            # do_pr = ", ".join(self.downvote_prompts)
-            big_prompt = f" Create another type of joke using the keyword '{prompt}'."
-            # big_prompt += f" The joke should be similar to these upvoted jokes: {up_pr}."
-        # If there is only 1 downvoted response
-        elif len(self.downvote_prompts) > 0:
-            # do_pr = ", ".join(self.downvote_prompts)
-            big_prompt = f" Create another type of joke using the keyword '{prompt}'."
-        # If there is only 1 upvoted response
-        elif len(self.upvote_prompts) > 0:
-            up_pr = ", ".join(self.upvote_prompts)
-            big_prompt += " with similar jokes to " + "\'" + up_pr +  "\'"
+        # Ensure there is a response before crafting voted prompts
+        if len(self.tag_memory) > 0:
+            # Get the previous response
+            last_response = self.tag_memory[-1]
+            
+            # If previous response is downvoted 
+            if last_response[0] == 0:
+                big_prompt = f"The joke was not funny. Please give me another type of joke about the word '{prompt}'."
+            # If previous response is upvoted 
+            elif last_response[0] == 1:
+                up_pr = self.upvote_prompts[-1]
+                big_prompt += " with similar jokes to " + "\'" + up_pr +  "\'"
+                
         print(big_prompt)
         completions = openai.ChatCompletion.create(
             model="ft:gpt-3.5-turbo-0613:monash-university-malaysia::7rREegcc",
@@ -437,24 +432,23 @@ class GPTProcessing(object):
             message_my: The joke generated from the user input keyword
         """
         # Prompt engineering the prompt
-        big_prompt_my = f"Create a joke using the keyword '{prompt_my}' in Malaysian slang."
+        big_prompt_my = f"Can give me a funny joke about the keyword '{prompt_my}' in Malaysia slang ah? The joke need to make sense, don't use so many puns and not all joke need to say 'lah, ma, leh, etc.'"
         # big_prompt_my = f"You are an AI language model trained by OpenAI. You have been programmed to understand and generate text in various languages and dialects, including Malaysian slang. Your task is to create funny jokes that are relevant to the Malaysian context. The keyword for these jokes is '{prompt_my}'.Please generate a series of humorous jokes using that keyword. The jokes should be easy to understand and sensible, catering to a wide audience."
-                
-        # If there is upvoted responses and downvoted responses
-        if len(self.upvote_prompts_my) > 0 and len(self.downvote_prompts_my) > 0:
-            up_pr_my = ", ".join(self.upvote_prompts_my)
-            # do_pr_my = ", ".join(self.downvote_prompts_my)
-            big_prompt_my = f" Create another type of joke using the keyword '{prompt_my}' in Malaysian slang and Malaysian context."
-            # big_prompt_my += f" The joke should be similar to these upvoted jokes: {up_pr_my}."
-            # big_prompt_my += f" The joke should be similar to these upvoted jokes: {up_pr_my}, but not these downvoted jokes: {do_pr_my}."
-        # If there is only 1 downvoted response
-        elif len(self.downvote_prompts_my) > 0:
-            # do_pr_my = ", ".join(self.downvote_prompts_my)
-            big_prompt_my = f" Create another type of joke using the keyword '{prompt_my}' in Malaysian slang and Malaysian context."
-        # If there is only 1 upvoted response
-        elif len(self.upvote_prompts_my) > 0:
-            up_pr_my = ", ".join(self.upvote_prompts_my)
-            big_prompt_my += f" The joke should be similar to these upvoted jokes: {up_pr_my}."
+        
+        # [prompt1, prompt2, prompt3, ]
+        
+        # Ensure there is a response before crafting voted prompts
+        if len(self.tag_memory_my) > 0:
+            last_response_my = self.tag_memory_my[-1]
+            
+            # If previous response is downvoted
+            if last_response_my[0] == 0:
+                big_prompt_my = f"Brother the joke where got funny. Give me another type of joke about the keyword '{prompt_my}' in Malaysian slang and Malaysian context lah please."
+            # If previous response is upvoted
+            elif last_response_my[0] == 1:
+                up_pr_my = self.upvote_prompts_my[-1]
+                big_prompt_my += " with similar jokes to " + "\'" + up_pr_my +  "\'"
+            
         print(big_prompt_my)
         completions = openai.ChatCompletion.create(
             model="ft:gpt-3.5-turbo-0613:monash-university-malaysia::7yCzUcJq",
@@ -462,7 +456,7 @@ class GPTProcessing(object):
                 {"role": "system", "content": "JokeBot is a chatbot that tells funny jokes from given keywords"},
                 {"role": "user", "content": big_prompt_my}
             ],
-            max_tokens=400,
+            max_tokens=1000,
             temperature=0.65,
         )
 
