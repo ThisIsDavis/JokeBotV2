@@ -118,8 +118,8 @@ class GPTProcessing(object):
                     def on_send_btn_click_my(input):
                         self.tag_response_my(None, input)
 
-                    recommend_textbox_my = gr.components.Textbox(label='Who you nak recommend joke ini to?')
-                    send_btn_my = gr.Button('Enter')
+                    recommend_textbox_my = gr.Dropdown(["Ibu bapa", "Siblings", "Relatives", "Kawan-kawan", "Colleagues"], allow_custom_value = True, label = "Who you nak recommend joke ini?" , interactive = True)
+                    send_btn_my = gr.Button("Submit Feedback")
                     send_btn_my.click(on_send_btn_click_my, inputs=[recommend_textbox_my], outputs=[])
 
             # Button to start recording voice and outputting it to the message text box.
