@@ -66,8 +66,8 @@ class GPTProcessing(object):
                 with gr.Row():
                     # Record audio and output the audio filepath.
                     voice_recog = gr.Audio(source = "microphone", type = "filepath")
-                    # Auto submit when stop recording
-                    voice_recog.stop_recording(self.transcribe_audio, inputs = [voice_recog], outputs = [message])
+                    # Button to start voice recognition
+                    voice_recog_action = gr.Button("Keyword Voice Recognition")
                 
                 # Buttons Galore
                 with gr.Row():
@@ -102,7 +102,7 @@ class GPTProcessing(object):
                     # Record audio and output the audio filepath.
                     voice_recog_my = gr.Audio(source = "microphone", type = "filepath")
                     # Button to start voice recognition
-                    voice_recog_my.stop_recording(self.transcribe_audio, inputs = [voice_recog_my], outputs = [message_my])
+                    voice_recog_action_my = gr.Button("Keyword Voice Recognition")
                 # Buttons Galore
                 with gr.Row():
                     upvote_btn_my = gr.Button(value="👍  SHIOK")  # Upvote Button
@@ -123,6 +123,29 @@ class GPTProcessing(object):
                     recommend_textbox_my = gr.Dropdown(["Ibu bapa", "Siblings", "Relatives", "Kawan-kawan", "Colleagues"], allow_custom_value = True, label = "Who you nak recommend joke ini?" , interactive = True)
                     send_btn_my = gr.Button("Submit Feedback", scale = 0.4)
                     send_btn_my.click(on_send_btn_click_my, inputs=[recommend_textbox_my], outputs=[])
+            
+            # Button to start recording voice and outputting it to the message text box.
+            voice_recog_action.click(
+                self.transcribe_audio,
+                [
+                    voice_recog
+                ], 
+                [
+                    message
+                ]
+            )
+            
+            # Malaysian Jokes
+            # Button to start recording voice and outputting it to the message text box.
+            voice_recog_action_my.click(
+                self.transcribe_audio,
+                [
+                    voice_recog_my
+                ], 
+                [
+                    message_my
+                ]
+            )
             
             # Button to save all selected joke preferences and display them back to the user.
             joke_preferences_action.click(
