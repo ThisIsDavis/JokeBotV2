@@ -3,6 +3,7 @@ import os, os.path
 import openai
 import speech_recognition as sr
 import random
+import re
 from utils import *
 
 
@@ -11,6 +12,7 @@ class GPTProcessing(object):
     def __init__(self, ui_obj):
         # For normal jokes
         self.ui_obj = ui_obj
+        self.profanity_list = ["fuck", "shit", "bitch", "ass", "sex", "motherfucker", "asshole", "dick", "cunt", "tits", "piss", "twat", "penis", "vagina"]  # List of profane words to be filtered
         self.tag_memory = []
         self.upvote_prompts = []
         self.downvote_prompts = []
@@ -24,7 +26,7 @@ class GPTProcessing(object):
         self.input_my = None
         self.output_my = None
 
-        self.OPENAI_API_KEY = ""
+        self.OPENAI_API_KEY = "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"
         os.environ["OPENAI_API_KEY"] = self.OPENAI_API_KEY
         openai.api_key = self.OPENAI_API_KEY
 
@@ -71,8 +73,8 @@ class GPTProcessing(object):
                 with gr.Row():
                     upvote_btn = gr.Button(value="👍  Upvote")  # Upvote Button
                     downvote_btn = gr.Button(value="👎  Downvote")  # Downvote Button
-                    clear_btn = gr.Button(value="🗑️  Clear prompt")  # Clear Prompt Button
-                    refresh_btn = gr.Button(value="🔄  Refresh")  # Regenerate Button
+                    clear_btn = gr.Button(value="🗑️  Clear Keyword")  # Clear Keyword Button
+                    refresh_btn = gr.Button(value="🔄  Refresh")  # Refresh Button
                     
                     # Logic when one of the buttons is clicked
                     upvote_btn.click(lambda: self.tag_response(1, None), inputs=[], outputs=[])  
@@ -103,10 +105,10 @@ class GPTProcessing(object):
                     voice_recog_my.stop_recording(self.transcribe_audio, inputs = [voice_recog_my], outputs = [message_my])
                 # Buttons Galore
                 with gr.Row():
-                    upvote_btn_my = gr.Button(value="👍  SHIOK")
-                    downvote_btn_my = gr.Button(value="👎  Potong Stim")
-                    clear_btn_my = gr.Button(value="🗑️  Clear prompt")
-                    refresh_btn_my = gr.Button(value="🔄  Refresh")
+                    upvote_btn_my = gr.Button(value="👍  SHIOK")  # Upvote Button
+                    downvote_btn_my = gr.Button(value="👎  Potong Stim")  # Downvote Button
+                    clear_btn_my = gr.Button(value="🗑️  Clear Keyword")  # Clear Keyword Button
+                    refresh_btn_my = gr.Button(value="🔄  Refresh")  # Refresh Button
                     
                     upvote_btn_my.click(lambda: self.tag_response_my(1, None), inputs=[], outputs=[])
                     downvote_btn_my.click(lambda: self.tag_response_my(0, None), inputs=[], outputs=[])
@@ -148,6 +150,29 @@ class GPTProcessing(object):
         """
         self.ui_obj.queue().launch(share=True)
 
+    def profanity_filter(self, text):
+        """
+        Filter out any profanities in the joke
+        :Input:
+            text: The joke given
+        :Output:
+            The profanity filtered joke
+        """
+        
+        def replace(word):
+            """
+            Keep the first letter of the swear word, replace the rest with asterisks
+            :Input:
+                word: The swear word
+            :Output:
+                A censored swear word
+            """
+            return word.group(0)[0] + "*" * (len(word.group(0)) - 1)
+    
+        # Regular expression to find profanity in the text
+        regex = r"\b(" + "|".join(map(re.escape, self.profanity_list)) + r")\b"
+        return re.sub(regex, replace, text, flags=re.IGNORECASE)
+
     def api_calling(self, prompt: str) -> str:
         """
         Creates the prompt based on the user input keyword, previously upvoted and downvoted jokes. Then generates a joke using the
@@ -185,6 +210,7 @@ class GPTProcessing(object):
         )
 
         message = completions.choices[0].message.content  # Get the joke
+        message = self.profanity_filter(message)  # Filter out any profanities
         # print(message)
         return message
 
@@ -236,7 +262,7 @@ class GPTProcessing(object):
         if len(self.tag_memory) > 0:
             # Get the current response
             last_response = self.tag_memory[-1]
-            # If there is a recommendation, set the recommedation
+            # If there is a recommendation, set the recommendation
             if recommendation is not None and len(recommendation) > 0:
                 last_response[1] = recommendation
             # If there is a downvote, set the vote to 0 and append the output to downvote prompts
@@ -294,10 +320,10 @@ class GPTProcessing(object):
         :Output:
             text: The transcribed text based on the input audio.
         """
-        # Initalise a Recognizer instance.
+        # Initialise a Recognizer instance.
         recogniser = sr.Recognizer()
         
-        # Open the audio file based on inputted filepath an initalise it to source variable.
+        # Open the audio file based on inputted filepath an initialise it to source variable.
         with sr.AudioFile(audio_path) as source:
             # Extract audio data from the source file.
             audio = recogniser.record(source)
@@ -373,7 +399,7 @@ class GPTProcessing(object):
             # If the textbox is not empty, add a newline before adding the joke.
             if len(joke_str) != 0:
                 joke_str += "\n{0}. {1}".format(self.count, joke)
-            # Else if the textbox is initally empty, do not add a new line on the top.
+            # Else if the textbox is initially empty, do not add a new line on the top.
             else:
                 joke_str += "{0}. {1}".format(self.count, joke)
             
@@ -440,6 +466,7 @@ class GPTProcessing(object):
         )
 
         message_my = completions.choices[0].message.content  # Get the joke
+        message_my = self.profanity_filter(message_my)  # Filter out any profanities
         # print(message_my)
         return message_my
 
@@ -474,7 +501,7 @@ class GPTProcessing(object):
         if len(self.tag_memory_my) > 0:
             # Get the current response
             last_response_my = self.tag_memory_my[-1]
-            # If there is a recommendation, set the recommedation
+            # If there is a recommendation, set the recommendation
             if recommendation_my is not None and len(recommendation_my) > 0:
                 last_response_my[1] = recommendation_my
             # If there is a downvote, set the vote to 0 and append the output to downvote prompts
