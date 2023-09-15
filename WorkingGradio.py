@@ -85,7 +85,7 @@ class GPTProcessing(object):
                     def on_send_btn_click(input):
                         self.tag_response(None, input)
 
-                    recommend_textbox = gr.components.Textbox(label='Who would you recommend the current joke to?')
+                    recommend_textbox = gr.Dropdown(["Parents", "Siblings", "Relatives", "Friends", "Colleagues"], allow_custom_value = True, label = "Who would you recommend the current joke to?" , interactive = True)
                     send_btn = gr.Button(value='Enter')
                     send_btn.click(on_send_btn_click, inputs=[recommend_textbox], outputs=[])
 
