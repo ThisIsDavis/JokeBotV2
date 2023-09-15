@@ -296,8 +296,10 @@ class GPTProcessing(object):
                 # Checks what is the vote
                 if last_feedback[0] == 0:
                     f.write('Vote: Downvote\n')  # Write vote as downvote
-                else:
+                elif last_feedback[0] == 1:
                     f.write('Vote: Upvote\n')  # Write vote as upvote
+                else:
+                    f.write('Vote: None\n')  # Write vote as None
 
                 f.write(f'Recommend: {last_feedback[1]}\n\n')  # Write recommendation
             # print("it works")
@@ -533,8 +535,10 @@ class GPTProcessing(object):
                 # Checks what is the vote
                 if last_feedback_my[0] == 0:
                     f.write('Vote: Downvote\n')  # Write vote as downvote
-                else:
+                elif last_feedback_my[0] == 1:
                     f.write('Vote: Upvote\n')  # Write vote as upvote
+                else:
+                    f.write('Vote: None\n')  # Write vote as None
 
                 f.write(f'Recommend: {last_feedback_my[1]}\n\n')  # Write recommendation
             # print("it works")
