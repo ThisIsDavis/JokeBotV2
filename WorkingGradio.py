@@ -432,7 +432,7 @@ class GPTProcessing(object):
             message_my: The joke generated from the user input keyword
         """
         # Prompt engineering the prompt
-        big_prompt_my = f"Can give me a funny joke about the keyword '{prompt_my}' in Malaysia slang ah? The joke need to make sense, don't use so many puns and not all joke need to say 'lah, ma, leh, etc.'"
+        big_prompt_my = f"Create a joke using the keyword '{prompt_my}' in Malaysian slang and Malaysian context."
         # big_prompt_my = f"You are an AI language model trained by OpenAI. You have been programmed to understand and generate text in various languages and dialects, including Malaysian slang. Your task is to create funny jokes that are relevant to the Malaysian context. The keyword for these jokes is '{prompt_my}'.Please generate a series of humorous jokes using that keyword. The jokes should be easy to understand and sensible, catering to a wide audience."
         
         # [prompt1, prompt2, prompt3, ]
@@ -443,7 +443,7 @@ class GPTProcessing(object):
             
             # If previous response is downvoted
             if last_response_my[0] == 0:
-                big_prompt_my = f"Brother the joke where got funny. Give me another type of joke about the keyword '{prompt_my}' in Malaysian slang and Malaysian context lah please."
+                big_prompt_my = f"Create another type of joke using the keyword '{prompt_my}' in Malaysian slang and Malaysian context."
             # If previous response is upvoted
             elif last_response_my[0] == 1:
                 up_pr_my = self.upvote_prompts_my[-1]
@@ -453,7 +453,7 @@ class GPTProcessing(object):
         completions = openai.ChatCompletion.create(
             model="ft:gpt-3.5-turbo-0613:monash-university-malaysia::7yCzUcJq",
             messages=[
-                {"role": "system", "content": "JokeBot is a chatbot that tells funny jokes from given keywords"},
+                {"role": "system", "content": "JokeBot is a chatbot that tells funny jokes in Malaysian context from given keywords"},
                 {"role": "user", "content": big_prompt_my}
             ],
             max_tokens=1000,
