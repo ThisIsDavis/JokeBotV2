@@ -330,7 +330,7 @@ class GPTProcessing(object):
             
             # If there's audio, recognise the speech using Google Speech Recognition and return the first keyword transcribed.
             try:
-                text = recogniser.recognize_google(audio, language = "en-GB", pfilter = 0)     # Transcribe the audio into text.
+                text = recogniser.recognize_google(audio)   # Transcribe the audio into text.
                 text = str(text.split()[0]).lower()         # Extract the first word of the text and then turn it to lowercase.
                 return text
             
