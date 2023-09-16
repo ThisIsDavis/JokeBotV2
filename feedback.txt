@@ -408,3 +408,816 @@ Joke: Q: What do you call a train that's gone off the tracks?  A: A trainwreck.
 Vote: Upvote
 Recommend: None
 
+Prompt: phone
+Joke: Q: How do you organize a space party?  A: You planet.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: A guy walks into a store and says to the clerk, "I'd like a gas cap for my Yugo." The clerk thinks for a few seconds then says, "Okay, that seems like a fair trade."
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Why did the scarecrow win an award? Because he was outstanding in his field!
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Why don't scientists trust atoms? Because they make up everything.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that talks back to you?  A: A quackphone.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that's never engaged?  A: A tele-bone.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: The phone rings at FBI headquarters. "Hello? I'm calling to report my neighbor, Clifford. He is hiding marijuana inside his firewood!" "Thank you very much for the call, sir." The next day, FBI agents descend on the neighbor's house. They search the shed where the firewood is kept. Using axes, they bust open every piece of wood, but find no marijuana. They swear at the neighbors and leave. The phone rings at the neighbors house. Hey, Clifford, did the FBI come?" "Yep." "Did they chop your firewood?" "Yep." "Great, now it's your turn to call. I need my garden plowed."
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Why did the girl bring a ladder to the bar? She heard the drinks were on the house.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that's underwater?  A: A sub-woofer.
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that's underwater?  A: A sub-woofer.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Why did the scarecrow win an award? Because he was outstanding in his field!
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: Two iPhones walk into a bar. I forget the rest.
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: A phone in hand is worth two in the bush.
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: A phone in hand is worth two in the bush.
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: Yo mama is so stupid, she tried to surf the microwave.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Yo mama so stupid, she tried to surf the microwave.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Two friends are talking to each other on the phone:    "Hi, what are you doing?"    "I'm on a course about giving horrible death to your mother-in-law."    "Wow, really? Send me the address of that school, my mother-in-law has to sign up."
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: What happens if you download the Princess Diana screensaver application?  A: Your iphone will keep crashing!
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Yo mama is so stupid, she tried to surf the microwave.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that can sing?  A: A gramophone.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: I'll call you later. Don't call me later, call me Dad.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Why did the scarecrow win an award? Because he was outstanding in his field.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: I'd tell you a joke about the phone... But it's all tapped out.
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: I'm sorry, I can't generate a joke with that information.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Yo mama so stupid, she tried to surf the microwave.
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: Yo mama is so stupid that she thought Dunkin' Donuts was a basketball team.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Why did the boy bring a ladder to the bar? He wanted to raise the bar.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Two men are sitting next to each other in an Irish-style pub in New York City. They both order pints of Guinness. One of them turns to the other and says "So where are you from, then?" "I'm from Ireland." "Me too! I'll drink to that." They both finish their pints and order two more. "Where in Ireland are you from?" "Dublin." "Me too! I'll drink to that." They both finish their pints and order two more. "Where in Dublin are you from?" "The East Side." "The East Side? Me too! What a coincidence! I'll drink to that!" They both finish their pints and order two more. "Where on the East Side are you from?" "McDonagh Street." "Me too! This is incredible! I'll drink to that." As the bartender pours them another two pints, another customer at the bar says to him, "That's amazing! I can't believe they're from the same street in Dublin. What's going on?" "Oh, it's nothing amazing," says the bartender." "It's just the Ferguson twins getting drunk again."
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: How do you organize a space party? You planet.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Why do bees have sticky hair? Because they use honeycombs.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: I would tell you a joke about my phone... But it doesn't have a ring to it.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: A boy comes home from school and tells his mother that he got a part in the school play. "What part?" the mother asked. "I play a Jewish husband," the boy replied. "Go back to school and tell your teacher that you want a speaking role!"
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: A blonde walked into a doctor's office with a hole in her hand. The doctor told her that he had to report all gunshot wounds, and this was an obvious gunshot wound, so would she please explain how it happened? The blonde said, "Well, to be honest with you, I was trying to commit suicide, so first I stuck the gun in my mouth, but thought, 'Wait a minute, I just had all that bridge work done,' so I pointed it between my eyes, but then I thought, 'Wait a minute, I just got my hair done,' so I pointed it at my chest, but then I thought, 'Wait a minute, I just had a boob job,' and then I put the gun in my ear, and thought, 'This is going to be loud,' so I put my finger in the other ear before I pulled the trigger."
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Yo mama is so stupid, she tried to call somebody through a glass window.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Yo mama is so stupid, she tried to save a fish from drowning.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Yo mama is so stupid that she tried to use her iPhone to weigh something.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: A blonde was taking helicopter lessons. The instructor said, "I'll radio you every 1000 feet to see how you're doing." At 1000 feet, the instructor radioed her and said she was doing great. At 2000 feet, he said she was still doing well. Right before she got to 3000 feet, the propeller stopped, and she twirled to the ground. The instructor ran to where the crash happened and pulled her out of the helicopter. "What went wrong?" she said. The instructor shrugged and said, "I don't know. I just got a little behind in my payments."
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: An iPhone walks into a bar and orders a beer. The bartender says, "sorry, but we don't serve your kind here."
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: A blonde goes into a store and sees a shiny object on the shelf. She asks the clerk, "What is that shiny object?" The clerk replies, "That is a thermos flask." The blonde then asks, "What does it do?" The clerk responds, "It keeps hot things hot and it keeps cold things cold." The blonde says, "Oh! I could use something like that! I'll take it!" The next day, as she walks into work with her new thermos she spots her boss and shows off her shiny new thermos, "I just got this yesterday, it's amazing! It's a thermos and it keeps hot things hot and cold things cold!" The boss asks, "And what do you have in it?" The blonde replies, "Some coffee and a popsicle."
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Two phones were talking to each other. One said: "I have a problem." The other said: "I know, I have a hang-up, too."
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: A blonde pushes her BMW into the gas station and tells the mechanic that it died. After working on it for a few minutes, he has it idling smoothly. "What's the story?" she asked. "Just crap in the carburator," the mechanic replied. "How often do I have to do that?" asked the blonde.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Yo momma is so stupid, she put two quarters in her ears and thought she was listening to 50 Cent.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q. What do you call a phone that's water proof?  A. An apple phone.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Yo mama is so stupid that she tried to climb Mountain Dew.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that's water proof?  A: An iPhone.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: Why did the phone go to jail?  A: Because it repeated "May I have your number?" to an unwilling recipient.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Two friends are talking to each other on the phone. One friend says, "I'm getting married." The other friend says, "I'm getting married too." The first friend says, "You're getting married?" He says, "No, I'm just getting married too."
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: A blonde pushes her BMW into the gas station and tells the mechanic that it died. After working on it for a few minutes, he has it idling smoothly. "What's the story?" she asked. "Just crap in the carburator," the mechanic replied. "How often do I have to do that?" asked the blonde.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that's gone bad?  A: A rotten apple.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: Why couldn't the bicycle stand up by itself?  A: Because it was two-tired.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: Why did the phone go to jail?  A: Because it was caught in the handset!
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that's underwater?  A: A cell phone.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that you can't hold?  A: A phoney.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that can sing?  A: A gramophone.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: Why did the cell phone go to school?  A: To improve its "cell"ular service.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: Can a kangaroo jump higher than the Empire State Building?  A: Of course. The Empire State Building can't jump.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: A man tells his doctor, "Doc, help me. I'm addicted to Twitter!" The doctor replies, "Sorry, I don't follow you ..."
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Two iPhones walk into a bar. I forget the rest.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Why did the scarecrow win an award? Because he was outstanding in his field.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call someone who refuses to fart in public?  A: A private tutor.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: A blonde is on board a small two-seater plane when suddenly the pilot dies. She frantically calls a Mayday: "Mayday! Mayday! Help me! Help me! My pilot had a heart attack and is dead and I don't know how to fly. Someone help me! Please help me!" She hears a voice over the radio saying: "This is Air Traffic Control and I have you loud and clear. I will talk you through this and get you back on the ground. I've had a lot of experience with this kind of problem. Just take a deep breath. Everything will be fine! Now give me your height and position!" She says, "I'm 5'4" and I'm in the front seat." "O.K." says the voice on the radio.... "repeat after me: Our father who art in heaven...."
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that's underwater?  A: A mobile.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: How do you organize a space party?  A: You planet.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Why don't scientists trust atoms? Because they make up everything.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: A blonde bought a brand new car and decided to drive down from some place far off, to meet this friend. She reached there in a few hours. After spending a few days there, she decided to return, and called up her mother to expect her in the evening. But she didn't reach home in the evening and not the next day either. When she finally reached home on the third day, her distraught mother ran and asked her what happened? She got out, obviously very tired from a long journey, and said, "These car designers are crazy! They have four gears for going forward, but only one for going back!"
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Why did the cell phone go to school? To improve its "cell"ular service.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Yo mama so stupid, she tried to surf the microwave.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: A blonde gets a job as a physical education teacher for 16 - 18 year olds. She notices a boy at the end of the field standing alone, while all the other kids are running around having fun, kicking a football. She takes pity on him and decides to speak to him. 'Are you ok?' she asks. 'Yes,' he replies. 'You can go and play with the other kids you know,' she says. 'It's best I stay here,' he says. 'Why?' asks the blonde. The boy says: 'Because I'm the goal keeper.'
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that's waterlogged?  A: A soak-a-phone.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: How can you tell if a phone is happy? It vibrates.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: A man speaks frantically into the phone, "My wife is pregnant, and her contractions are only two minutes apart!" "Is this her first child?" the doctor queries. "No, you idiot!" the man shouts. "This is her husband!"
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: What did the phone say to the Wi-Fi network?  A: Are you picking up anything?
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Why did the scarecrow win an award? Because he was outstanding in his field.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Two iPhones walk into a bar. I forget the rest.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: Why did the cell phone go to school?  A: To improve its "cell"ular service.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that's never on time?  A: A Nokia.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that's water proof?  A: An apple phone.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that's water proof?  A: An iPhone 7.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that can sing?  A: A gramophone.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: How do you organize a space party?  A: You planet.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that's never engaged?  A: A hollow-gram.
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: Yo mama is so stupid, she tried to surf the microwave.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: Why did the girl bring a ladder to the bar?  A: She heard the drinks were on the house.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Why did the scarecrow win an award? Because he was outstanding in his field!
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: Why did the phone go to the doctor?  A: Because it had a virus!
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that can sing?  A: A gramaphone.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Yo momma so stupid, she tried to surf the microwave.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: Why did the cell phone go to school?  A: To improve its "cell"ular service.
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: Why did the cell phone go to school?  A: To improve its "cell"ular service.
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: There was a time when you could tell what kind of phone someone had just by looking at it. For example:  If it's indestructible, it's a Nokia    If it's indestructible and ugly, it's an HTC    If it's indestructible and cheap, it's a Motorola    If it's indestructible, ugly and has a keyboard, it's a Blackberry    If it's none of the above, it's an iPhone.
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: There was a time when you could tell what kind of phone someone had just by looking at it. For example:  If it's indestructible, it's a Nokia    If it's indestructible and ugly, it's an HTC    If it's indestructible and cheap, it's a Motorola    If it's indestructible, ugly and has a keyboard, it's a Blackberry    If it's none of the above, it's an iPhone.
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call an iPhone that isn't kidding around?  A: Dead Siri-ous.
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: How do you organize a space party?  A: You planet.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Why did the scarecrow win an award? Because he was outstanding in his field.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Why don't scientists trust atoms? Because they make up everything.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: Why did the witches' team lose the baseball game?  A: Their bats flew away.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: Why did the girl bring a ladder to the bar?  A: She heard the drinks were on the house.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that can sing?  A: A gramophone.
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that can sing?  A: A gramophone.
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: Why did the scarecrow win an award? Because he was outstanding in his field.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Two iPhones walk into a bar. I forget the rest.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Why did the scarecrow win an award? Because he was outstanding in his field.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Yo mamma is so stupid, she tried to surf the microwave.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: What do you call a phone that's underwater? A sub-woofer.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Yo mama so stupid, she tried to save a fish from drowning.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: A guy phones a law firm and says, "I want to speak to my lawyer." The receptionist says, "I'm sorry, but your lawyer died last week." The next day the same guy phones the law firm and says, "I want to speak to my lawyer." Once again the receptionist replies, "I'm sorry, but your lawyer died last week." The next day the guy makes his regular call to the law firm and say, "I want to speak to my lawyer." "Excuse me sir," the receptionist says, "but this is third time I've had to tell you that your lawyer died last week. Why do you keep calling?" The guy replies, "Because I love hearing it..."
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call someone who doesn't answer their phone?  A: Answering machine.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: Why did the cell phone go to school?  A: To improve its "cell"-f-esteem!
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call someone who can't stop thinking about the Internet?  A: A Dot brain.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Why did the girl bring a ladder to the bar?  She heard the drinks were on the house.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: A woman answered her front door and saw a little boy holding a list. "Ma'am," he explained, "I'm on a scavenger hunt, and I still need three grains of wheat, a pork-chop bone and a piece of used carbon paper so I can earn a dollar." "Wow," the woman replied. "Who sent you on such a challenging scavenger hunt?" "My babysitter's boyfriend."
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: I just got a photo from a speeding camera through the mail. I sent it right back – way too expensive and really bad quality.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Yo momma is so stupid she tried to climb Mountain Dew.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Why did the scarecrow win an award? Because he was outstanding in his field.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: Why did the snowman take off his pants?  A: Because the snowblower was coming.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call someone who is afraid of Santa?  A: A Clausterphobic.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: How can you tell if a phone is getting too smart for you?  A: It dials 9-1-1.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Three men are sitting naked in the sauna. Suddenly there is a beeping sound. The first man presses his forearm and the beeping stops. The others look at him questioningly. "That's my pager," he says. "I have a microchip under the skin of my arm." A few minutes later a phone rings. The second man lifts his palm to his ear. When he finishes he explains, "That's my mobile phone. I have a microchip in my hand." The third man, feeling decidedly low-tech, steps out of the sauna. In a few minutes he returns with a piece of toilet paper extending from his rear. The others raise their eyebrows. "I'm getting a Fax," he explains.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: A blonde pushes her BMW into the gas station and tells the mechanic that it died. After working on it for a few minutes, he has it idling smoothly. "What's the story?" she asked. "Just crap in the carburetor," the mechanic replied. "How often do I have to do that?" asked the blonde.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Yo mama is so stupid, she tried to surf the microwave.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: How do you organize a space party?  A: You planet.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: A man tells his doctor, "Doc, help me. I'm addicted to Twitter!" The doctor replies, "Sorry, I don't follow you ..."
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Why was the math book sad? Because it had too many problems.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: How can you tell if a phone is a boy or a girl?  A: By seeing if it is engaged or not.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that's never on time?  A: A procrastinator.
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that's never on time?  A: A procrastinator.
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that's never on time?  A: A procrastinator.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: A guy walks into a store and says to the clerk, "I want to buy some condoms for my 11-year-old daughter." The clerk rings them up and says, "That will be $11.34." The guy hands the clerk the money and says, "Wait a minute, I'll get the 34 cents." He goes back to his car and says to his daughter, "Daddy has to go back in the store and get some change, be right back." 
+
+
+So he goes back in the store and says to the clerk, "I just bought some condoms and I need 34 cents change." The clerk says, "Sir, you couldn't have bought any condoms with 11 cents." The guy says, "I bought a pack of condoms for $11.00 and the clerk said I get a bag of chips for 1 cent so I took those,  then you rang them up."
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: A little boy got lost at the YMCA and found himself in the women's locker room. When he was spotted, the room burst into shrieks, with ladies grabbing towels and running for cover. The little boy watched in amazement and then asked, "What's the matter, haven't you ever seen a little boy before?"
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: A blonde girl enters a store that sells curtains. She tells the salesman, “I would like to buy a pink curtain in the size of my computer screen.” The surprised salesman replies, “But, madam, computers do not have curtains.” And the blonde said, “Helloooo…. I’ve got Windows!”
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: User: Phone: Q: What did the cell phone say to the wall?  A: "Can you hear me now?"
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: Yo mama is so stupid, she tried to surf the microwave.
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: How can you tell if a phone is brave?  A: It's not afraid to go against the grain!
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call someone who refuses to give up their phone?  A: A call blocker.
+Vote: Upvote
+Recommend: None
+
+Prompt: PHONE
+Joke: Q: Why did the phone go to jail?  A: Because it repeatedly committed "cell" phone.
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: There are two types of people in the world. Those who can extrapolate from incomplete data sets...
+Vote: None
+Recommend: None
+
+Prompt: phone
+Joke: A guy phones a law firm and says, "I want to speak to my lawyer." The receptionist says, "I'm sorry, but your lawyer died last week." The next day the same guy phones the law firm and says, "I want to speak to my lawyer." Once again the receptionist replies, "I'm sorry, but your lawyer died last week." The next day the guy makes his regular call to the law firm and say, "I want to speak to my lawyer." "Excuse me sir," the receptionist says, "but this is third time I've had to tell you that your lawyer died last week. Why do you keep calling?" The guy replies, "Because I love hearing it..."
+Vote: Upvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: Why did the phone go to jail?  A: Because it was involved in a "cell" phone.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that can sing?  A: A gramophone.
+Vote: Downvote
+Recommend: None
+
+Prompt: phone
+Joke: Q: What do you call a phone that's never engaged?  A: A tele-phony.
+Vote: None
+Recommend: None
+
+Prompt: animal
+Joke: Q: How do you count cows?  A: With a cowculator.
+Vote: Upvote
+Recommend: None
+
+Prompt: animal
+Joke: Q: What did the duck say when he bought lipstick? A: "Put it on my bill."
+Vote: Downvote
+Recommend: None
+
+Prompt: animal
+Joke: Q: Why did the elephant bring a suitcase to the zoo?  A: Because he wanted to pack his trunk!
+Vote: Upvote
+Recommend: None
+
+Prompt: animal
+Joke: Q: What do you call a pig that does karate?  A: A pork chop.
+Vote: None
+Recommend: None
+
+Prompt: animal
+Joke: A man is flying in a hot air balloon and realizes he is lost. He reduces height and spots a man down below. He lowers the balloon further and shouts: "Excuse me, can you tell me where I am?" The man below says: "Yes, you're in a hot air balloon, hovering 30 feet above this field." "You must work in Information Technology," says the balloonist. "I do" replies the man. "How did you know?" "Well," says the balloonist, "everything you have told me is technically correct, but It's of no use to anyone." The man below replies, "You must work in management." "I do," replies the balloonist, "But how'd you know?" "Well", says the man, "you don't know where you are or where you're going, but you expect me to be able to help. You're in the same position you were before we met, but now it's my fault."
+Vote: None
+Recommend: None
+
+Prompt: rain
+Joke: Q. What do you call two straight days of rain in Seattle? A. A weekend.
+Vote: Upvote
+Recommend: None
+
+Prompt: rain
+Joke: Q. Why did the scarecrow win an award?  A. Because he was outstanding in his field.
+Vote: None
+Recommend: None
+
+Prompt: rain
+Joke: Q: What is the most reliable method to determine a baby's s**?  A: Wait until it's born.
+Vote: None
+Recommend: None
+
+Prompt: rain
+Joke: Q: What do you call a rich rain?  A: A millionaire.
+Vote: None
+Recommend: None
+
+Prompt: rain
+Joke: What is a king's favorite kind of precipitation? Reign.
+Vote: None
+Recommend: None
+
+Prompt: king
+Joke: Yo mama so stupid, she tried to steal a free sample.
+Vote: None
+Recommend: None
+
+Prompt: king
+Joke: What do you call the king of vegetables? An Onion Ring.
+Vote: Upvote
+Recommend: None
+
+Prompt: king
+Joke: What is the difference between a snowman and a snowwoman? Snowballs.
+Vote: Downvote
+Recommend: None
+
+Prompt: king
+Joke: A king, queen, and a prince walk into a bar. The bartender says, "Ah, s***!"
+Vote: None
+Recommend: None
+
+Prompt: king
+Joke: Why did the king go to the dentist? To get his teeth crowned.
+Vote: Upvote
+Recommend: None
+
+Prompt: king
+Joke: Why did the king go to the dentist? To get his teeth crowned.
+Vote: Upvote
+Recommend: None
+
+Prompt: king
+Joke: A king who was only 12 inches tall, went to visit a beautiful queen. He said, "I love you." She asked, "Is that you or the beer talking?" He replied, "It's me... talking to the beer."
+Vote: None
+Recommend: None
+
+Prompt: king
+Joke: During a lesson about words, the teacher asked the students what the word 'king' was in Spanish. One little boy put up his hand and said 'rey'. The next word was 'queen' and the little boy put up his hand and said 'reina'. The teacher was quite impressed but then asked the class if they knew the word 'baby'. A little girl put up her hand and said 'bebe'. 'Very good,' said the teacher. 'What is the word for 'that's enough'? A little boy put up his hand and said 'basta'. The teacher was very impressed but then asked the class if they knew the word 'straw' as in 'the final straw'. One little boy put up his hand and said 'paja'. The teacher said, 'I'm disappointed. I thought someone would say 'paja' but I didn't think it would be you.'
+Vote: Upvote
+Recommend: None
+
+Prompt: king
+Joke: A little boy was sitting on a park bench munching on one candy bar after another. After the 6th one a man on the bench across from him said, "Son, you know eating all that candy isn't good for you. It will give you acne, rot your teeth, and make you fat." The little boy replied, "My grandfather lived to be 107 years old." The man asked, "Did your grandfather eat 6 candy bars at a time?" The little boy answered, "No, he minded his own fucking business."
+Vote: Downvote
+Recommend: None
+
+Prompt: king
+Joke: What did the king say when he found out he had been cheated? "I'm ROYALLY mad!"
+Vote: None
+Recommend: None
+
+Prompt: media
+Joke: Q: Why did the scarecrow become a successful politician in Washington, DC?  A: Because he was outstanding in his field!
+Vote: Downvote
+Recommend: None
+
+Prompt: media
+Joke: A reporter outside of a polling booth asked a woman, "How long did you have to wait to vote?"  "Oh, no time at all," she said, "my husband told me who to vote for."
+Vote: Upvote
+Recommend: None
+

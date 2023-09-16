@@ -26,7 +26,7 @@ class GPTProcessing(object):
         self.input_my = None
         self.output_my = None
 
-        self.OPENAI_API_KEY = ""
+        self.OPENAI_API_KEY = "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"
         os.environ["OPENAI_API_KEY"] = self.OPENAI_API_KEY
         openai.api_key = self.OPENAI_API_KEY
 
@@ -208,7 +208,7 @@ class GPTProcessing(object):
             message: The joke generated from the user input keyword
         """
         # Prompt engineering the prompt
-        big_prompt = f"Generate a funny joke about the word '{prompt}'. Give a joke pun only when it only makes sense."
+        big_prompt = f"Give me another type of joke about the word: {prompt}."
         
         # Ensure there is a response before crafting voted prompts
         if len(self.tag_memory) > 0:
@@ -217,11 +217,12 @@ class GPTProcessing(object):
             
             # If previous response is downvoted 
             if last_response[0] == 0:
-                big_prompt = f"The joke was not funny. Please give me another type of joke about the word '{prompt}'."
+                big_prompt = f"The joke was not funny. Please give me another type of joke about the word: {prompt}."
             # If previous response is upvoted 
             elif last_response[0] == 1:
                 up_pr = self.upvote_prompts[-1]
-                big_prompt += " with similar jokes to " + "\'" + up_pr +  "\'"
+                # big_prompt += " with similar jokes to " + "\'" + up_pr +  "\' and the joke is about the word" + prompt 
+                big_prompt = "learn from  this joke: " + up_pr + " and give me another joke about the word: " + prompt 
                 
         print(big_prompt)
         completions = openai.ChatCompletion.create(
