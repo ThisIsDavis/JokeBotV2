@@ -65,9 +65,8 @@ class GPTProcessing(object):
                 # Voice Recognition
                 with gr.Row():
                     # Record audio and output the audio filepath.
-                    voice_recog = gr.Audio(source = "microphone", type = "filepath")
-                    # Button to start voice recognition
-                    voice_recog_action = gr.Button("Keyword Voice Recognition")
+                    voice_recog = gr.Microphone(type = "filepath")
+                    voice_recog.stop_recording(self.transcribe_audio, inputs = [voice_recog], outputs = [message])
                 
                 # Buttons Galore
                 with gr.Row():
@@ -101,9 +100,8 @@ class GPTProcessing(object):
                 # Voice Recognition
                 with gr.Row():
                     # Record audio and output the audio filepath.
-                    voice_recog_my = gr.Audio(source = "microphone", type = "filepath")
-                    # Button to start voice recognition
-                    voice_recog_action_my = gr.Button("Keyword Voice Recognition")
+                    voice_recog_my = gr.Microphone(type = "filepath")
+                    voice_recog_my.stop_recording(self.transcribe_audio, inputs = [voice_recog_my], outputs = [message_my])
                     
                 # Buttons Galore
                 with gr.Row():
@@ -125,17 +123,6 @@ class GPTProcessing(object):
                     recommend_textbox_my = gr.Dropdown(["Ibu bapa", "Siblings", "Relatives", "Kawan-kawan", "Colleagues"], allow_custom_value = True, label = "Who you nak recommend joke ini?" , interactive = True)
                     send_btn_my = gr.Button("Submit Feedback", scale = 0.4)
                     send_btn_my.click(on_send_btn_click_my, inputs=[recommend_textbox_my], outputs=[])
-            
-            # Button to start recording voice and outputting it to the message text box.
-            voice_recog_action.click(
-                self.transcribe_audio,
-                [
-                    voice_recog
-                ], 
-                [
-                    message
-                ]
-            )
 
             # Button to save all selected joke preferences and display them back to the user.
             joke_preferences_action.click(
@@ -153,18 +140,6 @@ class GPTProcessing(object):
                 [],
                 [
                     selected_joke_preferences
-                ]
-            )
-            
-            # Malaysian Jokes
-            # Button to start recording voice and outputting it to the message text box.
-            voice_recog_action_my.click(
-                self.transcribe_audio,
-                [
-                    voice_recog_my
-                ], 
-                [
-                    message_my
                 ]
             )
 
@@ -575,36 +550,6 @@ class GPTProcessing(object):
         else:
             # print("skipped worked")
             pass
-        
-    # Voice recognition.
-    def transcribe_audio_my(self, audio_path: str) -> str:
-        """
-        FOR MALAYSIAN JOKES
-        Takes in the filepath where the audio is stored and use an Automatic Speech Recognition Model to transcribe the audio into text.
-        Will take the first word of the whole transcribed sentence.
-        :Input:
-            audio_path: The filepath where the audio is stored.
-        :Output:
-            text: The transcribed text based on the input audio.
-        """
-        # Initalise a Recognizer instance.
-        recogniser = sr.Recognizer()
-        
-        # Open the audio file based on inputted filepath an initalise it to source variable.
-        with sr.AudioFile(audio_path) as source:
-            # Extract audio data from the source file.
-            audio = recogniser.record(source)
-            
-            # If there's audio, recognise the speech using Google Speech Recognition and return the first keyword transcribed.
-            try:
-                text = recogniser.recognize_google(audio)   # Transcribe the audio into text.
-                text = str(text.split()[0]).lower()         # Extract the first word of the text and then turn it to lowercase.
-                return text
-            
-            # Speech is unintelligible or other errors, return error text.
-            except:
-                text = "Error: Unable to recognise audio"
-                return text    
     
 
 if __name__ == '__main__':

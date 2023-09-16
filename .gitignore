@@ -2,4 +2,4 @@
 env/bin/ffmpeg.exe
 env/bin/ffplay.exe
 env/bin/ffprobe.exe
-.pycache
+.__pycache__
