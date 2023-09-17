@@ -26,28 +26,30 @@ class GPTProcessing(object):
         self.input_my = None
         self.output_my = None
 
-        self.OPENAI_API_KEY = ""
+        self.OPENAI_API_KEY = "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"
         os.environ["OPENAI_API_KEY"] = self.OPENAI_API_KEY
         openai.api_key = self.OPENAI_API_KEY
 
         # Get the number of categories of jokes in the jokes folder.
         self.scraped_jokes = [name for name in os.listdir(os.path.join(os.getcwd(), "jokes"))]
         self.num_of_categories = len(self.scraped_jokes)
+        self.limit = 1      # The limits of preferred jokes.
         
         # Saved joke preferences by the user.
         self.user_joke_preferences = []
+        self.user_joke_categories = []
         self.count = 1
 
     def create_ui(self):
         # Call the get_random_jokes method to get a list of randomly selected jokes.
-        self.preference_jokes = self.get_random_jokes()
+        self.preferred_joke_categories = self.get_random_jokes()
         
         with self.ui_obj:
             gr.Markdown('# MCS01 Joke Bot Application')
             with gr.TabItem("User Joke Preference Learning"):
                 with gr.Row():
                     # gr.Textbox(label="Here are a list of jokes, please let us know which jokes speak to you the most! Put the joke numbers", placeholder= "1. List of jokes", interactive=False)
-                    joke_preferences = gr.CheckboxGroup(self.preference_jokes, label = "List of Jokes", info = "Please select which jokes speaks to you the most!")
+                    joke_preferences = gr.CheckboxGroup(self.preferred_joke_categories, label = "List of Jokes", info = "Please select at most ONE joke which speaks to you the most!")
                 with gr.Row():
                     joke_preferences_action = gr.Button("Submit")
                     joke_refresh_action = gr.Button("Refresh Jokes")
@@ -195,8 +197,10 @@ class GPTProcessing(object):
             # Prompt engineering the prompt
             big_prompt = f"Give me another type of joke about the word: {prompt}."
         else:
-            big_prompt = "Learn from these joke(s): [" + ", ".join(str(i) for i in self.user_joke_preferences) + "] and give me another joke about the word: " + prompt + "."
-        
+            # print(self.user_joke_categories[0])
+            # big_prompt = f"Learn from this joke category: {self.user_joke_categories[0]} and give me another joke about the word: {prompt}."
+            big_prompt = f"Give me another joke about the word: {prompt} and related to: {self.user_joke_categories[0]}"
+            
         # Ensure there is a response before crafting voted prompts
         if len(self.tag_memory) > 0:
             # Get the previous response
@@ -209,12 +213,8 @@ class GPTProcessing(object):
             elif last_response[0] == 1:
                 # Get the last upvoted joke.
                 up_pr = self.upvote_prompts[-1]
-                # Append it to the user joke preferences list.
-                self.user_joke_preferences.append(up_pr)
-                # big_prompt += " with similar jokes to " + "\'" + up_pr +  "\' and the joke is about the word" + prompt 
-                big_prompt = "Learn from these joke(s): [" + ", ".join(str(i) for i in self.user_joke_preferences) + "] and give me another joke about the word: " + prompt + "."
-                # Pop it once done.
-                self.user_joke_preferences.pop()
+                # Create the big prompt based on the upvoted joke.
+                big_prompt = f"Learn from this joke: {up_pr} and give me another joke about the word: {prompt}."
                 
         print(big_prompt)
         completions = openai.ChatCompletion.create(
@@ -291,7 +291,7 @@ class GPTProcessing(object):
             elif vote == 1:
                 last_response[0] = vote
                 self.upvote_prompts.append(self.output)
-            print(self.tag_memory)
+            # print(self.tag_memory)
         else:
             pass
 
@@ -371,7 +371,7 @@ class GPTProcessing(object):
         
         # Randomly select a joke category and append it to the categories list 5 times.
         i = 0
-        while i < 10:
+        while i < 5:
             # Generate a random number from 0 to the maximum number of categories available
             random_number = random.randint(0, self.num_of_categories - 1)
             # If the random number has not been generated before/not in the categories list, append it in and increment i by one.
@@ -381,8 +381,10 @@ class GPTProcessing(object):
         
         # Loop through the category list and grab a random joke from that joke category text file.
         for category in categories:
+            # Get the name of the category.
+            category_name = self.scraped_jokes[category]
             # Open up the random joke text file and select a random joke.
-            with open(os.path.join("jokes/", self.scraped_jokes[category]), 'r', encoding = "utf-8") as f:
+            with open(os.path.join("jokes/", category_name), 'r', encoding = "utf-8") as f:
                 file = f.readlines()        # Read the joke file contents.  
                 
                 # Get the joke string based on a randomly selected number from 3 to the number of jokes + 1. 
@@ -390,7 +392,7 @@ class GPTProcessing(object):
                 random_number = random.randrange(3, int(file[-1]) + 1, 2) - 1
                 random_joke = file[random_number]
             
-                jokes.append(random_joke)        # Append the selected joke into the jokes list.
+                jokes.append((random_joke, category_name[:-4]))      # Append the selected joke into the jokes list.
                 
         return jokes
     
@@ -404,14 +406,15 @@ class GPTProcessing(object):
             joke_str: A string containing all the jokes the user selected/preferred.
         """
         # Loop through each selected joke to add it the to user preferences list. Will not allow duplicated jokes from being added.
-        for joke in jokes: 
-            # Prevent addition of duplicated jokes.
-            if joke not in self.user_joke_preferences:
+        for joke in jokes:
+            # Prevent addition of duplicated jokes and only allow the addition of jokes up to a set limit.
+            if (joke[1] not in self.user_joke_categories) and (len(self.user_joke_categories) < self.limit):
                 # Append the list of selected jokes to self.user_joke_preferences to save it.
-                self.user_joke_preferences.append(joke)
-                # Append it to upvote prompts to produce jokes similar to this.
-                self.upvote_prompts.append(joke)
-                self.upvote_prompts_my.append(joke)
+                self.user_joke_preferences.append(joke[0])
+                self.user_joke_categories.append(joke[1])
+                
+        # print(self.user_joke_preferences)
+        # print(self.user_joke_categories)
         
         joke_str = ""       # Create empty string to store all user-preffered jokes.
         self.count = 1      # Set count to 0 at start.
@@ -442,21 +445,22 @@ class GPTProcessing(object):
         self.upvote_prompts = list(set(self.user_joke_preferences)^set(self.upvote_prompts))
         self.upvote_prompts_my = list(set(self.user_joke_preferences)^set(self.upvote_prompts_my))
         self.user_joke_preferences = []     # Clear the saved user joke preferences.
+        self.user_joke_categories = []      # Clear the saved user joke categories.
         self.count = 1                      # Reset the count to one.
 
         return ""   # Return an empty string.
     
     def refresh_joke_preference(self):
         """
-        Refreshes all jokes for user preference with another random 10 jokes.
+        Refreshes all jokes for user preference with another random 5 jokes.
         :Input:
             None
         :Output:
             updated_joke_preferences: The updated CheckboxGroup element of all jokes displayed.
         """
-        self.preference_jokes = self.get_random_jokes()
+        self.preferred_joke_categories = self.get_random_jokes()
         
-        updated_joke_preferences = gr.CheckboxGroup.update(choices = self.preference_jokes)
+        updated_joke_preferences = gr.CheckboxGroup.update(choices = self.preferred_joke_categories)
 
         return updated_joke_preferences
     
@@ -490,7 +494,7 @@ class GPTProcessing(object):
                 up_pr_my = self.upvote_prompts_my[-1]
                 big_prompt_my += " with similar jokes to " + "\'" + up_pr_my +  "\'"
             
-        print(big_prompt_my)
+        # print(big_prompt_my)
         completions = openai.ChatCompletion.create(
             model="ft:gpt-3.5-turbo-0613:monash-university-malaysia::7yCzUcJq",
             messages=[
@@ -548,7 +552,7 @@ class GPTProcessing(object):
             elif vote_my == 1:
                 last_response_my[0] = vote_my
                 self.upvote_prompts_my.append(self.output_my)
-            print(self.tag_memory_my)
+            # print(self.tag_memory_my)
         else:
             pass
     

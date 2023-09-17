@@ -1226,3 +1226,98 @@ Joke: One fish says to the other fish, "How do you drive this thing?"
 Vote: Upvote
 Recommend: Parents
 
+Prompt: burger
+Joke: Knock, knock. Who’s there? Ham. Ham who? Ham-burger.
+Vote: Upvote
+Recommend: None
+
+Prompt: burger
+Joke: Q: How do you make a hamburger smile?  A: Cheese it!  and Q: How do you make a hamburger laugh?  A: pickle it!
+Vote: None
+Recommend: None
+
+Prompt: burger
+Joke: Knock, knock. Who's there? Lettuce. Lettuce who? Lettuce in, it's cold out here.
+Vote: Upvote
+Recommend: None
+
+Prompt: burger
+Joke: Why did the tomato turn red? Because it saw the salad dressing.
+Vote: Upvote
+Recommend: None
+
+Prompt: burger
+Joke: Q: What do you call a pig that does karate?  A: A pork chop.
+Vote: Upvote
+Recommend: None
+
+Prompt: burger
+Joke: Q: What do you get if you cross a hamburger and a computer?  A: A big mac.
+Vote: None
+Recommend: None
+
+Prompt: burger
+Joke: Knock, knock.  Who’s there?  Lettuce.  Lettuce who?  Lettuce in, we’re cold.
+Vote: Downvote
+Recommend: None
+
+Prompt: burger
+Joke: A man and his girlfriend are at a restaurant. The waiter approaches the table and asks to take their order. The man says, "I'll have a hamburger, fries and a coke," and turns to the woman, "What do you want to eat?" "Oh, I'll just have a salad," says the woman. "Are you not hungry?" is the waiter's next question. "Oh, yes, but... I'm waiting for my boyfriend to finish."
+Vote: Downvote
+Recommend: None
+
+Prompt: burger
+Joke: Q: What do you call cheese that isn't yours?  A: Nacho cheese.
+Vote: Downvote
+Recommend: None
+
+Prompt: homework
+Joke: A man was recently flying to New York. He decided to strike up a conversation with his seat mate. "I've got a great policeman joke. Would you like to hear it?" "I should let you know first that I am a policeman." "That's OK. I'll tell it really slow!"
+Vote: None
+Recommend: None
+
+Prompt: homework
+Joke: Q: What's the difference between a teacher and a train?  A: One says, "Spit out your gum," and the other says, "Choo choo choo!"
+Vote: None
+Recommend: None
+
+Prompt: homework
+Joke: Why did the boy eat his homework? Because his teacher said it was a piece of cake.
+Vote: None
+Recommend: None
+
+Prompt: homework
+Joke: Why didn’t the skeleton go to school?  His heart wasn’t in it.
+Vote: None
+Recommend: None
+
+Prompt: homework
+Joke: Teacher: Did your parents help you with these homework problems?  Billy: No I got them all wrong by myself!
+Vote: None
+Recommend: None
+
+Prompt: homework
+Joke: Q: Why did the teacher assign homework over the summer vacation?  A: Because he didn't want to have any empty classrooms.
+Vote: None
+Recommend: None
+
+Prompt: homework
+Joke: Q. How did the teacher put out the fire?  A. With his grades.
+Vote: None
+Recommend: None
+
+Prompt: homework
+Joke: Why did the teacher marry the janitor? Because he swept her off her feet!
+Vote: Upvote
+Recommend: None
+
+Prompt: homework
+Joke: Teacher: Did your parents help you with these homework problems? Student: No I got them all wrong by myself.
+Vote: Downvote
+Recommend: None
+
+Prompt: homework
+Joke: Teacher: "Why is your homework in your dad's handwriting?" Boy: "I used his pen."
+Vote: Upvote
+Recommend: None
+
