@@ -50,9 +50,10 @@ class GPTProcessing(object):
                     joke_preferences = gr.CheckboxGroup(self.preference_jokes, label = "List of Jokes", info = "Please select which jokes speaks to you the most!")
                 with gr.Row():
                     joke_preferences_action = gr.Button("Submit")
+                    joke_refresh_action = gr.Button("Refresh Jokes")
                 with gr.Row():
                     selected_joke_preferences = gr.Textbox(label = "Selected Joke Preferences:", info = "List of jokes that you find funny!", placeholder = "No selected joke preferences yet!", interactive = False, scale = 3)
-                    selected_joke_preferences_action = gr.Button("Clear Preferences", scale = 1)
+                    selected_joke_preferences_action = gr.ClearButton([joke_preferences], value = "Clear Preferences", scale = 1)
 
             with gr.Tab("JokeBot"):
                 chatbot = gr.components.Chatbot(label='Finetuned Joke Machine', height = 600)  
@@ -140,6 +141,14 @@ class GPTProcessing(object):
                 [],
                 [
                     selected_joke_preferences
+                ]
+            )
+            
+            joke_refresh_action.click(
+                self.refresh_joke_preference,
+                [],
+                [
+                    joke_preferences
                 ]
             )
 
@@ -386,17 +395,21 @@ class GPTProcessing(object):
         :Output:
             joke_str: A string containing all the jokes the user selected/preferred.
         """
-        # Append the list of selected jokes to self.user_joke_preferences to save it.
-        self.user_joke_preferences += jokes
-        # Append it to upvote prompts to produce jokes similar to this.
-        self.upvote_prompts += jokes
-        self.upvote_prompts_my += jokes
+        # Loop through each selected joke to add it the to user preferences list. Will not allow duplicated jokes from being added.
+        for joke in jokes: 
+            # Prevent addition of duplicated jokes.
+            if joke not in self.user_joke_preferences:
+                # Append the list of selected jokes to self.user_joke_preferences to save it.
+                self.user_joke_preferences.append(joke)
+                # Append it to upvote prompts to produce jokes similar to this.
+                self.upvote_prompts.append(joke)
+                self.upvote_prompts_my.append(joke)
         
-        # Set the joke_str variable to the string of selected joke preferences.
-        joke_str = selected_jokes
+        joke_str = ""       # Create empty string to store all user-preffered jokes.
+        self.count = 1      # Set count to 0 at start.
         
         # Loop through all the selected joke preferences and concatenate it to the joke_str to be displayed back to the user.
-        for joke in jokes:
+        for joke in self.user_joke_preferences:
             # If the textbox is not empty, add a newline before adding the joke.
             if len(joke_str) != 0:
                 joke_str += "\n{0}. {1}".format(self.count, joke)
@@ -424,6 +437,20 @@ class GPTProcessing(object):
         self.count = 1                      # Reset the count to one.
 
         return ""   # Return an empty string.
+    
+    def refresh_joke_preference(self):
+        """
+        Refreshes all jokes for user preference with another random 10 jokes.
+        :Input:
+            None
+        :Output:
+            updated_joke_preferences: The updated CheckboxGroup element of all jokes displayed.
+        """
+        self.preference_jokes = self.get_random_jokes()
+        
+        updated_joke_preferences = gr.CheckboxGroup.update(choices = self.preference_jokes)
+
+        return updated_joke_preferences
     
     ############################## Malaysian Jokes Helper Functions #################################################################
 
