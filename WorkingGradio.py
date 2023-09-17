@@ -13,6 +13,7 @@ class GPTProcessing(object):
         # For normal jokes
         self.ui_obj = ui_obj
         self.profanity_list = ["fuck", "shit", "bitch", "ass", "sex", "motherfucker", "asshole", "dick", "cunt", "tits", "piss", "twat", "penis", "vagina"]  # List of profane words to be filtered
+        self.output_prompts = []
         self.tag_memory = []
         self.upvote_prompts = []
         self.downvote_prompts = []
@@ -21,6 +22,7 @@ class GPTProcessing(object):
 
         # For Malaysian jokes
         self.tag_memory_my = []
+        self.output_prompts_my = []
         self.upvote_prompts_my = []
         self.downvote_prompts_my = []
         self.input_my = None
@@ -155,13 +157,13 @@ class GPTProcessing(object):
             )
 
     ############################## Helper Functions#################################################################
-    def launch_ui(self):        
+    def launch_ui(self) -> None:        
         """
         A method that launches the Gradio UI website
         """
         self.ui_obj.queue().launch(share=True)
 
-    def profanity_filter(self, text):
+    def profanity_filter(self, text: str) -> str:
         """
         Filter out any profanities in the joke
         :Input:
@@ -170,7 +172,7 @@ class GPTProcessing(object):
             The profanity filtered joke
         """
         
-        def replace(word):
+        def replace(word: str) -> str:
             """
             Keep the first letter of the swear word, replace the rest with asterisks
             :Input:
@@ -183,6 +185,27 @@ class GPTProcessing(object):
         # Regular expression to find profanity in the text
         regex = r"\b(" + "|".join(map(re.escape, self.profanity_list)) + r")\b"
         return re.sub(regex, replace, text, flags=re.IGNORECASE)
+    
+    def create_message(self, complete_prompt: str) -> str:
+        """
+        Uses the created prompt and generates a joke 
+        :Input:
+            complete_prompt: The prompt to be used for the GPT-3.5-Turbo model 
+        :Output:
+            message: The joke generated
+        """
+        completions = openai.ChatCompletion.create(
+            model="ft:gpt-3.5-turbo-0613:monash-university-malaysia::7rREegcc",
+            messages=[
+                {"role": "system", "content": "JokeBot is a chatbot that tells funny jokes from given keywords"},
+                {"role": "user", "content": complete_prompt}
+            ],
+            max_tokens=250,
+            temperature=0.65,
+        )
+
+        message = completions.choices[0].message.content  # Get the joke
+        return message
 
     def api_calling(self, prompt: str) -> str:
         """
@@ -217,19 +240,19 @@ class GPTProcessing(object):
                 big_prompt = f"Learn from this joke: {up_pr} and give me another joke about the word: {prompt}."
                 
         print(big_prompt)
-        completions = openai.ChatCompletion.create(
-            model="ft:gpt-3.5-turbo-0613:monash-university-malaysia::7rREegcc",
-            messages=[
-                {"role": "system", "content": "JokeBot is a chatbot that tells funny jokes from given keywords"},
-                {"role": "user", "content": big_prompt}
-            ],
-            max_tokens=250,
-            temperature=0.65,
-        )
-
-        message = completions.choices[0].message.content  # Get the joke
-        message = self.profanity_filter(message)  # Filter out any profanities
-        # print(message)
+        message = self.create_message(big_prompt)  # Get the joke
+        
+        # Check whether message contains prompt or not
+        print(self.output_prompts)
+        # Lower capitalise joke for string matching
+        mes_temp = message.lower()
+        print(mes_temp in self.output_prompts)
+        while mes_temp in self.output_prompts:
+            message = self.create_message(big_prompt)  # Generate another joke
+            mes_temp = message
+            mes_temp = mes_temp.lower()
+           
+        message = self.profanity_filter(message)  # Filter out any profanities after the prompt is in the message
         return message
 
     def message_and_history(self, input: str, history):
@@ -247,10 +270,11 @@ class GPTProcessing(object):
         self.create_feedback(history, self.tag_memory)  # Append the previous chat and its feedback to a file
         self.output = self.api_calling(self.input)  # Generate the joke
         history.append((self.input, self.output))  # Append the prompt and joke to the chatbot display
+        self.output_prompts.append(self.output.lower())  # Append the joke a list containing all jokes
         self.tag_memory.append([None, None])  # Create a tag memory for the new joke
         return history, history
     
-    def refresh(self):
+    def refresh(self) -> None:
         """
         Refresh the entire preference by deleting them
         """
@@ -466,6 +490,27 @@ class GPTProcessing(object):
     
     ############################## Malaysian Jokes Helper Functions #################################################################
 
+    def create_message_my(self, complete_prompt_my: str) -> str:
+        """
+        Uses the created prompt and generates a joke 
+        :Input:
+            complete_prompt_my: The prompt to be used for the GPT-3.5-Turbo model 
+        :Output:
+            message_my: The joke generated
+        """
+        completions = openai.ChatCompletion.create(
+            model="ft:gpt-3.5-turbo-0613:monash-university-malaysia::7yCzUcJq",
+            messages=[
+                {"role": "system", "content": "JokeBot is a chatbot that tells funny jokes in Malaysian context from given keywords"},
+                {"role": "user", "content": complete_prompt_my}
+            ],
+            max_tokens=1000,
+            temperature=0.65,
+        )
+
+        message_my = completions.choices[0].message.content  # Get the joke
+        return message_my
+    
     def api_calling_my(self, prompt_my: str) -> str:
         """
         FOR MALAYSIAN JOKES
@@ -476,8 +521,12 @@ class GPTProcessing(object):
         :Output:
             message_my: The joke generated from the user input keyword
         """
-        # Prompt engineering the prompt
-        big_prompt_my = f"Create a joke using the keyword '{prompt_my}' in Malaysian slang and Malaysian context."
+        if len(self.user_joke_preferences) == 0:
+            # Prompt engineering the prompt
+            big_prompt_my = f"In Malaysian slang and Malaysian context, give me another type of joke about the word: '{prompt_my}."
+        else:
+            big_prompt_my = f"In Malaysian slang and Malaysian context, give me another joke about the word: {prompt_my} and related to: {self.user_joke_categories[0]}"
+            
         # big_prompt_my = f"You are an AI language model trained by OpenAI. You have been programmed to understand and generate text in various languages and dialects, including Malaysian slang. Your task is to create funny jokes that are relevant to the Malaysian context. The keyword for these jokes is '{prompt_my}'.Please generate a series of humorous jokes using that keyword. The jokes should be easy to understand and sensible, catering to a wide audience."
         
         # [prompt1, prompt2, prompt3, ]
@@ -488,28 +537,28 @@ class GPTProcessing(object):
             
             # If previous response is downvoted
             if last_response_my[0] == 0:
-                big_prompt_my = f"Create another type of joke using the keyword '{prompt_my}' in Malaysian slang and Malaysian context."
+                big_prompt_my = f"The joke was not funny. Please give me another type of joke in Malaysian slang and Malaysian context about the word: '{prompt_my}' in Malaysian slang and Malaysian context."
             # If previous response is upvoted
             elif last_response_my[0] == 1:
                 up_pr_my = self.upvote_prompts_my[-1]
-                big_prompt_my += " with similar jokes to " + "\'" + up_pr_my +  "\'"
+                big_prompt_my = f"Learn from this joke: {up_pr_my} and give me another joke about the word: {prompt_my}."
             
-        # print(big_prompt_my)
-        completions = openai.ChatCompletion.create(
-            model="ft:gpt-3.5-turbo-0613:monash-university-malaysia::7yCzUcJq",
-            messages=[
-                {"role": "system", "content": "JokeBot is a chatbot that tells funny jokes in Malaysian context from given keywords"},
-                {"role": "user", "content": big_prompt_my}
-            ],
-            max_tokens=1000,
-            temperature=0.65,
-        )
-
-        message_my = completions.choices[0].message.content  # Get the joke
-        message_my = self.profanity_filter(message_my)  # Filter out any profanities
-        # print(message_my)
+        print(big_prompt_my)
+        message_my = self.create_message_my(big_prompt_my)  # Get the joke
+        
+        # Check whether message contains prompt or not
+        print(self.output_prompts_my)
+        # Lower capitalise joke for string matching
+        mes_temp_my = message_my.lower()
+        print(mes_temp_my in self.output_prompts_my)
+        while mes_temp_my in self.output_prompts_my:
+            message_my = self.create_message_my(big_prompt_my)  # Generate another joke
+            mes_temp_my = message_my
+            mes_temp_my = mes_temp_my.lower()    
+                    
+        message_my = self.profanity_filter(message_my)  # Filter out any profanities after the prompt is in the message
         return message_my
-
+    
     def message_and_history_my(self, input: str, history_my):
         """
         FOR MALAYSIAN JOKES
@@ -526,6 +575,7 @@ class GPTProcessing(object):
         self.create_feedback_my(history_my, self.tag_memory_my)  # Append the previous chat and its feedback to a file
         self.output_my = self.api_calling_my(self.input_my)  # Generate the joke
         history_my.append((self.input_my, self.output_my))  # Append the prompt and joke to the chatbot display
+        self.output_prompts_my.append(self.output_my.lower())  # Append the joke a list containing all jokes
         self.tag_memory_my.append([None, None])  # Create a tag memory for the new joke
         return history_my, history_my
 
