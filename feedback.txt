@@ -1221,3 +1221,8 @@ Joke: A reporter outside of a polling booth asked a woman, "How long did you hav
 Vote: Upvote
 Recommend: None
 
+Prompt: fish
+Joke: One fish says to the other fish, "How do you drive this thing?"
+Vote: Upvote
+Recommend: Parents
+

@@ -86,8 +86,8 @@ class GPTProcessing(object):
                     def on_send_btn_click(input):
                         self.tag_response(None, input)
 
-                    recommend_textbox = gr.Dropdown(["Parents", "Siblings", "Relatives", "Friends", "Colleagues"], allow_custom_value = True, label = "Who would you recommend the current joke to?" , interactive = True)
-                    send_btn = gr.Button("Submit Feedback", scale = 0.4)
+                    recommend_textbox = gr.Dropdown(["Parents", "Siblings", "Relatives", "Friends", "Colleagues"], allow_custom_value = True, label = "Who would you recommend the current joke to?" , interactive = True, scale = 4)
+                    send_btn = gr.ClearButton([recommend_textbox], value = "Submit Feedback", scale = 1)
                     send_btn.click(on_send_btn_click, inputs=[recommend_textbox], outputs=[])
 
             # Malaysian Jokes Section
@@ -120,8 +120,8 @@ class GPTProcessing(object):
                     def on_send_btn_click_my(input):
                         self.tag_response_my(None, input)
 
-                    recommend_textbox_my = gr.Dropdown(["Ibu bapa", "Siblings", "Relatives", "Kawan-kawan", "Colleagues"], allow_custom_value = True, label = "Who you nak recommend joke ini?" , interactive = True)
-                    send_btn_my = gr.Button("Submit Feedback", scale = 0.4)
+                    recommend_textbox_my = gr.Dropdown(["Ibu bapa", "Siblings", "Relatives", "Kawan-kawan", "Colleagues"], allow_custom_value = True, label = "Who you nak recommend joke ini?" , interactive = True, scale = 4)
+                    send_btn_my = gr.ClearButton([recommend_textbox_my], value = "Submit Feedback", scale = 1)
                     send_btn_my.click(on_send_btn_click_my, inputs=[recommend_textbox_my], outputs=[])
 
             # Button to save all selected joke preferences and display them back to the user.
