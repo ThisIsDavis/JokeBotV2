@@ -26,7 +26,7 @@ class GPTProcessing(object):
         self.input_my = None
         self.output_my = None
 
-        self.OPENAI_API_KEY = ""
+        self.OPENAI_API_KEY = "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"
         os.environ["OPENAI_API_KEY"] = self.OPENAI_API_KEY
         openai.api_key = self.OPENAI_API_KEY
 
@@ -51,8 +51,8 @@ class GPTProcessing(object):
                 with gr.Row():
                     joke_preferences_action = gr.Button("Submit")
                 with gr.Row():
-                    selected_joke_preferences = gr.Textbox(label = "Selected Joke Preferences:", info = "List of jokes that you find funny!",placeholder = "No selected joke preferences yet!", interactive = False)
-                    selected_joke_preferences_action = gr.Button("Clear Preferences", scale = 0.5)
+                    selected_joke_preferences = gr.Textbox(label = "Selected Joke Preferences:", info = "List of jokes that you find funny!", placeholder = "No selected joke preferences yet!", interactive = False, scale = 3)
+                    selected_joke_preferences_action = gr.Button("Clear Preferences", scale = 1)
 
             with gr.Tab("JokeBot"):
                 chatbot = gr.components.Chatbot(label='Finetuned Joke Machine', height = 600)  
@@ -182,8 +182,11 @@ class GPTProcessing(object):
         :Output:
             message: The joke generated from the user input keyword
         """
-        # Prompt engineering the prompt
-        big_prompt = f"Give me another type of joke about the word: {prompt}."
+        if len(self.user_joke_preferences) == 0:
+            # Prompt engineering the prompt
+            big_prompt = f"Give me another type of joke about the word: {prompt}."
+        else:
+            big_prompt = "Learn from these joke(s): [" + ", ".join(str(i) for i in self.user_joke_preferences) + "] and give me another joke about the word: " + prompt + "."
         
         # Ensure there is a response before crafting voted prompts
         if len(self.tag_memory) > 0:
@@ -195,9 +198,14 @@ class GPTProcessing(object):
                 big_prompt = f"The joke was not funny. Please give me another type of joke about the word: {prompt}."
             # If previous response is upvoted 
             elif last_response[0] == 1:
+                # Get the last upvoted joke.
                 up_pr = self.upvote_prompts[-1]
+                # Append it to the user joke preferences list.
+                self.user_joke_preferences.append(up_pr)
                 # big_prompt += " with similar jokes to " + "\'" + up_pr +  "\' and the joke is about the word" + prompt 
-                big_prompt = "learn from  this joke: " + up_pr + " and give me another joke about the word: " + prompt 
+                big_prompt = "Learn from these joke(s): [" + ", ".join(str(i) for i in self.user_joke_preferences) + "] and give me another joke about the word: " + prompt + "."
+                # Pop it once done.
+                self.user_joke_preferences.pop()
                 
         print(big_prompt)
         completions = openai.ChatCompletion.create(
