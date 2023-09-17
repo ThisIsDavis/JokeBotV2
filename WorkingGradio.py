@@ -51,8 +51,8 @@ class GPTProcessing(object):
                 with gr.Row():
                     joke_preferences_action = gr.Button("Submit")
                 with gr.Row():
-                    selected_joke_preferences = gr.Textbox(label = "Selected Joke Preferences:", info = "List of jokes that you find funny!",placeholder = "No selected joke preferences yet!", interactive = False)
-                    selected_joke_preferences_action = gr.Button("Clear Preferences", scale = 0.5)
+                    selected_joke_preferences = gr.Textbox(label = "Selected Joke Preferences:", info = "List of jokes that you find funny!", placeholder = "No selected joke preferences yet!", interactive = False, scale = 3)
+                    selected_joke_preferences_action = gr.Button("Clear Preferences", scale = 1)
 
             with gr.Tab("JokeBot"):
                 chatbot = gr.components.Chatbot(label='Finetuned Joke Machine', height = 600)  
