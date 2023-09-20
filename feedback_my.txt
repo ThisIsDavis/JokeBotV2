@@ -238,3 +238,33 @@ Joke: What did the evil Dapao say to the good Dapao? Want some Dapaosauce?
 Vote: Upvote
 Recommend: Kawan-kawan
 
+Prompt: proton
+Joke: What do you call a prostitute who is also a mechanic? A pro-ton.
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: proton
+Joke: Son: Dad, what's a proton? Dad: It's a car manufacturer. Son: No, I mean what's a proton? Dad: It's a car manufacturer.
+Vote: Upvote
+Recommend: Ibu bapa
+
+Prompt: proton
+Joke: What did the Ah Beng say when he saw a car bonnet? Proton Maid.
+Vote: Downvote
+Recommend: Siblings
+
+Prompt: sambal
+Joke: What's a satay's favourite condiment? Sambal-peanuts
+Vote: Downvote
+Recommend: Colleagues
+
+Prompt: sambal
+Joke: What's the spiciest thing in the world? Sambal, because it makes your nose go "sambal naaaaak"
+Vote: Downvote
+Recommend: Colleagues
+
+Prompt: sambal
+Joke: Why did the sotong add sambal to his ink? Cos he wants to be a sotong king
+Vote: Downvote
+Recommend: Relatives
+

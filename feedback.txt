@@ -238,3 +238,33 @@ Joke: Why did the chicken go to the seance? To get to the other side of the door
 Vote: Downvote
 Recommend: Siblings
 
+Prompt: computer
+Joke: A computer once beat me at chess, but it was no match for me at kick boxing.
+Vote: Downvote
+Recommend: Siblings
+
+Prompt: computer
+Joke: Q: Why did the computer go to the doctor?  A: Because it had a virus!
+Vote: Upvote
+Recommend: Friends
+
+Prompt: computer
+Joke: Q: What did the spider do on the computer?  A: Made a website!
+Vote: Upvote
+Recommend: Parents
+
+Prompt: mom
+Joke: Yo momma is so fat, I took a picture of her last Christmas and it's still printing.
+Vote: Upvote
+Recommend: Friends
+
+Prompt: mom
+Joke: Why did the baby cookie cry? Because its mother was a wafer too long.
+Vote: Downvote
+Recommend: Siblings
+
+Prompt: mom
+Joke: Q: What did the baby corn say to the mama corn?  A: "Where's Popcorn?"
+Vote: Upvote
+Recommend: Friends
+
