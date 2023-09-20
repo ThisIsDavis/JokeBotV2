@@ -1,0 +1,260 @@
+Prompt: malay
+Joke: What do you call an Indian who is very good in Malay language? Malayvendan
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: malay
+Joke: What do you call a Malay that is good at maths? Malaiyak
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: malay
+Joke: What do you call a Malay who is good at catching things? Malaiyak
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: nasilemak
+Joke: Why did the nasilemak refuse to fight? Because it didn't want to kena lemak
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: nasilemak
+Joke: What do you call a nasilemak that can solve a rubiks cube? A nasilemak genius.
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: monash
+Joke: Why did the Monash student get a D for his exam? He did not pindah ke depan.
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: monash
+Joke: Why did the Monash student got caught cheating? He did not pindah ke depan.
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: monash
+Joke: If a Monash student is not smart, you call him a Mongolian student.
+Vote: Downvote
+Recommend: Colleagues
+
+Prompt: situationship
+Joke: What is a 'situationship'? It's when you are in a relationship with a location.
+Vote: Upvote
+Recommend: Colleagues
+
+Prompt: situationship
+Joke: What is a 'situationship'? It's when you are in a relationship with a situation that caused by a sopan-santun-less uncle.
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: satay
+Joke: Why is duck meat the best meat to be used in satay? Because it is the only meat that can say, "Satay!"
+Vote: Downvote
+Recommend: Relatives
+
+Prompt: satay
+Joke: What do you call a Malay bro who is very good at making satay? A satay-lit.
+Vote: Upvote
+Recommend: Siblings
+
+Prompt: satay
+Joke: What do you call a Malay bro who is very good at making satay? A satay-lit. What do you call a Malay bro who is a second-generation satay-maker? A satay-v. What do you call a Malay bro who is very good at making satay and a DJ? A satay-v-lit.
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: laksa
+Joke: Why don't you ever bring laksa for a picnic? Because it will be too xian!
+Vote: Upvote
+Recommend: Siblings
+
+Prompt: laksa
+Joke: Why is the Sarawakian so good at making laksa? Because they've had so much practise!
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: roti
+Joke: What do you call a flying roti? A ro-plane.
+Vote: Downvote
+Recommend: Siblings
+
+Prompt: roti
+Joke: Q: What do you call an excited bread? A: Roti Can-Can
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: roti
+Joke: Q: How do you make a bread angry? A: You kacau-teh
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: sabah
+Joke: What is the most powerful element in the periodic table? Sabah
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: sabah
+Joke: What is the most patriotic person in Malaysia? Anak Sabah
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: mamak
+Joke: What's a mamak's favourite channel? University.
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: mamak
+Joke: What do you call a mamak who is a superhero? Rotiman.
+Vote: Upvote
+Recommend: Siblings
+
+Prompt: mamak
+Joke: What do you call a mamak who is a pilot? Mamak-kanak.
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: chickenrice
+Joke: Why did the chicken rice refuse to go into the pot? Because it heard the chef say, "I want more chicken rice!"
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: chickenrice
+Joke: Why did the chicken rice refuse to go to the nightclub? Because it heard the chef say, "I want more chicken rice!"
+Vote: None
+Recommend: None
+
+Prompt: chickenrice
+Joke: Why do chickens make terrible students? Because they always chee kai (chicken rice)
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: durian
+Joke: What do you call a durian that is broke? Durian bankrap
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: durian
+Joke: What do you call a durian that is broke? Durian bankrap
+Vote: Downvote
+Recommend: None
+
+Prompt: durian
+Joke: What is a durian's favourite band? Durian Durian.
+Vote: Upvote
+Recommend: Siblings
+
+Prompt: durian
+Joke: What is a durian's favourite band? Durian Durian.
+Vote: None
+Recommend: None
+
+Prompt: durian
+Joke: Why do Durian taste so good? Cos it’s a sweet talker
+Vote: Downvote
+Recommend: Siblings
+
+Prompt: petronas
+Joke: What is Anwar's favourite oil company? Petronas. Cos Petronas.
+Vote: None
+Recommend: None
+
+Prompt: tiger
+Joke: Why is the Tiger going to get married? Because it is marrying a Tigeress
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: tiger
+Joke: What is the Malaysian version of Tiger Woods? Harimau Woods.
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: tiger
+Joke: What is the Malaysian version of Tiger Woods? Harimau Woods.
+Vote: None
+Recommend: None
+
+Prompt: klcc
+Joke: Why did the coffee get a job at KLCC? Because it was always brewing
+Vote: Downvote
+Recommend: Relatives
+
+Prompt: klcc
+Joke: Hey girl, are you KLCC? Cause I can't afford you
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: klcc
+Joke: Hey girl, are you KLCC? Cause you're not my type, I prefer IOI City Mall
+Vote: Upvote
+Recommend: Siblings
+
+Prompt: chinesenewyear
+Joke: Hey girl, is your dad a multi-millionaire? No? Then why are you so CNY?
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: chinesenewyear
+Joke: What do you call a bunch of Chinese New Year well-wishers? Kong Hee Huat Chai.
+Vote: Upvote
+Recommend: Ibu bapa
+
+Prompt: chinesenewyear
+Joke: What do you call a bunch of Chinese New Year well-wishers? Kong Hee Huat Chai. What do you call a bunch of Chinese New Year well-wishers who got into a car accident? Kong Hee Huat Chai Png.
+Vote: None
+Recommend: None
+
+Prompt: kacau
+Joke: A girl asked a boy, “If I call your name, it means I like you. What if I kacau you?” The boy replied, “It means you love me.”
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: kacau
+Joke: Girl: Can I kacau your handphone? Boy: No, but you can kacau my heart.
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: kacau
+Joke: Girl: Can I kacau your handphone? Boy: No, but you can kacau my heart.
+Vote: Upvote
+Recommend: None
+
+Prompt: kacau
+Joke: Girl: Can I kacau your handphone? Boy: No, but you can kacau my heart.
+Vote: Upvote
+Recommend: None
+
+Prompt: kacau
+Joke: Girl: Can I kacau your handphone? Boy: No, but you can kacau my heart.
+Vote: Upvote
+Recommend: None
+
+Prompt: dapao
+Joke: What do you call a takeaway meal with a PhD in mathematics? Dapao
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: dapao
+Joke: What do you call a box of uncooked rice? Dapao.
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: dapao
+Joke: What did the evil Dapao say to the good Dapao? Want some Dapaosauce?
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: dapao
+Joke: What is the favorite song of dapao? Dapaolice
+Vote: Upvote
+Recommend: None
+
+Prompt: dapao
+Joke: What is the favourite song of dapao? Dapaolice
+Vote: Upvote
+Recommend: None
+
+Prompt: dapao
+Joke: What do you call a chubby girl who likes to dapao? Dapao girl
+Vote: Upvote
+Recommend: None
+
