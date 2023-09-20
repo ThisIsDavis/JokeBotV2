@@ -9,14 +9,9 @@ Vote: Upvote
 Recommend: Relatives
 
 Prompt: china
-Joke: Why did china invent fireworks? They're really good at copy and paste.
-Vote: Downvote
-Recommend: None
-
-Prompt: china
-Joke: Two guys were discussing popular family trends on s**, marriage, and values.   Stu said, "I didn't sleep with my wife before we got married, did you?"  Leroy replied, "I'm not sure, what was her maiden name?"
-Vote: None
-Recommend: None
+Joke: What do you call a country that has a lot of pandas? China. What do you call a country that has a lot of debt? America.
+Vote: Upvote
+Recommend: Friends
 
 Prompt: fish
 Joke: Q: Why don't fish like basketball?  A: Because they're afraid of the net.
@@ -25,6 +20,11 @@ Recommend: Colleagues
 
 Prompt: fish
 Joke: Q: What did the fish say when it swam into a wall?  A: Dam.
+Vote: Upvote
+Recommend: Friends
+
+Prompt: fish
+Joke: Why did the fish blush? Because it saw the ocean's bottom!
 Vote: Upvote
 Recommend: Friends
 
@@ -53,6 +53,11 @@ Joke: Q: What's the difference between a snowman and a snowwoman?  A: Snowballs.
 Vote: Upvote
 Recommend: Siblings
 
+Prompt: joke
+Joke: A boy asks his father, "Dad, are bugs good to eat?" The father replies, "That's disgusting. Don't talk about things like that over dinner." After dinner, the father asks, "Now, son, what did you want to ask me?" "Oh, nothing," the boy says. "There was a bug in your soup, but now it’s gone."
+Vote: Upvote
+Recommend: Colleagues
+
 Prompt: monash
 Joke: Q: How do you kill a Monash University student? A: Fill his shower with cornflakes.
 Vote: Upvote
@@ -79,9 +84,9 @@ Vote: Upvote
 Recommend: Colleagues
 
 Prompt: computerscience
-Joke: Q: What is a computer virus?  A: A terminal illness.
-Vote: None
-Recommend: None
+Joke: Q: How many programmers does it take to change a light bulb? A: None. It's a hardware problem.
+Vote: Upvote
+Recommend: Colleagues
 
 Prompt: mother
 Joke: Yo momma is so stupid, she put two quarters in her ears and thought she was listening to 50 Cent.
@@ -89,24 +94,9 @@ Vote: Upvote
 Recommend: Parents
 
 Prompt: mother
-Joke: Yo momma is so stupid, she put two quarters in her ears and thought she was listening to 50 Cent.
-Vote: None
-Recommend: None
-
-Prompt: mother
-Joke: These two guys are walking through a field, and they come across this well. The guy goes over to the well and looks down, and he turns to the other guy and says, "You know, this looks just like a regular well, but I can't figure out why it's so deep." The other guy goes over and looks down. He says, "Geez, that is deep. Let's throw something down there and see how long it takes to hit the bottom." They see an anvil nearby. They start dragging the anvil over and throw it in. The two of them are standing there watching the anvil disappear into the well. All of a sudden, they hear this big rustling behind them. They turn around and look, and there's a goat come crashing through the brush, run up to the well, and with no hesitation, dive in head first. While they're standing there scratching their heads, this farmer walks up. He asks them if they've seen a goat anywhere. The first guy says, "You know, about five minutes ago, a goat came running out of the bushes over there, flew over our heads, and dived into this well over here." The farmer says, "
-Vote: None
-Recommend: None
-
-Prompt: mother
 Joke: A mother and her young son returned from the grocery store and began putting away the groceries. The boy opened the box of animal crackers and spread them all over the table. "What are you doing?" his mother asked. "The box says you can't eat them if the seal is broken," the boy explained. "I'm looking for the seal."
 Vote: Upvote
 Recommend: Siblings
-
-Prompt: mother
-Joke: Q: What do you call a fake noodle?  A: An Impasta.
-Vote: Downvote
-Recommend: Friends
 
 Prompt: mother
 Joke: Yo mama so ugly when she tried to join an ugly contest they said, "Sorry, no professionals."
@@ -124,24 +114,9 @@ Vote: Downvote
 Recommend: Friends
 
 Prompt: banana
-Joke: Q: What did the banana say to the vibrator?  A: "I don't know why you're shaking...she's going to EAT me!"
-Vote: None
-Recommend: None
-
-Prompt: banana
-Joke: A boy walks up to a bald man and says, "Sir, your head is so shiny!" The bald man replies, "Yes, I know, I polished it with my wife's panties this morning." The boy then says, "Wow, that's a good idea. I'll have to try it." Later that day, the boy comes running up to the bald man, now very angry. "Sir, sir, I tried your idea, but it didn't work!" The bald man looks up and says, "Really, what happened?" The boy says, "Well, I tried it with my sister's panties, but I couldn't get it to shine!"
-Vote: None
-Recommend: None
-
-Prompt: banana
 Joke: What is yellow and goes bzzzzzz?  An electric banana.
 Vote: Upvote
 Recommend: Friends
-
-Prompt: finger
-Joke: Three men were standing in line to get into heaven one day. Apparently it had been a pretty busy day, though, so Peter had to tell the first one, "Heaven's getting pretty close to full today, and I've been asked to admit only people who have had particularly horrible deaths. So what's your story?" So the first man replies: "Well, for a while I've suspected my wife has been cheating on me, so today I came home early to try to catch her red-handed. As I came into my 25th floor apartment, I could tell something was wrong, but all my searching around didn't reveal where this other guy could have been hiding. Finally, I went out to the balcony, and sure enough, there was this man hanging off the railing, 25 floors above ground! By now I was really mad, so I started beating on him and kicking him, but wouldn't you know it, he wouldn't fall off. So finally I went back into my apartment and got a hammer and starting hammering on his fingers. Of course, he couldn't stand that for long, so he let go and fell -- but even after 25 stories, he fell into the bushes, stunned but okay
-Vote: None
-Recommend: None
 
 Prompt: single
 Joke: Q: What's the worst thing about being lonely and single?  A: Playing Frisbee.
@@ -159,50 +134,19 @@ Vote: Upvote
 Recommend: Colleagues
 
 Prompt: india
-Joke: Q: Why did the scarecrow win an award?  A: Because he was outstanding in his field!
-Vote: None
-Recommend: None
-
-Prompt: india
 Joke: A Pakistani boy took admission in an American university...   Professor: What is your name?   Boy: Ahmad   Professor: S**?   Boy: Six to ten times a week   Professor: I mean, male or female?   Boy: Both male and female and sometimes even camels.   Professor: Holy cow   Boy: Yes, cows and dogs too….   Professor: Man,……whatever, just get out.   Boy: Oh thank God, I am Pakistani.
 Vote: Downvote
 Recommend: Friends
-
-Prompt: india
-Joke: Why did the scarecrow win an award? Because he was outstanding in his field!
-Vote: None
-Recommend: None
-
-Prompt: india
-Joke: There was a young man in India named Roshan. He decided to get a university degree, so he went to Bangalore University and asked the admission clerk what he needed to do. The clerk told Roshan, "You must pass a simple test, sir. Here is your first question: 'Without using numbers, represent the number 9.'" Roshan thought for a moment, and replied, "This is easy," and proceeded to draw three trees. The boss replied, "What the hell is that?!" Roshan replied, "You don't understand, chalega sir. Tree plus tree plus tree equals 9. " "Fair enough," said the boss. "Here is your second question: Use the same rules, but this time the number is 99." Roshan stared into space for a while, then picked up the picture that he had just drawn and made a smudge on each tree. "Eureka!" he cried. "Tree plus tree plus tree equals 99!" The boss said, "That's amazing, Roshan. You're hired! "Roshan replied, "Thank you sir, I chalega do my best!"
-Vote: None
-Recommend: None
-
-Prompt: india
-Joke: Why did the University of Oklahoma researcher go to prison? 
-To visit his cells.
-Vote: None
-Recommend: None
 
 Prompt: india
 Joke: Q: What is the difference between an Indian university and a university in the USA?  A: In the USA, a student passes a test and gets a degree. In India, a student passes a degree and gets a test.
 Vote: Upvote
 Recommend: Friends
 
-Prompt: classroom
-Joke: A college student is taking a walk in Central Park in New York. Suddenly he sees a little girl being attacked by a pit bull dog. He runs over and starts fighting with the dog. He succeeds in killing the dog and saving the girl's life. A policeman who was watching the scene walks over and says: "You are a hero, tomorrow you can read it in all the newspapers: "Brave New Yorker saves the life of little girl" The hero says: - "But I am not a New Yorker!" "Oh ,then it will say in newspapers in the morning: 'Brave American saves life of little girl'" - the policeman answers. "But I am not an American!" - says the hero. "Oh, what are you then? " The hero says: - "I am a Saudi!" The next day the newspapers says: "Islamic extremist kills innocent American dog."
-Vote: None
-Recommend: None
-
-Prompt: classroom
-Joke: A college student is taking a walk in Central park in New York. Suddenly he sees a little girl being attacked by a pit bull dog . He runs over and starts fighting with the dog. He succeeds in killing the dog and saving the girl's life. A policeman who was watching the scene walks over and says: "You are a hero, tomorrow you can read it in all the newspapers: "Brave New Yorker saves the life of little girl" The man says: - "But I am not a New Yorker!" "Oh ,then it will say in newspapers in the morning: 'Brave American saves life of little girl'" – the policeman answers. "But I am not an American!" – says the man. "Oh, what are you then? " The man says: - "I am a Saudi !" The next day the newspapers says: "Islamic extremist kills innocent American dog."
-Vote: None
-Recommend: None
-
-Prompt: classroom
-Joke: A college student is taking a walk in Central Park in New York. Suddenly he sees a little girl being attacked by a pit bull dog . He runs over and starts fighting with the dog. He succeeds in killing the dog and saving the girl's life. A policeman who was watching the scene walks over and says: "You are a hero, tomorrow you can read it in all the newspapers: "Brave New Yorker saves the life of little girl". The man says: - "But I am not a New Yorker!" "Oh ,then it will say in newspapers in the morning: 'Brave American saves life of little girl'" – the policeman answers. "But I am not an American!" – says the man. "Oh, what are you then? " The man says: - "I am a Saudi !" The next day the newspapers says: "Islamic extremist kills innocent American dog."
-Vote: None
-Recommend: None
+Prompt: india
+Joke: Q. How does an Indian guy propose to his girlfriend? A. "Meet my wife."
+Vote: Downvote
+Recommend: Friends
 
 Prompt: classroom
 Joke: A college student is deeply regretful of his past in high school. So he visits a psychic and asks if he’ll be a success in his chosen field. The psychic assures him that he will be a success in his chosen field, so the student asks for any advice he can get. The psychic replies, “Yes, next time, don’t major in history.”
@@ -213,16 +157,6 @@ Prompt: classroom
 Joke: A teacher asked her students to use the word "beans" in a sentence. "My father grows beans," said one girl. "My mother cooks beans," said a boy. A third student spoke up, "We are all human beans."
 Vote: Upvote
 Recommend: Siblings
-
-Prompt: classroom
-Joke: A teacher asked her students to use the word "beans" in a sentence. "My father grows beans," said one girl. "My mother cooks beans," said a boy. A third student spoke up, "We are all human beans."
-Vote: None
-Recommend: None
-
-Prompt: classroom
-Joke: A college student is taking a walk in Central park in New York. Suddenly he sees a little girl being attacked by a pit bull dog . He runs over and starts fighting with the dog. He succeeds in killing the dog and saving the girl's life. A policeman who was watching the scene walks over and says: "You are a hero, tomorrow you can read it in all the newspapers: "Brave New Yorker saves the life of little girl" The hero says: - "But I am not a New Yorker!" "Oh ,then it will say in newspapers in the morning: 'Brave American saves life of little girl'" – the policeman answers. "But I am not an American!" – says the hero. "Oh, what are you then? " The hero says: - "I am a Saudi!" The next day the newspapers says: "Islamic extremist kills innocent American dog."
-Vote: Downvote
-Recommend: None
 
 Prompt: classroom
 Joke: Teacher: "Kids, what does the chicken give you?"  Student: "Meat!"  Teacher: "Very good! Now what does the pig give you?"  Student: "Bacon!"  Teacher: "Great! And what does the fat cow give you?"  Student: "Homework!"
@@ -240,39 +174,9 @@ Vote: Upvote
 Recommend: Siblings
 
 Prompt: vehicle
-Joke: Q: What did the big flower say to the little flower?  A: Hi, bud!
-Vote: None
-Recommend: None
-
-Prompt: vehicle
-Joke: Q: What did the university student say to the judge when he was found guilty?  A: "Would you consider a degree of mercy?"
-Vote: Downvote
-Recommend: None
-
-Prompt: vehicle
-Joke: Why was the math book sad? Because it had too many problems.
-Vote: None
-Recommend: None
-
-Prompt: vehicle
-Joke: Why did the University of Oklahoma buy a new jigsaw puzzle? Because the old one said 3-5 years but they finished it in 2 weeks.
-Vote: None
-Recommend: None
-
-Prompt: vehicle
-Joke: How do you get a sweet little 80-year-old lady to say the F word? Get another sweet little 80-year-old lady to yell *BINGO*!
-Vote: None
-Recommend: None
-
-Prompt: vehicle
-Joke: Q: What is a tornado's favorite game to play?  A: Twister.
-Vote: None
-Recommend: None
-
-Prompt: vehicle
-Joke: Q: What do you call a dumb brunette?  A: A dirty blonde.
-Vote: None
-Recommend: None
+Joke: Q: What kind of vehicle does a sheep drive? A: A Lamborghini.
+Vote: Upvote
+Recommend: Colleagues
 
 Prompt: feeling
 Joke: A woman gets on a bus with her baby. The bus driver says: “Ugh, that’s the ugliest baby I’ve ever seen!” The woman walks to the rear of the bus and sits down, fuming. She says to a man next to her: “The driver just insulted me!” The man says: “You go up there and tell him off. Go on, I’ll hold your monkey for you.”
@@ -280,39 +184,9 @@ Vote: Upvote
 Recommend: Friends
 
 Prompt: feeling
-Joke: Q: What did the elephant say to the naked man?  A: "How do you breathe through something so small?"
-Vote: None
-Recommend: None
-
-Prompt: feeling
 Joke: A teacher was giving a lesson on the circulation of the blood. Trying to make the matter clearer, he said: "Now, students, if I stood on my head the blood, as you know, would run into it, and I should turn red in the face." "Yes, sir," the boys said. "Then why is it that while I am standing upright in the ordinary position the blood doesn't run into my feet?" A little fellow shouted, "Cause your feet ain't empty."
 Vote: Downvote
 Recommend: Siblings
-
-Prompt: feeling
-Joke: Q: How do you organize a space party?  A: You planet.
-Vote: None
-Recommend: None
-
-Prompt: feeling
-Joke: A school teacher injured his back and had to wear a plaster cast around the upper part of his body. It fit under his shirt and was not noticeable at all. On the first day of the term, still with the cast under his shirt, he found himself assigned to the toughest students in school. Walking confidently into the rowdy classroom, he opened the window as wide as possible and then busied himself with desk work. When a strong breeze made his tie flap, he took the desk stapler and stapled the tie to his chest. He had no trouble with discipline that term.
-Vote: None
-Recommend: None
-
-Prompt: feeling
-Joke: Q: What's the best part about going to school?  A: The ride back home.
-Vote: None
-Recommend: None
-
-Prompt: feeling
-Joke: There was a student who was desirous of taking admission for a study course. He was smart enough to get through the written test, a GD and was to appear for the personal interview. Later, as the interview progressed, the interviewer found this boy to be bright since he could answer all the questions correctly. The interviewer got impatient and decided to corner the boy. "Tell me your choice," said he to the boy, "What's your choice: I shall either ask you ten easy questions or ONE real difficult. Think well before you make up your mind." The boy thought for a while and said, "my choice is ONE real difficult question." "Well, good luck to you, you have made your own choice!" said the man on the opposite side. Tell me: What comes first, Day or Night?" The boy was jolted first but he waited for a while and said: "It's the DAY, sir." "How???????" the interviewer was smiling ("At last, I got you!" he said to himself.) "Sorry sir, you promised me that you will not ask me a SECOND difficult question!"
-Vote: None
-Recommend: None
-
-Prompt: feeling
-Joke: Q: What did the big flower say to the little flower?  A: "Hi, bud!"
-Vote: None
-Recommend: None
 
 Prompt: feeling
 Joke: My teacher sends me to the principal's office every time I answer a question correctly. I don't deserve this.
@@ -320,14 +194,19 @@ Vote: Upvote
 Recommend: Friends
 
 Prompt: sports
-Joke: Q: Why are all the girls in my neighborhood lining up at my house? A: I'm a coffee grinder.
-Vote: None
-Recommend: None
-
-Prompt: sports
 Joke: Q: Why are most NFL stadiums on the east coast?  A: Because if they were on the west coast, the fans would get all the good seats.
 Vote: Upvote
 Recommend: Friends
+
+Prompt: sports
+Joke: Q: Why did the golfer bring two pairs of pants? A: In case he got a hole in one.
+Vote: Upvote
+Recommend: Colleagues
+
+Prompt: sports
+Joke: Q: Why was Cinderella thrown off the basketball team? A: She ran away from the ball.
+Vote: Upvote
+Recommend: Parents
 
 Prompt: heaven
 Joke: There were three guys in Hell - Iranian, American, and a Chinese man. They asked Satan to let them call their family. The American called and talked for 10 minutes. He payed $1,000. The Chinaman called and talked for 15 minutes. He payed $2,000. The Iranian talked for an hour and only paid $10. The other men complained and Satan responded, "A call from Hell to Hell is local."
@@ -350,17 +229,12 @@ Vote: Upvote
 Recommend: Siblings
 
 Prompt: door
-Joke: JokeBot: A blonde and a redhead have a ranch. They have just lost their bull. The women need to buy another, but only have $500. The redhead tells the blonde, "I will go to the market and see if I can find one for under that amount.  If I can, I will send you a telegram."  She goes to the market and finds one for $499. Having only one dollar left, she goes to the telegraph office and finds out that it costs one dollar per word. She is stumped on how to tell the blonde to bring the truck and trailer. Finally, she tells the telegraph operator to send the word "comfortable." Skeptical, the operator asks, "How will she know to come with the trailer from just that word?" The redhead replies, "She's a blonde so she reads slow: 'Come for ta bull.'"
-Vote: None
-Recommend: None
-
-Prompt: door
 Joke: A lady opened her refrigerator and saw a rabbit sitting on one of the shelves, "What are you doing in there?" she asked. The rabbit replied, "This is a Westinghouse, isn't it?" The lady confirmed, "Yes." "Well," the rabbit said, "I'm westing."
 Vote: Upvote
 Recommend: Friends
 
 Prompt: door
-Joke: A blonde said, "I was worried that my mechanic might try to rip me off. I was relieved when he told me all I needed was turn-signal fluid."
-Vote: None
-Recommend: None
+Joke: Why did the chicken go to the seance? To get to the other side of the door.
+Vote: Downvote
+Recommend: Siblings
 

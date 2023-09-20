@@ -23,6 +23,11 @@ Joke: What do you call a nasilemak that can solve a rubiks cube? A nasilemak gen
 Vote: Downvote
 Recommend: Kawan-kawan
 
+Prompt: nasilemak
+Joke: What do you call a nasi lemak that is not polite? A Nasi Rude Mak
+Vote: Downvote
+Recommend: Kawan-kawan
+
 Prompt: monash
 Joke: Why did the Monash student get a D for his exam? He did not pindah ke depan.
 Vote: Upvote
@@ -47,6 +52,11 @@ Prompt: situationship
 Joke: What is a 'situationship'? It's when you are in a relationship with a situation that caused by a sopan-santun-less uncle.
 Vote: Downvote
 Recommend: Kawan-kawan
+
+Prompt: situationship
+Joke: What is a situation where you are in a relationship but also not? Situationship.
+Vote: Downvote
+Recommend: Colleagues
 
 Prompt: satay
 Joke: Why is duck meat the best meat to be used in satay? Because it is the only meat that can say, "Satay!"
@@ -73,6 +83,11 @@ Joke: Why is the Sarawakian so good at making laksa? Because they've had so much
 Vote: Downvote
 Recommend: Kawan-kawan
 
+Prompt: laksa
+Joke: Why does laksa taste so good? Cause it laksa flavor.
+Vote: Upvote
+Recommend: Kawan-kawan
+
 Prompt: roti
 Joke: What do you call a flying roti? A ro-plane.
 Vote: Downvote
@@ -97,6 +112,11 @@ Prompt: sabah
 Joke: What is the most patriotic person in Malaysia? Anak Sabah
 Vote: Downvote
 Recommend: Kawan-kawan
+
+Prompt: sabah
+Joke: Why did the Sabahan stop his car on the road? He saw 'SABAH' written on the road.
+Vote: Downvote
+Recommend: Colleagues
 
 Prompt: mamak
 Joke: What's a mamak's favourite channel? University.
@@ -134,29 +154,14 @@ Vote: Upvote
 Recommend: Kawan-kawan
 
 Prompt: durian
-Joke: What do you call a durian that is broke? Durian bankrap
-Vote: Downvote
-Recommend: None
-
-Prompt: durian
 Joke: What is a durian's favourite band? Durian Durian.
 Vote: Upvote
 Recommend: Siblings
 
 Prompt: durian
-Joke: What is a durian's favourite band? Durian Durian.
-Vote: None
-Recommend: None
-
-Prompt: durian
 Joke: Why do Durian taste so good? Cos it’s a sweet talker
 Vote: Downvote
 Recommend: Siblings
-
-Prompt: petronas
-Joke: What is Anwar's favourite oil company? Petronas. Cos Petronas.
-Vote: None
-Recommend: None
 
 Prompt: tiger
 Joke: Why is the Tiger going to get married? Because it is marrying a Tigeress
@@ -169,9 +174,9 @@ Vote: Upvote
 Recommend: Kawan-kawan
 
 Prompt: tiger
-Joke: What is the Malaysian version of Tiger Woods? Harimau Woods.
-Vote: None
-Recommend: None
+Joke: Why do tigers never lose at poker? Because they're cheetahs!
+Vote: Upvote
+Recommend: Siblings
 
 Prompt: klcc
 Joke: Why did the coffee get a job at KLCC? Because it was always brewing
@@ -199,9 +204,9 @@ Vote: Upvote
 Recommend: Ibu bapa
 
 Prompt: chinesenewyear
-Joke: What do you call a bunch of Chinese New Year well-wishers? Kong Hee Huat Chai. What do you call a bunch of Chinese New Year well-wishers who got into a car accident? Kong Hee Huat Chai Png.
-Vote: None
-Recommend: None
+Joke: What is the best thing to say on Chinese New Year eve?? Goodbye!
+Vote: Upvote
+Recommend: Siblings
 
 Prompt: kacau
 Joke: A girl asked a boy, “If I call your name, it means I like you. What if I kacau you?” The boy replied, “It means you love me.”
@@ -214,19 +219,9 @@ Vote: Upvote
 Recommend: Kawan-kawan
 
 Prompt: kacau
-Joke: Girl: Can I kacau your handphone? Boy: No, but you can kacau my heart.
-Vote: Upvote
-Recommend: None
-
-Prompt: kacau
-Joke: Girl: Can I kacau your handphone? Boy: No, but you can kacau my heart.
-Vote: Upvote
-Recommend: None
-
-Prompt: kacau
-Joke: Girl: Can I kacau your handphone? Boy: No, but you can kacau my heart.
-Vote: Upvote
-Recommend: None
+Joke: What's the most kacau number? Tiga puluh tiga, because it tiga (disturb) tiga
+Vote: Downvote
+Recommend: Colleagues
 
 Prompt: dapao
 Joke: What do you call a takeaway meal with a PhD in mathematics? Dapao
@@ -242,19 +237,4 @@ Prompt: dapao
 Joke: What did the evil Dapao say to the good Dapao? Want some Dapaosauce?
 Vote: Upvote
 Recommend: Kawan-kawan
-
-Prompt: dapao
-Joke: What is the favorite song of dapao? Dapaolice
-Vote: Upvote
-Recommend: None
-
-Prompt: dapao
-Joke: What is the favourite song of dapao? Dapaolice
-Vote: Upvote
-Recommend: None
-
-Prompt: dapao
-Joke: What do you call a chubby girl who likes to dapao? Dapao girl
-Vote: Upvote
-Recommend: None
 
