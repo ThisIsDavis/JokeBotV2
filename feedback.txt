@@ -327,3 +327,34 @@ Prompt: medic
 Joke: Why did the medic always bring a pencil to the emergency room? Because they wanted to draw blood!
 Vote: Upvote
 Recommend: Relatives
+
+Prompt: fashion
+Joke: Q: What's a monster's favorite clothes store?  A: Forever 21.
+Vote: Upvote
+Recommend: Friends
+
+Prompt: fashion
+Joke: Q. Why did the fashion designer always carry a pencil and paper?  A. Because he wanted to draw attention.
+Vote: Upvote
+Recommend: Friends
+
+Prompt: fashion
+Joke: I'm no fashion expert, but I'm pretty sure that if you put your pants on your head, you're doing it wrong.
+Vote: Downvote
+Recommend: Colleagues
+
+Prompt: animal
+Joke: Q: What did the elephant say to the naked man?  A: "How do you breathe through something so small?"
+Vote: Upvote
+Recommend: Siblings
+
+Prompt: animal
+Joke: Q: What do you call an alligator in a vest?  A: An investigator.
+Vote: Upvote
+Recommend: Colleagues
+
+Prompt: animal
+Joke: Q: What do you call a pig that does karate?  A: A pork chop.
+Vote: Upvote
+Recommend: Friends
+

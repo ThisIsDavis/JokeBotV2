@@ -328,3 +328,33 @@ Joke: What is the most famous Malaysian's crime? Speeding.
 Vote: Upvote
 Recommend: Kawan-kawan
 
+Prompt: Chinese
+Joke: What is the difference between a Chinese and a Malay? The Chinese will say "You" but the Malay will say "U"
+Vote: Downvote
+Recommend: Siblings
+
+Prompt: Chinese
+Joke: How do you know if a Chinese person is happy? They'll tell you.
+Vote: Downvote
+Recommend: Colleagues
+
+Prompt: Chinese
+Joke: What do you call a Chinese guy who always have to go to the toilet? Shi Ting Bin
+Vote: Upvote
+Recommend: Siblings
+
+Prompt: Hokkien
+Joke: What is �hokkien� in Japanese? 8/7c
+Vote: Downvote
+Recommend: Relatives
+
+Prompt: Hokkien
+Joke: Why Hokkien no girlfriend? Because Hokkien Mee is only good in one night stand.
+Vote: Upvote
+Recommend: Siblings
+
+Prompt: Hokkien
+Joke: Why Hokkien eat so much? Because Hokkien (hao xin)
+Vote: Downvote
+Recommend: Relatives
+
