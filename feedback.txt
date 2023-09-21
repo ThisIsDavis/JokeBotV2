@@ -358,3 +358,33 @@ Joke: Q: What do you call a pig that does karate?  A: A pork chop.
 Vote: Upvote
 Recommend: Friends
 
+Prompt: alcohol
+Joke: A woman walks into a bar and asks the bartender for a double entendre, so he gives it to her.
+Vote: Upvote
+Recommend: Colleagues
+
+Prompt: alcohol
+Joke: A man was driving drunk through the city. A man ran up to him and said, "You're the fourth drunk driver I've stopped today!" The drunk replied, "Wow! I must be really good!"
+Vote: Upvote
+Recommend: Colleagues
+
+Prompt: alcohol
+Joke: Q: What did the bartender say after Charles Dickens ordered a martini?  A: "Olive or twist?"
+Vote: Upvote
+Recommend: Colleagues
+
+Prompt: religion
+Joke: Yo mama so stupid, she thought the KKK was a religious group.
+Vote: Upvote
+Recommend: Parents
+
+Prompt: religion
+Joke: Three nuns are sitting on a park bench when a flasher comes by. The first nun has a stroke, the second nun has a stroke, but the third nun couldn't reach.
+Vote: Downvote
+Recommend: Friends
+
+Prompt: religion
+Joke: A little boy was learning about God in his church, and he was talking to his mother about it. She, not wanting to place prejudice in the little boy�s mind, sat him and said: �God is not a man or a woman, and God is not black or white.� To which the child responded, �Well, then is God Michael Jackson?�
+Vote: Upvote
+Recommend: Colleagues
+

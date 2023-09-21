@@ -358,3 +358,33 @@ Joke: Why Hokkien eat so much? Because Hokkien (hao xin)
 Vote: Downvote
 Recommend: Relatives
 
+Prompt: babi
+Joke: What do you call a pig that celebrates its birthday? Babi-thday!
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: babi
+Joke: What is the most educated pig in the world? Pro-babi.
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: babi
+Joke: What is the most unlucky animal in the world? Babi cause he lives in your house.
+Vote: Upvote
+Recommend: Ibu bapa
+
+Prompt: Indomee
+Joke: What's the most popular brand of noodles in Ah Beng's class? Indomee-lah
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: Indomee
+Joke: Why did the Indomee go to the dentist? Because of mee rebus
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: Indomee
+Joke: What do you call a fat Indomee? Mee Sua.
+Vote: Downvote
+Recommend: Kawan-kawan
+
