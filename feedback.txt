@@ -268,3 +268,33 @@ Joke: Q: What did the baby corn say to the mama corn?  A: "Where's Popcorn?"
 Vote: Upvote
 Recommend: Friends
 
+Prompt: monkey
+Joke: Why did the monkey like the banana? Because it had appeal.
+Vote: Upvote
+Recommend: Parents
+
+Prompt: monkey
+Joke: Q: What do monkeys do for laughs?  A: They tell jokes about people.
+Vote: Downvote
+Recommend: Relatives
+
+Prompt: monkey
+Joke: Q: Why did the monkey like the banana?  A: Because it had appeal.
+Vote: Upvote
+Recommend: Friends
+
+Prompt: school
+Joke: Teacher: "What is the future tense of the statement: 'I had killed a thief'?" Student: "You will go to jail."
+Vote: Downvote
+Recommend: Relatives
+
+Prompt: school
+Joke: Why did the math book look sad? Because it had too many problems.
+Vote: Upvote
+Recommend: Friends
+
+Prompt: school
+Joke: A student comes to a young professor's office hours. She glances down the hall, closes his door, kneels pleadingly. "I would do anything to pass this exam." She leans closer to him, flips back her hair, gazes meaningfully into his eyes. "I mean..." she whispers, "...I would do...anything." He returns her gaze. "Anything?" "Anything." His voice softens. "Anything??" "Absolutely anything." His voice turns to a whisper. "Would you...study?"
+Vote: Upvote
+Recommend: Friends
+

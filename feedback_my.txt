@@ -268,3 +268,33 @@ Joke: Why did the sotong add sambal to his ink? Cos he wants to be a sotong king
 Vote: Downvote
 Recommend: Relatives
 
+Prompt: Nasilemak
+Joke: What do you call a parent who brings their child to eat Nasilemak that doesn't have coconut milk? Fai-o-lan
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: Nasilemak
+Joke: What do you call a fat chicken? Ayam Nasilemak
+Vote: Upvote
+Recommend: Siblings
+
+Prompt: Nasilemak
+Joke: What do you call a reverse Nasilemak? Nasilemak with the rice on top
+Vote: Downvote
+Recommend: Ibu bapa
+
+Prompt: Kancil
+Joke: What is the most successful car in Malaysia? Kancil, because it has so many children!
+Vote: Upvote
+Recommend: Relatives
+
+Prompt: Kancil
+Joke: What is a Kancil's favourite football position? Striker, because they always strike while the car is moving!
+Vote: Downvote
+Recommend: Colleagues
+
+Prompt: Kancil
+Joke: What is the name of the car that only eats vegetables? Kancil vegetarian
+Vote: Upvote
+Recommend: Ibu bapa
+
