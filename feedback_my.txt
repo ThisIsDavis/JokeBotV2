@@ -298,3 +298,33 @@ Joke: What is the name of the car that only eats vegetables? Kancil vegetarian
 Vote: Upvote
 Recommend: Ibu bapa
 
+Prompt: corruption
+Joke: When a corrupt scientist was caught, he said, "I'm not corrupt. I just have a high tendency to gravitate towards money."
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: corruption
+Joke: Q: What is the most corrupt thing in the world? A: The word 'rasuah' (corruption)
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: corruption
+Joke: What is a Malaysian's favourite type of corruption? KORupsi
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: crime
+Joke: What do you call a crime that is committed by a lawyer? A defense mechanism.
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: crime
+Joke: What do you call it when a lawyer is in jail? A crime prevention measure.
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: crime
+Joke: What is the most famous Malaysian's crime? Speeding.
+Vote: Upvote
+Recommend: Kawan-kawan
+

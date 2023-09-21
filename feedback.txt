@@ -298,3 +298,32 @@ Joke: A student comes to a young professor's office hours. She glances down the 
 Vote: Upvote
 Recommend: Friends
 
+Prompt: mask
+Joke: Q: What did the mask say to the face?  A: "Let me cover for you."
+Vote: Upvote
+Recommend: Friends
+
+Prompt: mask
+Joke: Q: What did the mask say to the face?  A: "Let me cover for you."
+Vote: Downvote
+Recommend: Friends
+
+Prompt: mask
+Joke: What do you call a man with a mask on his face? The Lone Ranger.
+Vote: Upvote
+Recommend: Colleagues
+
+Prompt: medic
+Joke: What did the dentist say to the computer?... This won't hurt a byte
+Vote: Upvote
+Recommend: Friends
+
+Prompt: medic
+Joke: What's the difference between a nurse and a dentist? A dentist lets you sit down while he hurts you and a nurse makes you sit up while she hurts you.
+Vote: Downvote
+Recommend: Parents
+
+Prompt: medic
+Joke: Why did the medic always bring a pencil to the emergency room? Because they wanted to draw blood!
+Vote: Upvote
+Recommend: Relatives
