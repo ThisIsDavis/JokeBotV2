@@ -388,3 +388,63 @@ Joke: What do you call a fat Indomee? Mee Sua.
 Vote: Downvote
 Recommend: Kawan-kawan
 
+Prompt: nasilemak
+Joke: Why nasilemak cannot be a software engineer? Because he always ask for teh...chai instead of te...chai
+Vote: Downvote
+Recommend: Siblings
+
+Prompt: nasilemak
+Joke: What type of tree do you like to eat? 'Nasilemak'
+Vote: Downvote
+Recommend: Colleagues
+
+Prompt: nasilemak
+Joke: What is the most expensive nasi lemak? Nasi lemak yang you beli tapi you tak makan sebab dengar orang kata mahal.
+Vote: Downvote
+Recommend: Siblings
+
+Prompt: durian
+Joke: What is the dentist's favourite fruit? Durian. Because it's spiky and painful.
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: durian
+Joke: What is the most popular fruit among gangsters? Durian.
+Vote: Downvote
+Recommend: Siblings
+
+Prompt: durian
+Joke: What is the most durian fruit? The fruit that is very durian (during) the exam.
+Vote: Downvote
+Recommend: Relatives
+
+Prompt: KLCC
+Joke: What is the most technologically advanced building in the world? KLCC. Why? Because it has HD.
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: KLCC
+Joke: What's the coldest place in Malaysia? KL-CC
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: KLCC
+Joke: What is your favourite place to swim? KLCC, because it KLCC (kill sees).
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: mamak
+Joke: Q: What do you call a mamak dinosaur? A: Roti-saurus.
+Vote: Upvote
+Recommend: Kawan-kawan
+
+Prompt: mamak
+Joke: Q: What do you call a mamak that is a doctor? A: Dr. Makan
+Vote: Downvote
+Recommend: Kawan-kawan
+
+Prompt: mamak
+Joke: Ahmad had a friend whose father owned a mamak shop. One day, they were walking past a mamak shop and Ahmad asked his friend, “Is that your father?” His friend replied, “No lah, if that’s my father, I would be eating at home.”
+Vote: Downvote
+Recommend: Kawan-kawan
+

@@ -388,3 +388,63 @@ Joke: A little boy was learning about God in his church, and he was talking to h
 Vote: Upvote
 Recommend: Colleagues
 
+Prompt: computer
+Joke: Q: What do computers and air conditioners have in common?  A: They both become useless when you open windows.
+Vote: Upvote
+Recommend: Friends
+
+Prompt: computer
+Joke: Q: What did the computer do at lunchtime?  A: Had a byte!
+Vote: Upvote
+Recommend: Siblings
+
+Prompt: computer
+Joke: Q: Where do all the cool mice live?  A: In their mousepads.
+Vote: Upvote
+Recommend: Friends
+
+Prompt: burger
+Joke: Why did the Pilgrim eat a burger before Thanksgiving? Because they were a bunch of meatheads!
+Vote: Downvote
+Recommend: Friends
+
+Prompt: burger
+Joke: Q: What do you get if you cross a burger and a computer?  A: A big mac.
+Vote: Upvote
+Recommend: Friends
+
+Prompt: burger
+Joke: Why did the tomato turn red? Because it saw the salad dressing!
+Vote: Upvote
+Recommend: Siblings
+
+Prompt: apple
+Joke: Q: How do you make an apple turnover?  A: Push it down hill.
+Vote: Upvote
+Recommend: Friends
+
+Prompt: apple
+Joke: Why did the apple go to the doctors? It felt rotten to the core.
+Vote: Upvote
+Recommend: Friends
+
+Prompt: apple
+Joke: Q: Did you hear about the apple party?  A: It was a smashing success.
+Vote: Downvote
+Recommend: Friends
+
+Prompt: fish
+Joke: Q: What do you call a fish with no eyes?  A: Fsh.
+Vote: Upvote
+Recommend: Friends
+
+Prompt: fish
+Joke: Q: What did the fish say when it swam into a wall? A: Damn.
+Vote: Upvote
+Recommend: Friends
+
+Prompt: fish
+Joke: Q: What do fish use for money?  A: Sand dollars.
+Vote: Downvote
+Recommend: Friends
+
