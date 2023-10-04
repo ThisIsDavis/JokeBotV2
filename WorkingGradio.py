@@ -13,7 +13,6 @@ class GPTProcessing(object):
         # For normal jokes
         self.ui_obj = ui_obj
         self.profanity_list = ["fuck", "shit", "bitch", "ass", "sex", "motherfucker", "asshole", "dick", "cunt", "tits", "piss", "twat", "penis", "vagina", "pussy", "boobs"]  # List of profane words to be filtered
-        self.output_prompts = []
         self.tag_memory = []
         self.upvote_prompts = []
         self.downvote_prompts = []
@@ -22,7 +21,6 @@ class GPTProcessing(object):
 
         # For Malaysian jokes
         self.tag_memory_my = []
-        self.output_prompts_my = []
         self.upvote_prompts_my = []
         self.downvote_prompts_my = []
         self.input_my = None
@@ -241,16 +239,6 @@ class GPTProcessing(object):
                 
         print(big_prompt)
         message = self.create_message(big_prompt)  # Get the joke
-        
-        # Check whether message contains prompt or not
-        # print(self.output_prompts)
-        # # Lower capitalise joke for string matching
-        # mes_temp = message.lower()
-        # print(mes_temp in self.output_prompts)
-        # while mes_temp in self.output_prompts:
-        #     message = self.create_message(big_prompt)  # Generate another joke
-        #     mes_temp = message
-        #     mes_temp = mes_temp.lower()
            
         message = self.profanity_filter(message)  # Filter out any profanities after the prompt is in the message
         return message
@@ -266,12 +254,14 @@ class GPTProcessing(object):
             history, history: The state of the chat history after generating a joke
         """
         self.input = input.split(' ')[0]  # Get the first word of the input
-        history = history or []  # Create chat history list if doesn't exist or use existing chat history
-        self.create_feedback(history, self.tag_memory)  # Append the previous chat and its feedback to a file
-        self.output = self.api_calling(self.input)  # Generate the joke
-        history.append((self.input, self.output))  # Append the prompt and joke to the chatbot display
-        self.output_prompts.append(self.output.lower())  # Append the joke a list containing all jokes
-        self.tag_memory.append([None, None])  # Create a tag memory for the new joke
+        
+        # Only generate joke if keyword includes a character
+        if self.input != "":
+            history = history or []  # Create chat history list if doesn't exist or use existing chat history
+            self.create_feedback(history, self.tag_memory)  # Append the previous chat and its feedback to a file
+            self.output = self.api_calling(self.input)  # Generate the joke
+            history.append((self.input, self.output))  # Append the prompt and joke to the chatbot display
+            self.tag_memory.append([None, None])  # Create a tag memory for the new joke
         return history, history
     
     def refresh(self) -> None:
@@ -454,7 +444,7 @@ class GPTProcessing(object):
             
             # Increment count by one.
             self.count += 1
-        
+                   
         return joke_str     # Return the string of selected jokes.
     
     def clear_joke_preference(self) -> str:
@@ -542,16 +532,6 @@ class GPTProcessing(object):
             
         print(big_prompt_my)
         message_my = self.create_message_my(big_prompt_my)  # Get the joke
-        
-        # Check whether message contains prompt or not
-        # print(self.output_prompts_my)
-        # # Lower capitalise joke for string matching
-        # mes_temp_my = message_my.lower()
-        # print(mes_temp_my in self.output_prompts_my)
-        # while mes_temp_my in self.output_prompts_my:
-        #     message_my = self.create_message_my(big_prompt_my)  # Generate another joke
-        #     mes_temp_my = message_my
-        #     mes_temp_my = mes_temp_my.lower()    
                     
         message_my = self.profanity_filter(message_my)  # Filter out any profanities after the prompt is in the message
         return message_my
@@ -568,12 +548,14 @@ class GPTProcessing(object):
             history_my, history_my: The state of the chat history after generating a joke
         """
         self.input_my = input.split(' ')[0]  # Get the first word of the input
-        history_my = history_my or []  # Create chat history list if doesn't exist or use existing chat history
-        self.create_feedback_my(history_my, self.tag_memory_my)  # Append the previous chat and its feedback to a file
-        self.output_my = self.api_calling_my(self.input_my)  # Generate the joke
-        history_my.append((self.input_my, self.output_my))  # Append the prompt and joke to the chatbot display
-        self.output_prompts_my.append(self.output_my.lower())  # Append the joke a list containing all jokes
-        self.tag_memory_my.append([None, None])  # Create a tag memory for the new joke
+        
+        # Only generate joke if keyword includes a character
+        if self.input_my != "":
+            history_my = history_my or []  # Create chat history list if doesn't exist or use existing chat history
+            self.create_feedback_my(history_my, self.tag_memory_my)  # Append the previous chat and its feedback to a file
+            self.output_my = self.api_calling_my(self.input_my)  # Generate the joke
+            history_my.append((self.input_my, self.output_my))  # Append the prompt and joke to the chatbot display
+            self.tag_memory_my.append([None, None])  # Create a tag memory for the new joke
         return history_my, history_my
 
     def tag_response_my(self, vote_my: int, recommendation_my: str) -> None:
@@ -647,5 +629,4 @@ if __name__ == '__main__':
     gradio_ui.create_ui()
     #to launch the ui
     gradio_ui.launch_ui()
-
-
+    
