@@ -218,8 +218,6 @@ class GPTProcessing(object):
             # Prompt engineering the prompt
             big_prompt = f"Give me another type of joke about the word: {prompt}."
         else:
-            # print(self.user_joke_categories[0])
-            # big_prompt = f"Learn from this joke category: {self.user_joke_categories[0]} and give me another joke about the word: {prompt}."
             big_prompt = f"Give me another joke about the word: {prompt} and related to: {self.user_joke_categories[0]}"
             
         # Ensure there is a response before crafting voted prompts
@@ -305,7 +303,6 @@ class GPTProcessing(object):
             elif vote == 1:
                 last_response[0] = vote
                 self.upvote_prompts.append(self.output)
-            # print(self.tag_memory)
         else:
             pass
 
@@ -337,9 +334,7 @@ class GPTProcessing(object):
                     f.write('Vote: None\n')  # Write vote as None
 
                 f.write(f'Recommend: {last_feedback[1]}\n\n')  # Write recommendation
-            # print("it works")
         else:
-            # print("skipped worked")
             pass
 
     # Voice recognition.
@@ -352,10 +347,10 @@ class GPTProcessing(object):
         :Output:
             text: The transcribed text based on the input audio.
         """
-        # Initalise a Recognizer instance.
+        # Initialise a Recognizer instance.
         recogniser = sr.Recognizer()
         
-        # Open the audio file based on inputted filepath an initalise it to source variable.
+        # Open the audio file based on inputted filepath an initialise it to source variable.
         with sr.AudioFile(audio_path) as source:
             # Extract audio data from the source file.
             audio = recogniser.record(source)
@@ -410,7 +405,7 @@ class GPTProcessing(object):
                 
         return jokes
     
-    def save_joke_preference(self, jokes, selected_jokes) -> str:
+    def save_joke_preference(self, jokes) -> str:
         """
         Takes in a list of strings of jokes which the user has selected, saving it.
         :Input:
@@ -426,10 +421,7 @@ class GPTProcessing(object):
                 # Append the list of selected jokes to self.user_joke_preferences to save it.
                 self.user_joke_preferences.append(joke[0])
                 self.user_joke_categories.append(joke[1])
-                
-        # print(self.user_joke_preferences)
-        # print(self.user_joke_categories)
-        
+                        
         joke_str = ""       # Create empty string to store all user-preffered jokes.
         self.count = 1      # Set count to 0 at start.
         
@@ -581,7 +573,6 @@ class GPTProcessing(object):
             elif vote_my == 1:
                 last_response_my[0] = vote_my
                 self.upvote_prompts_my.append(self.output_my)
-            # print(self.tag_memory_my)
         else:
             pass
     
@@ -614,9 +605,7 @@ class GPTProcessing(object):
                     f.write('Vote: None\n')  # Write vote as None
 
                 f.write(f'Recommend: {last_feedback_my[1]}\n\n')  # Write recommendation
-            # print("it works")
         else:
-            # print("skipped worked")
             pass
     
 
