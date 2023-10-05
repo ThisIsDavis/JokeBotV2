@@ -444,7 +444,7 @@ Vote: Downvote
 Recommend: Kawan-kawan
 
 Prompt: mamak
-Joke: Ahmad had a friend whose father owned a mamak shop. One day, they were walking past a mamak shop and Ahmad asked his friend, “Is that your father?” His friend replied, “No lah, if that’s my father, I would be eating at home.”
+Joke: Ahmad had a friend whose father owned a mamak shop. One day, they were walking past a mamak shop and Ahmad asked his friend, ï¿½Is that your father?ï¿½ His friend replied, ï¿½No lah, if thatï¿½s my father, I would be eating at home.ï¿½
 Vote: Downvote
 Recommend: Kawan-kawan
 

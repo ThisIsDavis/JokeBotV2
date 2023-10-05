@@ -24,7 +24,7 @@ class GPTProcessing(object):
         self.input_my = None
         self.output_my = None
 
-        self.OPENAI_API_KEY = ""
+        self.OPENAI_API_KEY = "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"
         os.environ["OPENAI_API_KEY"] = self.OPENAI_API_KEY
         openai.api_key = self.OPENAI_API_KEY
 
@@ -480,7 +480,6 @@ class GPTProcessing(object):
         """
         completions = openai.ChatCompletion.create(
             model="ft:gpt-3.5-turbo-0613:monash-university-malaysia::7yCzUcJq",
-            # model = "ft:gpt-3.5-turbo-0613:monash-university-malaysia::7yyT7tYq",
             messages=[
                 {"role": "system", "content": "JokeBot is a chatbot that tells funny jokes in Malaysian context from given keywords"},
                 {"role": "user", "content": complete_prompt_my}
@@ -608,7 +607,6 @@ class GPTProcessing(object):
     
 
 if __name__ == '__main__':
-    # css_code='div{background-image:url("https://drive.google.com/uc?export=view&id=12345678900");}'
     my_app = gr.Blocks(theme=gr.themes.Soft(primary_hue="indigo", secondary_hue="pink"))
     #this will call our program with gr.Block from gradio
     gradio_ui = GPTProcessing(my_app)
