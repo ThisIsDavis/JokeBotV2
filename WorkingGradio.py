@@ -131,7 +131,7 @@ class GPTProcessing(object):
             joke_preferences_action.click(
                 self.save_joke_preference,
                 [
-                    joke_preferences, selected_joke_preferences
+                    joke_preferences
                 ], 
                 [
                     selected_joke_preferences
