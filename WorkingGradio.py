@@ -4,8 +4,6 @@ import openai
 import speech_recognition as sr
 import random
 import re
-from utils import *
-
 
 class GPTProcessing(object):
     
