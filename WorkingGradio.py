@@ -24,7 +24,7 @@ class GPTProcessing(object):
         self.input_my = None
         self.output_my = None
 
-        self.OPENAI_API_KEY = "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"
+        self.OPENAI_API_KEY = ""
         os.environ["OPENAI_API_KEY"] = self.OPENAI_API_KEY
         openai.api_key = self.OPENAI_API_KEY
 
